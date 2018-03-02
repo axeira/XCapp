@@ -14,9 +14,8 @@ namespace XCApp
         public static string QueryRequest;
         public static string JsonData;
 
-        public static string ServerRequest(string url)
+        public static async Task<string> ServerRequest(string url)
         {
-
             using (var w = new WebClient())
             {
                 //+++var jsonData = string.Empty;
@@ -24,7 +23,8 @@ namespace XCApp
                 // attempt to download JSON data as a string
                 try
                 {
-                    JsonData = w.DownloadString(url);
+                    Task<string> JsonDataTask = w.DownloadStringTaskAsync(url);
+                    JsonData=await JsonDataTask;
                     return HttpStatusCode.OK.ToString();
                 }
                 catch (WebException e)
@@ -40,7 +40,6 @@ namespace XCApp
                 }
 
             }
-
         }
 
         public static T Deserialize_json_data<T>(string json_data) where T : new()
@@ -52,9 +51,9 @@ namespace XCApp
                 ObjectCreationHandling = ObjectCreationHandling.Replace
             };
 
+            // if string with JSON data is not empty, deserialize it to class and return its instance 
+            return !string.IsNullOrEmpty(json_data) ? JsonConvert.DeserializeObject<T>(json_data, settings) : new T();
 
-                // if string with JSON data is not empty, deserialize it to class and return its instance 
-                return !string.IsNullOrEmpty(json_data) ? JsonConvert.DeserializeObject<T>(json_data, settings) : new T();
         }
 
         public class XCAPIResponseError
@@ -381,7 +380,7 @@ namespace XCApp
             //queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp
             //QueryRequest = ConstantsClass.XCAPIUrl + "nr:134880";
             //QueryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
-            //QueryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
+            QueryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
             //QueryRequest = ConstantsClass.XCAPIUrl + "passer domesticos"; //will find no records
             //https://www.xeno-canto.org/134880
 

@@ -55,10 +55,6 @@ namespace XCApp
             Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
             Thread.CurrentThread.Priority = ThreadPriority.Highest;
             Stopwatch stopwatch = new Stopwatch();
-#endif
-            #endregion
-            #region
-#if (TimeDiagnostics)
             stopwatch.Start();
             Debug.WriteLine("========== Start: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
 #endif
@@ -74,8 +70,10 @@ namespace XCApp
                 queryRequest = XCAPIClass.QueryRequest + "&page=" + currentPage.ToString();
             }
 
-            //Communicate with server
-            serverRequestResult = XCAPIClass.ServerRequest(queryRequest);
+            //Communicate with server<<<<<<<<<<<<<<<<<<<<<<<<
+            Task<string> s =  XCAPIClass.ServerRequest(queryRequest);
+            serverRequestResult = await s;
+
             #region
 #if (TimeDiagnostics)
             Debug.WriteLine("========== Received: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
@@ -83,7 +81,8 @@ namespace XCApp
             #endregion
             if (serverRequestResult == HttpStatusCode.OK.ToString())
             {
-                //+++catch error deserializing
+                //Deserializing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                //+++catch error
                 XCAPIRecordings = XCAPIClass.Deserialize_json_data<XCAPIClass.XCAPIRecordingsMain>(XCAPIClass.JsonData);
                 #region
 #if (TimeDiagnostics)
@@ -102,14 +101,14 @@ namespace XCApp
                 if (string.IsNullOrEmpty(XCAPIClass.XCAPIRecordingsMain.NumRecordings))
                 {
                     LabelNoRecordings.Text = "Error found!";
-                    FootnoteLabel.Text = "Response was empty";
+                    FootnoteLabel.Text = "Response was empty!";
                     listIsEmpty = true;
                 }
                 else
                 {
                     if (Convert.ToInt32(XCAPIClass.XCAPIRecordingsMain.NumRecordings) > 0)
                     {
-                        //Move to the top of the List
+                        //All was good ans some response arrived then move to the top of the List
                         MyListView.ScrollTo(XCAPIClass.XCAPIRecordingsMain.Recordings[0], ScrollToPosition.Start, false);
                         listIsEmpty = false;
                     }
@@ -128,9 +127,20 @@ namespace XCApp
             }
             else
             {
-                //++Improve error messaging
-                LabelNoRecordings.Text = "Network unavailable!";
-                FootnoteLabel.Text = serverRequestResult.ToString();
+                //+++Improve error messaging
+                if (string.IsNullOrEmpty(serverRequestResult))
+                {
+                    LabelNoRecordings.Text = "Network unavailable!";
+                    listIsEmpty = true;
+                    FootnoteLabel.Text = "";
+                }
+                else
+                {
+                    LabelNoRecordings.Text = "Error found!";
+                    listIsEmpty = true;
+                    FootnoteLabel.Text = serverRequestResult.ToString();
+                }
+                
             }
 
             // Close the PopupPage circle
