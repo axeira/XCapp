@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XCApp"
+             Title="Search Parameters"
+             x:Class="XCApp.SearchPage">
+
+    <Grid RowSpacing="-1">
+        <!--negative to compensate a Xamarin bug that shows always a spacing evene if we put it zero-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+
+        <!--BODY-->
+        <ScrollView Grid.Row="0" Grid.Column="0">
+            <StackLayout Grid.Row="0" Grid.Column="0">
+                <!--Name-->
+                <Entry Placeholder="Search name (Eng or Sci)" Text="{Binding Name, Mode=TwoWay}" x:name="textName" />
+                <!--Genus-->
+                <Entry Placeholder="Genus (ex:zonotrichia)" Text="{Binding Gen, Mode=TwoWay}" x:name="textGen" />
+                <!--Type-->
+                <Picker Title="Sound type (ex:song)" SelectedIndex="{Binding TypeIndex}" x:Name="pickerType">
+                    <Picker.ItemsSource>
+                    </Picker.ItemsSource>
+                </Picker>
+                <!--Location-->
+                <Entry Placeholder="Location (ex:tambopata)" Text="{Binding Loc, Mode=TwoWay}" x:name="textLoc" />
+                <!--Countries-->
+                <Picker Title="Countries (Select a country)" x:Name="pickerCnt">
+                    <Picker.ItemsSource>
+                    </Picker.ItemsSource>
+                </Picker>
+                <!--XC Number-->
+                <Entry Placeholder="Cat.number (ex: 76967 or 88888-88890)" Text="{Binding Nr, Mode=TwoWay}" x:name="textNumb" />
+                <!--Area-->
+                <Picker Title="Area:" x:Name="pickerArea">
+                    <Picker.ItemsSource>
+                    </Picker.ItemsSource>
+                </Picker>
+                <!--Quality-->
+                <Picker Title="Quality (ex:A)" x:Name="pickerQ">
+                    <Picker.ItemsSource>
+                    </Picker.ItemsSource>
+                </Picker>
+                
+                <!--
+                <Label Text="{Binding Name}" />
+                <Label Text="{Binding Gen}" />
+                <Label Text="{Binding Source={x:Reference pickerType}, Path=SelectedItem}" />
+                <Label Text="{Binding Source={x:Reference pickerQ}, Path=SelectedItem}" />
+                <Label Text="{Binding Loc}" />
+                <Label Text="{Binding Source={x:Reference pickerCnt}, Path=SelectedItem}" />
+                <Label Text="{Binding Nr}" />
+                <Label Text="{Binding Source={x:Reference pickerArea}, Path=SelectedItem}" />
+                <Label Text="{Binding Source={x:Reference pickerQuality}, Path=SelectedItem}" />
+                -->
+            </StackLayout>
+        </ScrollView>
+            <!--3 BUTTONS-->
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <!--2 column-->
+            <!--3 column-->
+            <StackLayout 
+                Grid.Row="0" Grid.Column="2">
+                <Image 
+                    Source="ic_play_arrow_black_48dp.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnTapGestureRecognizerTappedPlay"  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Go" 
+                        FontSize="Micro"
+                        Style="{StaticResource labelStyle}"
+                        HorizontalOptions="Center" />
+            </StackLayout>
+                
+
+
+        </Grid>
+    </Grid>
+        
+</ContentPage>        
+  

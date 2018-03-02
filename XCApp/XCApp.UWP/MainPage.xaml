@@ -1,0 +1,49 @@
+﻿<forms:WindowsPage
+    x:Class="XCApp.UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:forms="using:Xamarin.Forms.Platform.UWP"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XCApp.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="GridButtons" Grid.Row="2" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+        <TextBlock HorizontalAlignment="Center" 
+                   Grid.Row="1" Text="XC" 
+                   TextWrapping="Wrap" 
+                   VerticalAlignment="Center" 
+                   Width="149" Height="24" FontFamily="Segoe UI" Margin="-45,-174,-104,150"/>
+        <Image HorizontalAlignment="Center" 
+               Grid.Row="1" 
+               VerticalAlignment="Center" 
+               Grid.ColumnSpan="2" >
+            <Image.FocusVisualPrimaryBrush>
+                <ImageBrush Stretch="None" ImageSource="Resources/favicon-60.png" Opacity="1"/>
+            </Image.FocusVisualPrimaryBrush>
+        </Image>
+
+
+
+
+
+    </Grid>
+</forms:WindowsPage>

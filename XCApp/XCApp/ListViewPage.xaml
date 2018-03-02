@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Recordings List"
+             x:Class="XCApp.ListViewPage">
+
+    <Grid  RowSpacing="-1">
+        <!--negative to compensate a Xamarin bug that shows always a spacing evene if we put it zero-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0" Grid.Column="0">       
+            <ListView x:Name="MyListView"
+                Grid.Row="0" Grid.Column="0"    
+                RowHeight="75"
+                ItemsSource="{Binding Items}"
+                ItemTapped="Handle_ItemTapped"
+                IsPullToRefreshEnabled="True"
+                Refreshing="Handle_OnRefresh"
+                CachingStrategy="RecycleElement">
+
+                <!--Built in Cells-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <!--1st Line-->
+                                <StackLayout Style="{StaticResource StackLayoutList}" Orientation="Horizontal">
+                                    <Label Text="{Binding XCId}" 
+                                           FontAttributes="Bold"
+                                           FontSize="Small"
+                                           Margin="5,0"
+                                           Style="{StaticResource labelStyle_LB}" />
+                                    <Label Text="{Binding Date}" 
+                                           FontSize="Small"
+                                           Margin="5,0"
+                                           Style="{StaticResource labelStyle}" />
+                                    <Label Text="{Binding Type}" 
+                                           HorizontalOptions="FillAndExpand"
+                                           HorizontalTextAlignment="End"
+                                           LineBreakMode="TailTruncation"
+                                           FontSize="Small"
+                                           Margin="5,0"
+                                           Style="{StaticResource labelStyle}" />
+                                    <Label Text="{Binding Q}" 
+                                           HorizontalTextAlignment="End"
+                                           FontAttributes="Bold"
+                                           FontSize="Default"
+                                           Margin="5,0"
+                                           Style="{StaticResource labelStyle}" />
+                                </StackLayout>
+                                <!--2nd Line-->
+                                <StackLayout Style="{StaticResource StackLayoutList}" Orientation="Horizontal">
+                                    <Label Text="{Binding En}" 
+                                           LineBreakMode="NoWrap"
+                                           FontAttributes="Bold"
+                                           FontSize="Small"
+                                           Margin="5,0"/>
+                                    <Label Text="·" 
+                                           FontAttributes="Bold"
+                                           FontSize="Small"
+                                           Margin="0"/>
+                                    <Label Text="{Binding FullSName}" 
+                                           LineBreakMode="TailTruncation"
+                                           FontSize="Small"
+                                           Margin="5,0"/>
+                                    <!--<Image Source="{Binding image}" />
+                                    <Label Text="{Binding title}"
+                                    TextColor="#f35e20" />
+                                    <Label Text="{Binding subtitle}"
+                                    HorizontalOptions="EndAndExpand"
+                                    TextColor="#503026" />-->
+                                </StackLayout>
+                                <!--3th Line-->
+                                <StackLayout Style="{StaticResource StackLayoutList}" Orientation="Horizontal">
+                                    <Label Text="{Binding Rec}" 
+                                           HorizontalOptions="Start"
+                                           LineBreakMode="NoWrap" 
+                                           FontSize="Small"
+                                           Margin="5,0,0,0"/>
+                                    <!-- +++ if country and recordist are too long it might not exst space for the Localization-->
+                                    <Label Text="{Binding Loc}" 
+                                           LineBreakMode="TailTruncation" 
+                                           FontSize="Small"
+                                           Margin="5,0,0,0"/>
+                                    <Label Text="{Binding Cnt}"
+                                           HorizontalOptions="End"
+                                           LineBreakMode="NoWrap" 
+                                           HorizontalTextAlignment="End"
+                                           FontSize="Small"
+                                           Margin="5,0,5,0"/>
+                                </StackLayout>
+                                <!--4th Line-->                                
+                                <StackLayout Style="{StaticResource StackLayoutList}" Orientation="Horizontal">
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+
+        <!--Footnote-->
+        <BoxView x:Name="FootnoteBox"
+            Color = "{StaticResource xclightBrown}" 
+            Grid.Row="1" Grid.Column="0"/>
+        <Label x:Name="FootnoteLabel"
+            TextColor="White"
+            Margin="5,0,0,0"
+            Grid.Row="1" Grid.Column="0"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start" />
+
+        <!--3 BUTTONS-->
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <!--1 column-->
+            <StackLayout 
+                Grid.Row="0" Grid.Column="0">
+                <Image 
+                    Source="ic_home_black_48dp.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                                Tapped="OnTapGestureRecognizerTappedHome"  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Home" 
+                        FontSize="Micro"
+                        Style="{StaticResource labelStyle}"
+                        HorizontalOptions="Center" />
+            </StackLayout>
+            <!--2 column-->
+            <StackLayout 
+                Grid.Row="0" Grid.Column="1">
+                <Image 
+                    Source="ic_skip_previous_black_48dp.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                                Tapped="OnTapGestureRecognizerTappedPreviousPage"  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Previous page" 
+                        FontSize="Micro"
+                        Style="{StaticResource labelStyle}"
+                        HorizontalOptions="Center" />
+            </StackLayout>
+            <!--3 column-->
+            <!--<BoxView Color="LightBlue" Grid.Row="0" Grid.Column="2"/>-->
+            <StackLayout 
+                Grid.Row="0" Grid.Column="2">
+                <Image 
+                    HeightRequest="50" 
+                    WidthRequest="50"
+                    Source="ic_skip_next_black_48dp.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                                Tapped="OnTapGestureRecognizerTappedNextPage"  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Next Page" 
+                    BackgroundColor="AliceBlue"
+                    FontSize="Micro"
+                    Style="{StaticResource labelStyle}"
+                    HorizontalOptions="Center" />
+            </StackLayout>
+
+        </Grid>
+        <Label x:Name="LabelNoRecordings" 
+               Text="No recordings found!"
+               FontSize="Large"
+               IsVisible = "False"
+               VerticalOptions="CenterAndExpand" 
+               HorizontalOptions="CenterAndExpand" />
+
+    </Grid>
+</ContentPage>
