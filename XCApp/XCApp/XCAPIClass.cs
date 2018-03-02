@@ -382,6 +382,7 @@ namespace XCApp
             //QueryRequest = ConstantsClass.XCAPIUrl + "nr:134880";
             //QueryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
             //QueryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
+            //QueryRequest = ConstantsClass.XCAPIUrl + "passer domesticos"; //will find no records
             //https://www.xeno-canto.org/134880
 
             return queryRequest;

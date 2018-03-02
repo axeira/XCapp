@@ -101,25 +101,24 @@ namespace XCApp
                 //+++await DisplayAlert("Alert", XCAPIClass.XCAPIRecordingsMain.NumRecordings + " "  , "OK");
                 if (string.IsNullOrEmpty(XCAPIClass.XCAPIRecordingsMain.NumRecordings))
                 {
-                    listIsEmpty = true;
                     LabelNoRecordings.Text = "Error found!";
                     FootnoteLabel.Text = "Response was empty";
+                    listIsEmpty = true;
                 }
                 else
                 {
                     if (Convert.ToInt32(XCAPIClass.XCAPIRecordingsMain.NumRecordings) > 0)
                     {
+                        //Move to the top of the List
+                        MyListView.ScrollTo(XCAPIClass.XCAPIRecordingsMain.Recordings[0], ScrollToPosition.Start, false);
                         listIsEmpty = false;
                     }
                     else
                     {
-                        //Hide or show the List is empty Message
+                        //See if there is no recordings
+                        if (Convert.ToInt32(XCAPIClass.XCAPIRecordingsMain.NumRecordings) == 0) LabelNoRecordings.Text = "No recordings found!";
                         listIsEmpty = true;
                     }
-                    //Move to the top of the List
-                    MyListView.ScrollTo(XCAPIClass.XCAPIRecordingsMain.Recordings[0], ScrollToPosition.Start, false);
-                    //See if there no recordings
-                    if (Convert.ToInt32(XCAPIClass.XCAPIRecordingsMain.NumRecordings) == 0) LabelNoRecordings.Text = "No recordings found!";
                     //Fill Footnote
                     FootnoteLabel.Text = "Page " + XCAPIClass.XCAPIRecordingsMain.Page + " of " +
                     XCAPIClass.XCAPIRecordingsMain.NumPages + ", # Recordings: " +
