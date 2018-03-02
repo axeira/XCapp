@@ -25,24 +25,23 @@ namespace XCApp
     public partial class ListViewPage : ContentPage
     {
         private XCAPIClass.XCAPIRecordingsMain XCAPIRecordings = new XCAPIClass.XCAPIRecordingsMain();
-        ObservableCollection<XCAPIClass.XCAPIRecordingsMain> recordings = new ObservableCollection<XCAPIClass.XCAPIRecordingsMain>();//+++
+        //+++ObservableCollection<XCAPIClass.XCAPIRecordingsMain> recordings = new ObservableCollection<XCAPIClass.XCAPIRecordingsMain>();//+++
         private int _currentPage = 0;
         private int _currentPagePrevious = 0;
-        private string _queryRequest;
-        private string _jsonData;
 
-        public ListViewPage(string queryRequest)
+        public ListViewPage()
         {
             InitializeComponent();
-            _queryRequest = queryRequest;
-            RunQuery(_queryRequest, _currentPage);
+            //+++XCAPIClass.QueryRequest = queryRequest; 
+            RunQuery(_currentPage);
             _currentPage = 1;
         }
 
-        private async void RunQuery(string queryRequest, int currentPage)
+        private async void RunQuery( int currentPage)
         {
             //+++string json_data;
             string serverRequestResult;
+            string queryRequest;
             bool listIsEmpty = true;
 
             //+++The List Viewmight not sow  as long as the answer received it is now, doesnt show the last lines
@@ -67,15 +66,16 @@ namespace XCApp
             //Manage if tag page is necessary
             if (currentPage == 0)
             {
-                _queryRequest = queryRequest;
+                queryRequest = XCAPIClass.QueryRequest;
                 currentPage = 1;
             }
             else
             {
-                _queryRequest = queryRequest + "&page=" + currentPage.ToString();
+                queryRequest = XCAPIClass.QueryRequest + "&page=" + currentPage.ToString();
             }
+
             //Communicate with server
-            serverRequestResult = XCAPIClass.ServerRequest(_queryRequest, out _jsonData);
+            serverRequestResult = XCAPIClass.ServerRequest(queryRequest);
             #region
 #if (TimeDiagnostics)
             Debug.WriteLine("========== Received: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
@@ -84,7 +84,7 @@ namespace XCApp
             if (serverRequestResult == HttpStatusCode.OK.ToString())
             {
                 //+++catch error deserializing
-                XCAPIRecordings = XCAPIClass.Deserialize_json_data<XCAPIClass.XCAPIRecordingsMain>(_jsonData);
+                XCAPIRecordings = XCAPIClass.Deserialize_json_data<XCAPIClass.XCAPIRecordingsMain>(XCAPIClass.JsonData);
                 #region
 #if (TimeDiagnostics)
                 Debug.WriteLine("========== Deserialized: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
@@ -138,6 +138,9 @@ namespace XCApp
             //+++await Task.Delay(4000);
             await Navigation.RemovePopupPageAsync(loadingPage);
 
+
+
+
             //Hide or show the List is empty Message
             LabelNoRecordings.IsVisible = listIsEmpty;
             MyListView.IsVisible = !listIsEmpty;
@@ -177,7 +180,7 @@ namespace XCApp
             if (_currentPage > 1)
                 _currentPage -= 1;
             if (_currentPage != _currentPagePrevious)
-                RunQuery(_queryRequest, _currentPage);
+                RunQuery(_currentPage);
         }
 
         void OnTapGestureRecognizerTappedNextPage(object sender, EventArgs args)
@@ -188,14 +191,14 @@ namespace XCApp
             if (_currentPage < Convert.ToInt32(XCAPIClass.XCAPIRecordingsMain.NumPages))
                 _currentPage += 1;
             if (_currentPage != _currentPagePrevious)
-                RunQuery(_queryRequest,_currentPage);
+                RunQuery(_currentPage);
         }
 
         void Handle_OnRefresh(object sender, EventArgs e)
         {
             var list = (ListView)sender;
             //put your refreshing logic here
-            RunQuery(_queryRequest, _currentPage);
+            RunQuery(_currentPage);
             //make sure to end the refresh state
             list.IsRefreshing = false;
         }

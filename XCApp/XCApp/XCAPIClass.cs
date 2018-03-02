@@ -11,25 +11,25 @@ namespace XCApp
 {
     public class XCAPIClass
     {
+        public static string QueryRequest;
+        public static string JsonData;
 
-        public static string ServerRequest(string url, out string result)
+        public static string ServerRequest(string url)
         {
 
             using (var w = new WebClient())
             {
-                var json_data = string.Empty;
-                
+                //+++var jsonData = string.Empty;
                 
                 // attempt to download JSON data as a string
                 try
                 {
-                    json_data = w.DownloadString(url);
-                    result = json_data;
+                    JsonData = w.DownloadString(url);
                     return HttpStatusCode.OK.ToString();
                 }
                 catch (WebException e)
                 {
-                    result = string.Empty;
+                    JsonData = string.Empty;
                     Console.WriteLine("\n\nException Message :" + e.Message);
                     //+++if (e.Status == WebExceptionStatus.ProtocolError)
                     //+++{
@@ -42,8 +42,6 @@ namespace XCApp
             }
 
         }
-
-
 
         public static T Deserialize_json_data<T>(string json_data) where T : new()
         {
@@ -70,9 +68,6 @@ namespace XCApp
             [JsonProperty("message")]
             public string Message { get; set; }
         }
-
-        //And you can deserialize your json easily :
-        //JsonConvert.DeserializeObject<List<RecordingsJson>>(json);
 
         public class XCAPIRecordingsMain
         {
@@ -135,7 +130,6 @@ namespace XCApp
             public string XCId => string.Format("XC{0}", Id);
             public string FullSName => string.Format("{0} {1}", Gen, Sp);
         }
-
 
         public class XCAPISearch : INotifyPropertyChanged
         {
@@ -317,5 +311,81 @@ namespace XCApp
 
         }
 
-    }   
+        public static string BuildTheQuery(XCAPISearch XCQuery)
+        {
+            string queryRequest;
+
+            //Build the query
+            queryRequest = "";
+            if (!String.IsNullOrEmpty(XCQuery.Name))
+            {
+                queryRequest = XCQuery.Name + " ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Gen))
+            {
+                queryRequest = queryRequest + "gen:\"" + XCQuery.Gen + "\" ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Rec))
+            {
+                queryRequest = queryRequest + "rec:\"" + XCQuery.Rec + "\" ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Cnt))
+            {
+                if (XCQuery.Cnt.ToUpper() != ConstantsClass.NoneStr)
+                    queryRequest = queryRequest + "cnt:\"" + XCQuery.Cnt + "\" ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Loc))
+            {
+                queryRequest = queryRequest + "loc:\"" + XCQuery.Loc + "\" ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Rmk))
+            {
+                queryRequest = queryRequest + "rmk:\"" + XCQuery.Rmk + "\" ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Type))
+            {
+                if (XCQuery.Type.ToUpper() != ConstantsClass.NoneStr)
+                    queryRequest = queryRequest + "type:\"" + XCQuery.Type + "\" ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Rec))
+            {
+                queryRequest = queryRequest + "rec:\"" + XCQuery.Rec + "\" ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Nr))
+            {
+                queryRequest = queryRequest + "nr:" + XCQuery.Nr + "\" ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Lic))
+            {
+                queryRequest = queryRequest + "lic:\"" + XCQuery.Lic + "\" ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Q))
+            {
+                if (XCQuery.Q.ToUpper() != ConstantsClass.NoneStr)
+                    queryRequest = queryRequest + "q:\"" + XCQuery.Rec + "\" ";
+            }
+            if (!String.IsNullOrEmpty(XCQuery.Area))
+            {
+                if (XCQuery.Area.ToUpper() != ConstantsClass.NoneStr)
+                    queryRequest = queryRequest + "area:\"" + XCQuery.Area + "\" ";
+            }
+
+
+            //Form query
+            queryRequest = (ConstantsClass.XCAPIUrl + queryRequest).TrimEnd().ToLower();
+            //Clean double spaces
+            while (queryRequest.Contains("  "))
+                queryRequest = queryRequest.Replace("  ", " ");
+
+            //+++
+            //queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp
+            //QueryRequest = ConstantsClass.XCAPIUrl + "nr:134880";
+            //QueryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
+            //QueryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
+            //https://www.xeno-canto.org/134880
+
+            return queryRequest;
+        }
+
+    }
 }

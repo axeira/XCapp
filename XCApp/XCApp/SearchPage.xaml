@@ -14,7 +14,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="70" />
         </Grid.RowDefinitions>
-
+        
         <!--BODY-->
         <ScrollView Grid.Row="0" Grid.Column="0">
             <StackLayout Grid.Row="0" Grid.Column="0">
