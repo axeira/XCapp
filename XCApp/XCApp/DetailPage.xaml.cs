@@ -18,6 +18,8 @@ namespace XCApp
         private bool Playing=false;
         private bool FirstTimePlaying = true;
 
+
+
         public DetailPage ()
 		{
             InitializeComponent ();
@@ -43,7 +45,7 @@ namespace XCApp
             };
             //+++quando sai da form desligar o som
 
-            //MediaManager.PlaybackController.SeekTo(streamingPosition);
+            //MediaManager.PlaybackController.SeekTo(TimeSpan.FromMilliseconds(5000));
             //MediaManager.PlaybackController.Play();
 
             //events
