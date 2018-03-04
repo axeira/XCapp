@@ -18,8 +18,6 @@ namespace XCApp
         {
             using (var w = new WebClient())
             {
-                //+++var jsonData = string.Empty;
-                
                 // attempt to download JSON data as a string
                 try
                 {
@@ -377,14 +375,27 @@ namespace XCApp
                 queryRequest = queryRequest.Replace("  ", " ");
 
             //+++
-            //queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp
-            //QueryRequest = ConstantsClass.XCAPIUrl + "nr:134880";
-            //QueryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
-            QueryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
-            //QueryRequest = ConstantsClass.XCAPIUrl + "passer domesticos"; //will find no records
+            queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp
+            //queryRequest = ConstantsClass.XCAPIUrl + "nr:134880";
+            //queryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
+            //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
+            //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticos";
             //https://www.xeno-canto.org/134880
 
             return queryRequest;
+        }
+
+        public static string SecondsToString(double seconds, Boolean ShowMilliseconds = false)
+        {
+            string r = "";
+            TimeSpan t = TimeSpan.FromSeconds(seconds);
+
+            if (t.Hours != 0) r = t.Hours.ToString("00") + ":";
+            r = r + t.Minutes.ToString("00") + ":";
+            r = r + t.Seconds.ToString("00");
+            if (ShowMilliseconds) r = r + "." + (t.Milliseconds / 100).ToString("0");
+
+            return r;
         }
 
     }

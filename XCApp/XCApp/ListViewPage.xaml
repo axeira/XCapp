@@ -70,12 +70,6 @@
                                            LineBreakMode="TailTruncation"
                                            FontSize="Small"
                                            Margin="5,0"/>
-                                    <!--<Image Source="{Binding image}" />
-                                    <Label Text="{Binding title}"
-                                    TextColor="#f35e20" />
-                                    <Label Text="{Binding subtitle}"
-                                    HorizontalOptions="EndAndExpand"
-                                    TextColor="#503026" />-->
                                 </StackLayout>
                                 <!--3th Line-->
                                 <StackLayout Style="{StaticResource StackLayoutList}" Orientation="Horizontal">

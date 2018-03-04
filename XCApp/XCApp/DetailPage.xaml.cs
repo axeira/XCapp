@@ -18,11 +18,10 @@ namespace XCApp
         private bool Playing=false;
         private bool FirstTimePlaying = true;
 
-        //+++public DetailPage(XCAPIClass.XCAPIRecordings XCAPIRecordingTapped)
         public DetailPage ()
 		{
             InitializeComponent ();
-            //+++BindingContext = new XCAPIRecordingTapped;
+            
 
             CrossMediaManager.Current.PlayingChanged += (sender, e) =>
             {
@@ -38,13 +37,11 @@ namespace XCApp
                     }
 
                     ProgressBarSlider.Minimum = 0;
-                    ProgressBarSlider.Value= e.Progress;//+++++++++++++++++++++anda depressa de mais 
-                    Duration.Text = XCClass.SecondsToString(e.Progress,true)+"/"+ XCClass.SecondsToString(ProgressBarSlider.Maximum,true);
+                    ProgressBarSlider.Value= e.Progress;//+++anda depressa de mais <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                    Duration.Text = XCAPIClass.SecondsToString(e.Progress,true)+"/"+ XCAPIClass.SecondsToString(ProgressBarSlider.Maximum,true);
                 });
             };
-            //+++TaskContinuationOptions a tocar mesmo depois de chegar ao maximo
             //+++quando sai da form desligar o som
-            //+++
 
             //MediaManager.PlaybackController.SeekTo(streamingPosition);
             //MediaManager.PlaybackController.Play();
@@ -53,6 +50,20 @@ namespace XCApp
             CrossMediaManager.Current.MediaFinished += Current_MediaFinished;
             //+++CrossMediaManager.Current.MediaFailed
             //Throw Error and stop playing
+
+
+            //Creat gesture in Label to link Url
+            var tapGestureRecognizer = new TapGestureRecognizer();
+
+            tapGestureRecognizer.Tapped += (s, e) => {
+                //Get Url from the ViewModel
+                //this has to be done here, because in the main DetailPage() returns null, the constructor not yet done
+                var XCAPIRecordingTapped = BindingContext as XCAPIClass.XCAPIRecordings;
+                string url = XCAPIRecordingTapped.Url;
+
+                Device.OpenUri(new Uri(url));
+            };
+            LabelUrl.GestureRecognizers.Add(tapGestureRecognizer);
         }
 
 
@@ -60,7 +71,6 @@ namespace XCApp
         {
             //CrossMediaManager.Current.MediaFinished
             FirstTimePlaying = true;
-            //+++ButtonPlay.Text = "Play";
             ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
             Playing = false;
             ProgressBarSlider.Value = 0;
@@ -70,11 +80,9 @@ namespace XCApp
         private async void StopAudio_OnClicked(object sender, EventArgs e)
         {
             await CrossMediaManager.Current.Stop();
-            //+++ButtonPlay.Text = "Play";
             ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
             FirstTimePlaying = true;
             Playing = false;
-            //+++ProgressBar.Progress = 0;
             ProgressBarSlider.Value = 0;
             Duration.Text = "";
         }
@@ -94,9 +102,9 @@ namespace XCApp
                     Availability = ResourceAvailability.Remote,
                     Url = url
                 };
+
                 await CrossMediaManager.Current.Play(mediaFile);
                 FirstTimePlaying = false;
-                //+++ButtonPlay.Text = "Pause";
                 ButtonPlay.Source = "ic_pause_white_48dp.png";
                 Playing = true;
             }
@@ -105,14 +113,12 @@ namespace XCApp
                 if (Playing)
                 {
                     await CrossMediaManager.Current.Pause();
-                    //+++ButtonPlay.Text = "Play";
                     ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
                     Playing = false;
                 }
                 else
                 {
                     await CrossMediaManager.Current.Play();
-                    //+++ButtonPlay.Text = "Pause";
                     ButtonPlay.Source = "ic_pause_white_48dp.png";
                     Playing = true;
                 }
@@ -120,7 +126,10 @@ namespace XCApp
 
         }
 
-        
+        protected async override void OnDisappearing()
+        {
+            await CrossMediaManager.Current.Stop();
+        }
 
     }
 }

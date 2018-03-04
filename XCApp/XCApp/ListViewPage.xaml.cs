@@ -13,8 +13,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 #if (TimeDiagnostics)
-//using System.Text;
-using System.Diagnostics;
+    using System.Diagnostics;
     using System.Threading;
 #endif
 
@@ -32,19 +31,17 @@ namespace XCApp
         public ListViewPage()
         {
             InitializeComponent();
-            //+++XCAPIClass.QueryRequest = queryRequest; 
             RunQuery(_currentPage);
             _currentPage = 1;
         }
 
         private async void RunQuery( int currentPage)
         {
-            //+++string json_data;
             string serverRequestResult;
             string queryRequest;
             bool listIsEmpty = true;
 
-            //+++The List Viewmight not sow  as long as the answer received it is now, doesnt show the last lines
+            //+++The List View might not show the last lines, as long as the answer received it is too long?!?!?!
 
             // Open the PopupPage circle
             var loadingPage = new LoadingPopupPage();
@@ -144,11 +141,7 @@ namespace XCApp
             }
 
             // Close the PopupPage circle
-            //+++await Task.Delay(4000);
             await Navigation.RemovePopupPageAsync(loadingPage);
-
-
-
 
             //Hide or show the List is empty Message
             LabelNoRecordings.IsVisible = listIsEmpty;
@@ -183,8 +176,6 @@ namespace XCApp
 
         void OnTapGestureRecognizerTappedPreviousPage(object sender, EventArgs args)
         {
-            //+++Implement move List to first line
-
             _currentPagePrevious = _currentPage;
             if (_currentPage > 1)
                 _currentPage -= 1;
@@ -194,8 +185,6 @@ namespace XCApp
 
         void OnTapGestureRecognizerTappedNextPage(object sender, EventArgs args)
         {
-            //+++Implement move List to first line
-
             _currentPagePrevious = _currentPage;
             if (_currentPage < Convert.ToInt32(XCAPIClass.XCAPIRecordingsMain.NumPages))
                 _currentPage += 1;

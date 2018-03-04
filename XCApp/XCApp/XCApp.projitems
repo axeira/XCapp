@@ -24,7 +24,6 @@
       <DependentUpon>LoadingPopupPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)XCClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConstantsClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>
