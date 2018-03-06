@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace XCApp
 {
     public class XCAPIClass
@@ -126,7 +127,10 @@ namespace XCApp
 
             public string XCId => string.Format("XC{0}", Id);
             public string FullSName => string.Format("{0} {1}", Gen, Sp);
-        }
+            public string Citation => string.Format("{0}, XC{1}. Accessible at www.xeno-canto.org/{1}.", Rec, Id);
+        
+
+    }
 
         public class XCAPISearch : INotifyPropertyChanged
         {
@@ -320,51 +324,51 @@ namespace XCApp
             }
             if (!String.IsNullOrEmpty(XCQuery.Gen))
             {
-                queryRequest = queryRequest + "gen:\"" + XCQuery.Gen + "\" ";
+                queryRequest += "gen:\"" + XCQuery.Gen + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Rec))
             {
-                queryRequest = queryRequest + "rec:\"" + XCQuery.Rec + "\" ";
+                queryRequest += "rec:\"" + XCQuery.Rec + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Cnt))
             {
                 if (XCQuery.Cnt.ToUpper() != ConstantsClass.NoneStr)
-                    queryRequest = queryRequest + "cnt:\"" + XCQuery.Cnt + "\" ";
+                    queryRequest += "cnt:\"" + XCQuery.Cnt + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Loc))
             {
-                queryRequest = queryRequest + "loc:\"" + XCQuery.Loc + "\" ";
+                queryRequest += "loc:\"" + XCQuery.Loc + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Rmk))
             {
-                queryRequest = queryRequest + "rmk:\"" + XCQuery.Rmk + "\" ";
+                queryRequest += "rmk:\"" + XCQuery.Rmk + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Type))
             {
                 if (XCQuery.Type.ToUpper() != ConstantsClass.NoneStr)
-                    queryRequest = queryRequest + "type:\"" + XCQuery.Type + "\" ";
+                    queryRequest += "type:\"" + XCQuery.Type + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Rec))
             {
-                queryRequest = queryRequest + "rec:\"" + XCQuery.Rec + "\" ";
+                queryRequest += "rec:\"" + XCQuery.Rec + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Nr))
             {
-                queryRequest = queryRequest + "nr:" + XCQuery.Nr + "\" ";
+                queryRequest += "nr:" + XCQuery.Nr + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Lic))
             {
-                queryRequest = queryRequest + "lic:\"" + XCQuery.Lic + "\" ";
+                queryRequest += "lic:\"" + XCQuery.Lic + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Q))
             {
                 if (XCQuery.Q.ToUpper() != ConstantsClass.NoneStr)
-                    queryRequest = queryRequest + "q:\"" + XCQuery.Rec + "\" ";
+                    queryRequest += "q:\"" + XCQuery.Rec + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Area))
             {
                 if (XCQuery.Area.ToUpper() != ConstantsClass.NoneStr)
-                    queryRequest = queryRequest + "area:\"" + XCQuery.Area + "\" ";
+                    queryRequest += "area:\"" + XCQuery.Area + "\" ";
             }
 
 
@@ -375,12 +379,13 @@ namespace XCApp
                 queryRequest = queryRequest.Replace("  ", " ");
 
             //+++
-            queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp
+            //queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp
             //queryRequest = ConstantsClass.XCAPIUrl + "nr:134880";
             //queryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
             //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
             //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticos";
             //https://www.xeno-canto.org/134880
+            //https://www.xeno-canto.org/api/2/recordings?query=134880
 
             return queryRequest;
         }

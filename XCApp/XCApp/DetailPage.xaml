@@ -11,8 +11,8 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!--BODY-->
@@ -102,16 +102,33 @@
                             Style="{StaticResource labelStyle}" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
+                        <Label Text="Citation:" 
+                            LineBreakMode="NoWrap"   
+                            Style="{StaticResource labelStyleCaption}" />
+                        <Label x:Name="LabelCitation"
+                            LineBreakMode="TailTruncation"   
+                            Text="{Binding Citation}"
+                            Style="{StaticResource labelStyle}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
                         <Label Text="License:" 
                             LineBreakMode="NoWrap"   
                             Style="{StaticResource labelStyleCaption}" />
-                        <Label Text="{Binding Lic}" 
+                        <Image 
+                            WidthRequest = "16"
+                            HorizontalOptions="Start"
+                            Margin="5,0"
+                            VerticalOptions="Center"
+                            Source="cc.png">
+                        </Image>
+                        <Label x:Name="LabelLicense"
+                            LineBreakMode="TailTruncation"   
                             Style="{StaticResource labelStyle}" />
                     </StackLayout>
-
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Tap here to see in Xeno Canto..." 
                             x:Name="LabelUrl"   
+                            Margin="5,10,0,10"
                             LineBreakMode="NoWrap"   
                             Style="{StaticResource labelStyle_LB}" />
                     </StackLayout>
@@ -121,10 +138,22 @@
 
         <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
             <Image 
-                        x:Name="Spectogram" 
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="Center" 
-                        Source="SpectrogrameDemo.png">
+                x:Name="CCImage" 
+                WidthRequest = "100"
+                HorizontalOptions="Start"
+                Margin="5"
+                VerticalOptions="Center"
+                Source="by.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Tapped="CCImage_OnTapped"/>
+                    </Image.GestureRecognizers>
+            </Image>
+            <Image 
+                x:Name="Spectogram" 
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center" 
+                Source="SpectrogrameDemo.png">
             </Image>
             <!--Player-->
                 <Grid>
@@ -150,7 +179,7 @@
                         Source="ic_play_arrow_white_48dp.png">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
-                                Tapped="PlayAudio_OnClicked"  />
+                                Tapped="PlayAudio_OnTapped"  />
                         </Image.GestureRecognizers>
                     </Image>
                     <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
@@ -173,7 +202,7 @@
                         Source="ic_stop_white_48dp.png">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
-                                Tapped="StopAudio_OnClicked"  />
+                                Tapped="StopAudio_OnTapped"  />
                         </Image.GestureRecognizers>
                     </Image>
                

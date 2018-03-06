@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Globalization;
 
 namespace XCApp
 {
@@ -54,19 +55,30 @@ namespace XCApp
             //Throw Error and stop playing
 
 
-            //Creat gesture in Label to link Url
+            //Creat gesture in LabelUrl to link Url
             var tapGestureRecognizer = new TapGestureRecognizer();
-
             tapGestureRecognizer.Tapped += (s, e) => {
                 //Get Url from the ViewModel
                 //this has to be done here, because in the main DetailPage() returns null, the constructor not yet done
                 var XCAPIRecordingTapped = BindingContext as XCAPIClass.XCAPIRecordings;
                 string url = XCAPIRecordingTapped.Url;
-
                 Device.OpenUri(new Uri(url));
             };
             LabelUrl.GestureRecognizers.Add(tapGestureRecognizer);
+
+            //Choose image to CC field
+            CCImage.SetBinding(Image.SourceProperty, new Binding("Lic", converter: new CCImageConverter()));
+            //Choose license text to show
+            LabelLicense.SetBinding(Label.TextProperty, new Binding("Lic", converter: new LabelLicenseConverter()));
         }
+
+        private void CCImage_OnTapped(object sender, EventArgs e) //***
+        {
+            var XCAPIRecordingTapped = BindingContext as XCAPIClass.XCAPIRecordings;
+            string lic = XCAPIRecordingTapped.Lic;
+            Device.OpenUri(new Uri(lic));
+        }
+
 
 
         private void Current_MediaFinished(object sender, Plugin.MediaManager.Abstractions.EventArguments.MediaFinishedEventArgs e)
@@ -79,18 +91,7 @@ namespace XCApp
             Duration.Text = "";
         }
 
-        private async void StopAudio_OnClicked(object sender, EventArgs e)
-        {
-            await CrossMediaManager.Current.Stop();
-            ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
-            FirstTimePlaying = true;
-            Playing = false;
-            ProgressBarSlider.Value = 0;
-            Duration.Text = "";
-        }
-    
-
-        private async void PlayAudio_OnClicked(object sender, EventArgs e)
+        private async void PlayAudio_OnTapped(object sender, EventArgs e)
         {
             string url;
             if (FirstTimePlaying)
@@ -128,10 +129,82 @@ namespace XCApp
 
         }
 
-        protected async override void OnDisappearing()
+        private async void StopAudio_OnTapped(object sender, EventArgs e)
         {
             await CrossMediaManager.Current.Stop();
+            ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+            FirstTimePlaying = true;
+            Playing = false;
+            ProgressBarSlider.Value = 0;
+            Duration.Text = "";
         }
 
+        protected async override void OnDisappearing()
+        {
+            //+++ consulidate with StopAudio_OnTapped in only one
+            await CrossMediaManager.Current.Stop();
+            ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+            FirstTimePlaying = true;
+            Playing = false;
+            ProgressBarSlider.Value = 0;
+            Duration.Text = "";
+        }
+
+
+        private class CCImageConverter : Xamarin.Forms.IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                var stringValue = (String)value;
+
+                if (stringValue.IndexOf("/by-nc-sa/") >= 0)
+                    return "byncsa.png";
+                else if (stringValue.IndexOf("/by-nc-nd/") >= 0)
+                    return "byncnd.png";
+                else if (stringValue.IndexOf("/by-sa/") >= 0)
+                    return "bysa.png";
+                //else if (stringValue.IndexOf("/by/") >= 0)
+                //    return "by.png";
+                //else if (stringValue.IndexOf("/by-nc.eu/") >= 0)
+                //    return "bynceu.png";
+                //else if (stringValue.IndexOf("/by-nc/") >= 0)
+                //    return "bync.png";
+                //else if (stringValue.IndexOf("/by-nc-sa.eu/") >= 0)
+                //    return "byncsaeu.png";
+                //else if (stringValue.IndexOf("/by-nd/") >= 0)
+                //    return "bynd.png";
+                else
+                    return "";
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException("Not implemented.");
+            }
+        }
+
+        private class LabelLicenseConverter : Xamarin.Forms.IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                var stringValue = (String)value;
+
+                if (stringValue.IndexOf("/by-nc-sa/") >= 0)
+                    return "Creative Commons Attribution-NonCommercial-ShareAlike";
+                else if (stringValue.IndexOf("/by-nc-nd/") >= 0)
+                    return "Creative Commons Attribution-NonCommercial-NoDerivatives";
+                else if (stringValue.IndexOf("/by-sa/") >= 0)
+                    return "Creative Commons Attribution-ShareAlike";
+                else
+                    return "";
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException("Not implemented.");
+            }
+        }
+
+        
     }
 }

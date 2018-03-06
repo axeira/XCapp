@@ -28,25 +28,7 @@ namespace XCApp
         async void OnTapGestureRecognizerTappedPlay(object sender, EventArgs args)
         {
             //Store Query parameters
-            //+++Observable collection avoids this????
             XCQuery = ((XCAPIClass.XCAPISearch)this.BindingContext);
-            //+++Remove down lines from here?
-            //XCQuery.Name = ((XCAPIClass.XCAPISearch)this.BindingContext).Name;
-            //XCQuery.Gen = ((XCAPIClass.XCAPISearch)this.BindingContext).Gen;
-            //XCQuery.Rec = ((XCAPIClass.XCAPISearch)this.BindingContext).Rec;
-            //XCQuery.Cnt = ((XCAPIClass.XCAPISearch)this.BindingContext).Cnt;
-            //XCQuery.Cnt = ((XCAPIClass.XCAPISearch)this.BindingContext).Cnt;
-            //XCQuery.CntIndex = ((XCAPIClass.XCAPISearch)this.BindingContext).CntIndex;
-            //XCQuery.Loc = ((XCAPIClass.XCAPISearch)this.BindingContext).Loc;
-            //XCQuery.Rmk = ((XCAPIClass.XCAPISearch)this.BindingContext).Rmk;
-            //XCQuery.Type = ((XCAPIClass.XCAPISearch)this.BindingContext).Type;
-            //XCQuery.TypeIndex = ((XCAPIClass.XCAPISearch)this.BindingContext).TypeIndex;
-            //XCQuery.Nr = ((XCAPIClass.XCAPISearch)this.BindingContext).Nr;
-            //XCQuery.Lic = ((XCAPIClass.XCAPISearch)this.BindingContext).Lic;
-            //XCQuery.Q = ((XCAPIClass.XCAPISearch)this.BindingContext).Q;
-            //XCQuery.QIndex = ((XCAPIClass.XCAPISearch)this.BindingContext).QIndex;
-            //XCQuery.Area = ((XCAPIClass.XCAPISearch)this.BindingContext).Area;
-            //XCQuery.AreaIndex = ((XCAPIClass.XCAPISearch)this.BindingContext).AreaIndex;
 
             XCAPIClass.QueryRequest = XCAPIClass.BuildTheQuery(XCQuery);
             System.Diagnostics.Debug.WriteLine("=============== " + XCAPIClass.QueryRequest);
