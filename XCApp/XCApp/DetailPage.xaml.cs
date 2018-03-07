@@ -157,11 +157,11 @@ namespace XCApp
             {
                 var stringValue = (String)value;
 
-                if (stringValue.IndexOf("/by-nc-sa/") >= 0)
+                if (stringValue.IndexOf(ConstantsClass.Short_byncsa) >= 0)
                     return "byncsa.png";
-                else if (stringValue.IndexOf("/by-nc-nd/") >= 0)
+                else if (stringValue.IndexOf(ConstantsClass.Short_byncnd) >= 0)
                     return "byncnd.png";
-                else if (stringValue.IndexOf("/by-sa/") >= 0)
+                else if (stringValue.IndexOf(ConstantsClass.Short_bysa) >= 0)
                     return "bysa.png";
                 //else if (stringValue.IndexOf("/by/") >= 0)
                 //    return "by.png";
@@ -189,12 +189,12 @@ namespace XCApp
             {
                 var stringValue = (String)value;
 
-                if (stringValue.IndexOf("/by-nc-sa/") >= 0)
-                    return "Creative Commons Attribution-NonCommercial-ShareAlike";
-                else if (stringValue.IndexOf("/by-nc-nd/") >= 0)
-                    return "Creative Commons Attribution-NonCommercial-NoDerivatives";
-                else if (stringValue.IndexOf("/by-sa/") >= 0)
-                    return "Creative Commons Attribution-ShareAlike";
+                if (stringValue.IndexOf(ConstantsClass.Short_byncsa) >= 0)
+                    return ConstantsClass.Long_byncsa;
+                else if (stringValue.IndexOf(ConstantsClass.Short_byncnd) >= 0)
+                    return ConstantsClass.Long_byncnd;
+                else if (stringValue.IndexOf(ConstantsClass.Short_bysa) >= 0)
+                    return ConstantsClass.Long_bysa;
                 else
                     return "";
             }

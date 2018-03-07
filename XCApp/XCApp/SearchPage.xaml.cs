@@ -25,6 +25,7 @@ namespace XCApp
             PickerArea.ItemsSource = ConstantsClass.Areas;
             PickerSongType.ItemsSource = ConstantsClass.SongTypes;
             PickerQuality.ItemsSource = ConstantsClass.Qualities;
+            PickerLicense.ItemsSource = ConstantsClass.Licenses;
         }
 
         async void OnTapGestureRecognizerTappedPlay(object sender, EventArgs args)
@@ -50,42 +51,35 @@ namespace XCApp
             TextGen.Text = ""; 
         }
 
+        void TextAlsoClear_OnTapped(object sender, EventArgs args)
+        {
+            TextAlso.Text = "";
+        }
+
+        //+++Missing Ssp there is no tag in documetation
         //void TextSspClear_OnTapped(object sender, EventArgs args)
         //{
         //    TextSsp.Text = "";
         //}
 
-        //void TextLoc_OnTapped(object sender, EventArgs args)
-        //{
-        //    TextLoc.Text = "";
-        //}
-
-        //void TextNr_OnTapped(object sender, EventArgs args)
-        //{
-        //    TextNr.Text = "";
-        //}
-
-        void PickerSongTypeClear_OnTapped(object sender, EventArgs args)
+        void TextLocClear_OnTapped(object sender, EventArgs args)
         {
+            TextLoc.Text = "";
+        }
 
-            //+++LabelSelectedSongTypes.Text= "";
+        void TextRecClear_OnTapped(object sender, EventArgs args)
+        {
+            TextRec.Text = "";
+        }
 
-            //+++var picker = (Picker)PickerType;
-            //int selectedIndex = picker.SelectedIndex;
+        void TextNrClear_OnTapped(object sender, EventArgs args)
+        {
+            TextNr.Text = "";
+        }
 
-            //try
-            //{
-            //    // code causing TargetInvocationException
-            //    picker.SelectedIndex = -1; 
-            //}
-            //catch (Exception e)
-            //{
-            //    if (e.InnerException != null)
-            //    {
-            //        string err = e.InnerException.Message;
-            //    }
-            //}
-            
+        void TextRmkClear_OnTapped(object sender, EventArgs args)
+        {
+            TextRmk.Text = "";
         }
 
 

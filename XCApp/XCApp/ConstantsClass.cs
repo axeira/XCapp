@@ -9,14 +9,29 @@ namespace XCApp
 
         public const string XCAPIUrl = "https://www.xeno-canto.org/api/2/recordings?query=";
         public const string NoneStr = "NONE";
+        public const string Long_byncsa = "Creative Commons Attribution-NonCommercial-ShareAlike";
+        public const string Short_byncsa = "by-nc-sa";
+        public const string Long_byncnd = "Creative Commons Attribution-NonCommercial-NoDerivatives";
+        public const string Short_byncnd = "by-nc-nd";
+        public const string Long_bysa = "Creative Commons Attribution-ShareAlike";
+        public const string Short_bysa = "by-sa";
 
-    //foreach (string month in months)
-    //{
-    //DropDownListMonth.Items.Add(month);"
-    //}
+        //foreach (string month in months)
+        //{
+        //DropDownListMonth.Items.Add(month);"
+        //}
+
+        public static readonly String[] Licenses =
+        {
+            NoneStr,
+            Long_byncsa,
+            Long_byncnd,
+            Long_bysa
+        };
 
 
-        public static readonly String[] SongTypes = {
+        public static readonly String[] SongTypes = 
+        {
              NoneStr,
             "song",
             "call",
@@ -35,7 +50,8 @@ namespace XCApp
         public static readonly String[] Areas = { NoneStr, "Africa", "America", "Asia", "Australia", "Europe"};
 
 
-        public static readonly String[] Countries = {
+        public static readonly String[] Countries = 
+        {
             NoneStr,
             "Afghanistan",
             "Albania",

@@ -38,6 +38,26 @@
                     </Image>
                 </StackLayout>
 
+                <!--XC Number-->
+                <StackLayout Orientation="Horizontal">
+                    <Entry 
+                        Placeholder="Cat.number (ex: 76967 or 88888-88890)" 
+                        Text="{Binding Nr, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        x:Name="TextNr" />
+                    <Image 
+                        WidthRequest = "32" 
+                        HorizontalOptions="Start" 
+                        Margin="0" 
+                        Source="ic_close_black_48dp.png" 
+                        x:Name="TextNrClear">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TextNrClear_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
                 <!--Genus-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
@@ -54,6 +74,26 @@
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextGenClear_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+                <!--Genus-->
+                <StackLayout Orientation="Horizontal">
+                    <Entry 
+                        Placeholder="Back.Species (ex:formicariidae)" 
+                        Text="{Binding Also, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        x:Name="TextAlso" />
+                    <Image 
+                        WidthRequest = "32" 
+                        HorizontalOptions="Start" 
+                        Margin="0" 
+                        Source="ic_close_black_48dp.png" 
+                        x:Name="TextAlsoClear">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TextAlsoClear_OnTapped"  />
                         </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
@@ -86,39 +126,93 @@
                 </Picker>
                 
                 <!--Location-->
-                <Entry Placeholder="Location (ex:tambopata)" Text="{Binding Loc, Mode=TwoWay}" x:Name="TextLoc" />
+                <StackLayout Orientation="Horizontal">
+                    <Entry 
+                        Placeholder="Location (ex:tambopata)" 
+                        Text="{Binding Loc, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        x:Name="TextLoc" />
+                    <Image 
+                        WidthRequest = "32" 
+                        HorizontalOptions="Start" 
+                        Margin="0" 
+                        Source="ic_close_black_48dp.png" 
+                        x:Name="TextLocClear">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TextLocClear_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
                 <!--Countries-->
                 <Picker Title="Countries (Select a country)" SelectedIndex="{Binding CntIndex}" x:Name="PickerCountry">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>
-                <!--XC Number-->
-                <Entry Placeholder="Cat.number (ex: 76967 or 88888-88890)" Text="{Binding Nr, Mode=TwoWay}" x:Name="TextNumb" />
+
+                <!--Remarks-->
+                <StackLayout Orientation="Horizontal">
+                    <Entry 
+                        Placeholder="Remarks (ex:playback)" 
+                        Text="{Binding Rmk, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        x:Name="TextRmk" />
+                    <Image 
+                        WidthRequest = "32" 
+                        HorizontalOptions="Start" 
+                        Margin="0" 
+                        Source="ic_close_black_48dp.png" 
+                        x:Name="TextRmkClear">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TextRmkClear_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+                <!--Recordist-->
+                <StackLayout Orientation="Horizontal">
+                    <Entry 
+                        Placeholder="Recordist (ex:John Doe)" 
+                        Text="{Binding Rec, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        x:Name="TextRec" />
+                    <Image 
+                        WidthRequest = "32" 
+                        HorizontalOptions="Start" 
+                        Margin="0" 
+                        Source="ic_close_black_48dp.png" 
+                        x:Name="TextRecClear">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TextRecClear_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
                 <!--Area-->
-                <Picker Title="Area:" SelectedIndex="{Binding AreaIndex}" x:Name="PickerArea">
-                    <Picker.ItemsSource>
-                    </Picker.ItemsSource>
-                </Picker>
-                <!--Quality-->
-                <Picker Title="Quality (ex:A)" SelectedIndex="{Binding QIndex}" x:Name="PickerQuality">
+                <Picker Title="Area (choose one Area)" SelectedIndex="{Binding AreaIndex}" x:Name="PickerArea">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>
                 
-                <!--
-                <Label Text="{Binding Name}" />
-                <Label Text="{Binding Gen}" />
-                <Label Text="{Binding Source={x:Reference pickerType}, Path=SelectedItem}" />
-                <Label Text="{Binding Source={x:Reference pickerQ}, Path=SelectedItem}" />
-                <Label Text="{Binding Loc}" />
-                <Label Text="{Binding Source={x:Reference pickerCnt}, Path=SelectedItem}" />
-                <Label Text="{Binding Nr}" />
-                <Label Text="{Binding Source={x:Reference pickerArea}, Path=SelectedItem}" />
-                <Label Text="{Binding Source={x:Reference pickerQuality}, Path=SelectedItem}" />
-                -->
+                <!--Quality-->
+                <Picker Title="Quality (choose one Quality)" SelectedIndex="{Binding QIndex}" x:Name="PickerQuality">
+                    <Picker.ItemsSource>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <!--License-->
+                <Picker Title="License (choose one License)" SelectedIndex="{Binding LicIndex}" x:Name="PickerLicense">
+                    <Picker.ItemsSource>
+                    </Picker.ItemsSource>
+                </Picker>
+
             </StackLayout>
         </ScrollView>
-            <!--3 BUTTONS-->
+            
+        <!--3 BUTTONS-->
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />

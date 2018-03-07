@@ -163,19 +163,20 @@ namespace XCApp
                 }
             }
 
-            private string _Ssp;
-            public string Ssp
-            {
-                get { return _Ssp; }
-                set
-                {
-                    if (_Ssp != value)
-                    {
-                        _Ssp = value;
-                        OnPropertyChanged("Ssp");
-                    }
-                }
-            }
+            //+++Missing Ssp there is no tag in documetation
+            //private string _Ssp;
+            //public string Ssp
+            //{
+            //    get { return _Ssp; }
+            //    set
+            //    {
+            //        if (_Ssp != value)
+            //        {
+            //            _Ssp = value;
+            //            OnPropertyChanged("Ssp");
+            //        }
+            //    }
+            //}
 
             private string _Rec;
             public string Rec
@@ -265,16 +266,32 @@ namespace XCApp
                 }
             }
 
-            private string _Lic;
-            public string Lic
+            private string _Also;
+            public string Also
             {
-                get { return _Lic; }
+                get { return _Also; }
                 set
                 {
-                    if (_Lic != value)
+                    if (_Also != value)
                     {
-                        _Lic = value;
-                        OnPropertyChanged("Lic");
+                        _Also = value;
+                        OnPropertyChanged("Also");
+                    }
+                }
+            }
+
+            public string Lic;
+            private int _LicIndex;
+            public int LicIndex
+            {
+                get { return _LicIndex; }
+                set
+                {
+                    if (_LicIndex != value)
+                    {
+                        _LicIndex = value;
+                        Lic = ConstantsClass.Licenses[LicIndex];
+                        OnPropertyChanged("LicIndex");
                     }
                 }
             }
@@ -332,6 +349,7 @@ namespace XCApp
             string queryRequest;
 
             //Build the query
+            //+++Missing Ssp there is no tag in documetation
             queryRequest = "";
             if (!String.IsNullOrEmpty(XCQuery.Name))
             {
@@ -358,14 +376,14 @@ namespace XCApp
             {
                 queryRequest += "rmk:\"" + XCQuery.Rmk + "\" ";
             }
+            if (!String.IsNullOrEmpty(XCQuery.Also))
+            {
+                queryRequest += "also:\"" + XCQuery.Also + "\" ";
+            }
             if (!String.IsNullOrEmpty(XCQuery.Type))
             {
                 if (XCQuery.Type.ToUpper() != ConstantsClass.NoneStr)
                     queryRequest += "type:\"" + XCQuery.Type + "\" ";
-            }
-            if (!String.IsNullOrEmpty(XCQuery.Rec))
-            {
-                queryRequest += "rec:\"" + XCQuery.Rec + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Nr))
             {
@@ -373,7 +391,18 @@ namespace XCApp
             }
             if (!String.IsNullOrEmpty(XCQuery.Lic))
             {
-                queryRequest += "lic:\"" + XCQuery.Lic + "\" ";
+                if (XCQuery.Lic==ConstantsClass.Long_byncnd)
+                {
+                    queryRequest += "lic:\"" + ConstantsClass.Short_byncnd + "\" ";
+                }
+                if (XCQuery.Lic == ConstantsClass.Long_byncsa)
+                {
+                    queryRequest += "lic:\"" + ConstantsClass.Short_byncsa + "\" ";
+                }
+                if (XCQuery.Lic == ConstantsClass.Long_bysa)
+                {
+                    queryRequest += "lic:\"" + ConstantsClass.Short_bysa + "\" ";
+                }
             }
             if (!String.IsNullOrEmpty(XCQuery.Q))
             {
