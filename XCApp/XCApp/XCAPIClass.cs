@@ -22,6 +22,7 @@ namespace XCApp
                 // attempt to download JSON data as a string
                 try
                 {
+                    //+++Implement Timeout
                     Task<string> JsonDataTask = w.DownloadStringTaskAsync(url);
                     JsonData=await JsonDataTask;
                     return HttpStatusCode.OK.ToString();
@@ -162,6 +163,20 @@ namespace XCApp
                 }
             }
 
+            private string _Ssp;
+            public string Ssp
+            {
+                get { return _Ssp; }
+                set
+                {
+                    if (_Ssp != value)
+                    {
+                        _Ssp = value;
+                        OnPropertyChanged("Ssp");
+                    }
+                }
+            }
+
             private string _Rec;
             public string Rec
             {
@@ -230,7 +245,7 @@ namespace XCApp
                     if (_TypeIndex != value)
                     {
                         _TypeIndex = value;
-                        Type = ConstantsClass.Type[TypeIndex];
+                        Type = ConstantsClass.SongTypes[TypeIndex];
                         OnPropertyChanged("TypeIndex");
                     }
                 }
@@ -274,7 +289,7 @@ namespace XCApp
                     if (_QIndex != value)
                     {
                         _QIndex = value;
-                        Q = ConstantsClass.Quality[QIndex];
+                        Q = ConstantsClass.Qualities[QIndex];
                         OnPropertyChanged("QIndex");
                     }
                 }
@@ -290,7 +305,7 @@ namespace XCApp
                     if (_AreaIndex != value)
                     {
                         _AreaIndex = value;
-                        Area = ConstantsClass.Area[AreaIndex];
+                        Area = ConstantsClass.Areas[AreaIndex];
                         OnPropertyChanged("AreaIndex");
                     }
                 }
@@ -354,7 +369,7 @@ namespace XCApp
             }
             if (!String.IsNullOrEmpty(XCQuery.Nr))
             {
-                queryRequest += "nr:" + XCQuery.Nr + "\" ";
+                queryRequest += "nr:\"" + XCQuery.Nr + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Lic))
             {
@@ -363,7 +378,7 @@ namespace XCApp
             if (!String.IsNullOrEmpty(XCQuery.Q))
             {
                 if (XCQuery.Q.ToUpper() != ConstantsClass.NoneStr)
-                    queryRequest += "q:\"" + XCQuery.Rec + "\" ";
+                    queryRequest += "q:\"" + XCQuery.Q + "\" ";
             }
             if (!String.IsNullOrEmpty(XCQuery.Area))
             {

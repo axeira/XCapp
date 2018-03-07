@@ -17,32 +17,90 @@
         
         <!--BODY-->
         <ScrollView Grid.Row="0" Grid.Column="0">
-            <StackLayout Grid.Row="0" Grid.Column="0">
+            <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,15,0,0" Spacing="10">
                 <!--Name-->
-                <Entry Placeholder="Search name (Eng or Sci)" Text="{Binding Name, Mode=TwoWay}" x:name="textName" />
+                <StackLayout Orientation="Horizontal">
+                    <Entry 
+                        Placeholder="Search name (English or Scientific)" 
+                        Text="{Binding Name, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        x:Name="TextName" />
+                    <Image 
+                        WidthRequest = "32" 
+                        HorizontalOptions="Start" 
+                        Margin="0" 
+                        Source="ic_close_black_48dp.png" 
+                        x:Name="TextNameClear">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TextNameClear_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
                 <!--Genus-->
-                <Entry Placeholder="Genus (ex:zonotrichia)" Text="{Binding Gen, Mode=TwoWay}" x:name="textGen" />
+                <StackLayout Orientation="Horizontal">
+                    <Entry 
+                        Placeholder="Genus (ex:zonotrichia)" 
+                        Text="{Binding Gen, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        x:Name="TextGen" />
+                    <Image 
+                        WidthRequest = "32" 
+                        HorizontalOptions="Start" 
+                        Margin="0" 
+                        Source="ic_close_black_48dp.png" 
+                        x:Name="TextGenClear">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TextGenClear_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+                <!-- +++ SubSpecie, cant find tag ssp in api documentation, but you can see it in advaced query in the site
+                <StackLayout Orientation="Horizontal">
+                    <Entry 
+                        Placeholder="Subspecies" 
+                        Text="{Binding Ssp, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        x:Name="TextSsp" />
+                    <Image 
+                        WidthRequest = "32" 
+                        HorizontalOptions="Start" 
+                        Margin="0" 
+                        Source="ic_close_black_48dp.png" 
+                        x:Name="TextSspClear">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TextSspClear_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                -->
+                
                 <!--Type-->
-                <Picker Title="Sound type (ex:song)" SelectedIndex="{Binding TypeIndex}" x:Name="pickerType">
+                <Picker Title="Sound type (ex:song)" SelectedIndex="{Binding TypeIndex}" x:Name="PickerSongType">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>
+                
                 <!--Location-->
-                <Entry Placeholder="Location (ex:tambopata)" Text="{Binding Loc, Mode=TwoWay}" x:name="textLoc" />
+                <Entry Placeholder="Location (ex:tambopata)" Text="{Binding Loc, Mode=TwoWay}" x:Name="TextLoc" />
                 <!--Countries-->
-                <Picker Title="Countries (Select a country)" x:Name="pickerCnt">
+                <Picker Title="Countries (Select a country)" SelectedIndex="{Binding CntIndex}" x:Name="PickerCountry">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>
                 <!--XC Number-->
-                <Entry Placeholder="Cat.number (ex: 76967 or 88888-88890)" Text="{Binding Nr, Mode=TwoWay}" x:name="textNumb" />
+                <Entry Placeholder="Cat.number (ex: 76967 or 88888-88890)" Text="{Binding Nr, Mode=TwoWay}" x:Name="TextNumb" />
                 <!--Area-->
-                <Picker Title="Area:" x:Name="pickerArea">
+                <Picker Title="Area:" SelectedIndex="{Binding AreaIndex}" x:Name="PickerArea">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>
                 <!--Quality-->
-                <Picker Title="Quality (ex:A)" x:Name="pickerQ">
+                <Picker Title="Quality (ex:A)" SelectedIndex="{Binding QIndex}" x:Name="PickerQuality">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>

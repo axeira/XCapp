@@ -16,8 +16,8 @@ namespace XCApp
     //}
 
 
-        public static readonly String[] Type = {
-            NoneStr,
+        public static readonly String[] SongTypes = {
+             NoneStr,
             "song",
             "call",
             "alarm call",
@@ -30,9 +30,9 @@ namespace XCApp
         };
 
         //q TAG
-        public static readonly String[] Quality = { NoneStr, "A", "B", "C", "D", "E" , "0"};
+        public static readonly String[] Qualities = { NoneStr, "A", "B", "C", "D", "E" , "0"};
         //area TAG
-        public static readonly String[] Area = { NoneStr, "Africa", "America", "Asia", "Australia", "Europe"};
+        public static readonly String[] Areas = { NoneStr, "Africa", "America", "Asia", "Australia", "Europe"};
 
 
         public static readonly String[] Countries = {

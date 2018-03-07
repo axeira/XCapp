@@ -12,6 +12,8 @@ namespace XCApp
 	public partial class SearchPage : ContentPage
     {
         public XCAPIClass.XCAPISearch XCQuery = new XCAPIClass.XCAPISearch();
+        //private object textName;
+
         //+++public string QueryRequest;
 
         public SearchPage()
@@ -19,10 +21,10 @@ namespace XCApp
             InitializeComponent();
             BindingContext = new XCAPIClass.XCAPISearch();
 
-            pickerCnt.ItemsSource = ConstantsClass.Countries;
-            pickerArea.ItemsSource = ConstantsClass.Area;
-            pickerType.ItemsSource = ConstantsClass.Type;
-            pickerQ.ItemsSource = ConstantsClass.Quality;
+            PickerCountry.ItemsSource = ConstantsClass.Countries;
+            PickerArea.ItemsSource = ConstantsClass.Areas;
+            PickerSongType.ItemsSource = ConstantsClass.SongTypes;
+            PickerQuality.ItemsSource = ConstantsClass.Qualities;
         }
 
         async void OnTapGestureRecognizerTappedPlay(object sender, EventArgs args)
@@ -36,6 +38,56 @@ namespace XCApp
             //Move the next window
             await Navigation.PushAsync(new ListViewPage(), true);
         }
+        
 
-}
+        void TextNameClear_OnTapped(object sender, EventArgs args)
+        {
+            TextName.Text = "";
+        }
+
+        void TextGenClear_OnTapped(object sender, EventArgs args)
+        {
+            TextGen.Text = ""; 
+        }
+
+        //void TextSspClear_OnTapped(object sender, EventArgs args)
+        //{
+        //    TextSsp.Text = "";
+        //}
+
+        //void TextLoc_OnTapped(object sender, EventArgs args)
+        //{
+        //    TextLoc.Text = "";
+        //}
+
+        //void TextNr_OnTapped(object sender, EventArgs args)
+        //{
+        //    TextNr.Text = "";
+        //}
+
+        void PickerSongTypeClear_OnTapped(object sender, EventArgs args)
+        {
+
+            //+++LabelSelectedSongTypes.Text= "";
+
+            //+++var picker = (Picker)PickerType;
+            //int selectedIndex = picker.SelectedIndex;
+
+            //try
+            //{
+            //    // code causing TargetInvocationException
+            //    picker.SelectedIndex = -1; 
+            //}
+            //catch (Exception e)
+            //{
+            //    if (e.InnerException != null)
+            //    {
+            //        string err = e.InnerException.Message;
+            //    }
+            //}
+            
+        }
+
+
+    }
 }
