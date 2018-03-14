@@ -166,7 +166,6 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Text="Next Page" 
-                    BackgroundColor="AliceBlue"
                     FontSize="Micro"
                     Style="{StaticResource labelStyle}"
                     HorizontalOptions="Center" />

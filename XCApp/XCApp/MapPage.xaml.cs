@@ -13,22 +13,22 @@ namespace XCApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MapPage : ContentPage
 	{
-		public MapPage ()
+		public MapPage (double x, double y,int km)
 		{
             InitializeComponent();
 
-            var position = new Position(37, -122); // Latitude, Longitude
+            var position = new Position(x, y); // Latitude, Longitude
 
             MyMap.MoveToRegion(
                 MapSpan.FromCenterAndRadius(
-                    position, Distance.FromKilometers(25)));
+                    position, Distance.FromKilometers(km)));
            
             var pin = new Pin
             {
                 Type = PinType.Place,
                 Position = position,
-                Label = "custom pin",
-                Address = "custom detail info"
+                Label = "Localization",
+                Address = ""
             };
             MyMap.Pins.Add(pin);
 

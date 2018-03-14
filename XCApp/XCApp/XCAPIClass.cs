@@ -425,7 +425,7 @@ namespace XCApp
             //+++
             //queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp
             //queryRequest = ConstantsClass.XCAPIUrl + "nr:134880";
-            //queryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
+            queryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
             //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
             //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticos";
             //https://www.xeno-canto.org/134880

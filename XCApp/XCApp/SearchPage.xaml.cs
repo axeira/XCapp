@@ -40,12 +40,6 @@ namespace XCApp
             await Navigation.PushAsync(new ListViewPage(), true);
         }
 
-        async void OnTappedMap(object sender, EventArgs args)
-        {
-            //Move the next window
-            await Navigation.PushAsync(new MapPage(), true);
-        }
-
         void TextNameClear_OnTapped(object sender, EventArgs args)
         {
             TextName.Text = "";

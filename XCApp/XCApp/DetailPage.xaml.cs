@@ -75,10 +75,28 @@ namespace XCApp
         private void CCImage_OnTapped(object sender, EventArgs e) //***
         {
             var XCAPIRecordingTapped = BindingContext as XCAPIClass.XCAPIRecordings;
-            string lic = XCAPIRecordingTapped.Lic;
+            string lic = "https:"+XCAPIRecordingTapped.Lic;
             Device.OpenUri(new Uri(lic));
         }
 
+        async void OnTappedMap(object sender, EventArgs args)
+        {
+            //Show in Map window
+            var XCAPIRecordingTapped = BindingContext as XCAPIClass.XCAPIRecordings;
+            double x, y;
+
+            if (!string.IsNullOrEmpty(XCAPIRecordingTapped.Lat))
+                x = Convert.ToDouble(XCAPIRecordingTapped.Lat);
+            else
+                x = 0;
+
+            if (!string.IsNullOrEmpty(XCAPIRecordingTapped.Lng))
+                y = Convert.ToDouble(XCAPIRecordingTapped.Lng);
+            else
+                y = 0;
+
+            await Navigation.PushAsync(new MapPage(x,y,25), true);
+        }
 
 
         private void Current_MediaFinished(object sender, Plugin.MediaManager.Abstractions.EventArguments.MediaFinishedEventArgs e)
