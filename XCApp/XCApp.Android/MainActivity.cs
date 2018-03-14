@@ -23,6 +23,9 @@ namespace XCApp.Droid
             //only needed in 1.1 this is 1.04 Rg.Plugins.Popup.Popup.Init(this, bundle);
             
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            Xamarin.FormsMaps.Init(this, bundle);
+
             LoadApplication(new App());
 
         }

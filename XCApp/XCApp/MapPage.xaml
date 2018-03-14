@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             Title="Map"            
+             x:Class="XCApp.MapPage">
+    <ContentPage.Content>
+        <Grid RowSpacing="-1">
+            <!--negative to compensate a Xamarin bug that shows always a spacing evene if we put it zero-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <!--Maps-->
+            <StackLayout Grid.Row="0" Grid.Column="0" Spacing="0">
+                <!-- IsShowingUsermust be "false", doest work because of permissions -->
+                <maps:Map 
+                    x:Name="MyMap"
+                    IsShowingUser="false" 
+                    VerticalOptions ="FillAndExpand"
+                    MapType="Street"
+                />
+            </StackLayout>
+
+
+            <!--3 BUTTONS-->
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <!--2 column-->
+                <!--3 column-->
+                <StackLayout 
+                Grid.Row="0" Grid.Column="2">
+                    <Image 
+                    Source="ic_search_black_48dp.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnTappedSearch"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="Go" 
+                        FontSize="Micro"
+                        Style="{StaticResource labelStyle}"
+                        HorizontalOptions="Center" />
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
