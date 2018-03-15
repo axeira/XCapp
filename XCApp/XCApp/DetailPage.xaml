@@ -45,7 +45,7 @@
                             LineBreakMode="NoWrap"   
                             FontAttributes="Bold"
                             FontSize="Medium"
-                            Style="{StaticResource labelStyle_LB}" />
+                            Style="{StaticResource labelStyle}" />
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">
@@ -68,6 +68,7 @@
                         <Label Text="{Binding Rec}" 
                             Style="{StaticResource labelStyle}" />
                     </StackLayout>
+                    
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Date/Time:" 
                             LineBreakMode="NoWrap"   
@@ -78,14 +79,26 @@
                             Margin="5,0"
                             Style="{StaticResource labelStyle}" />
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
                         <Label Text="Location:" 
+                            Grid.Row="0" Grid.Column="0"                               
                             LineBreakMode="NoWrap"   
                             Style="{StaticResource labelStyleCaption}" />
                         <Label Text="{Binding Loc}" 
-                            LineBreakMode="TailTruncation"                                  
+                            Grid.Row="0" Grid.Column="1"                               
+                            LineBreakMode="WordWrap"                                  
                             Style="{StaticResource labelStyle}" />
-                    </StackLayout>
+                    </Grid>
+                    
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Country:" 
                             LineBreakMode="NoWrap"   
@@ -93,12 +106,16 @@
                         <Label Text="{Binding Cnt}" 
                             Style="{StaticResource labelStyle}" />
                     </StackLayout>
+                    
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Lat/Lon:" 
+                            VerticalTextAlignment="Center"
                             Style="{StaticResource labelStyleCaption}" />
                         <Label Text="{Binding Lat}" 
+                            VerticalTextAlignment="Center"
                             Style="{StaticResource labelStyle}" />
                         <Label Text="{Binding Lng}" 
+                            VerticalTextAlignment="Center"
                             Margin="5,0"
                             Style="{StaticResource labelStyle}" />
                         <Image 
@@ -111,33 +128,59 @@
                                     Tapped="OnTappedMap"  />
                             </Image.GestureRecognizers>
                         </Image>
-                   </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Citation:" 
+                    </StackLayout>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Citation:"  
+                            Grid.Row="0" Grid.Column="0"
                             LineBreakMode="NoWrap"   
                             HorizontalOptions="Start"
                             Style="{StaticResource labelStyleCaption}" />
                         <Label
-                            HorizontalOptions="FillAndExpand"
-                            LineBreakMode="TailTruncation"   
+                            HorizontalOptions="FillAndExpand" 
+                            Grid.Row="0" Grid.Column="1"
+                            LineBreakMode="WordWrap"   
                             Text="{Binding Citation}"
                             Style="{StaticResource labelStyle}" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
+                    </Grid>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
                         <Label Text="License:" 
+                            Grid.Row="0" Grid.Column="0"
                             LineBreakMode="NoWrap"   
                             Style="{StaticResource labelStyleCaption}" />
                         <Image 
-                            WidthRequest = "16"
-                            HorizontalOptions="Start"
-                            Margin="0"
-                            VerticalOptions="Center"
-                            Source="cc.png">
+                            x:Name="CCImage" 
+                            Grid.Row="0" Grid.Column="1"
+                            WidthRequest = "50"
+                            Source="by.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Tapped="CCImage_OnTapped"/>
+                            </Image.GestureRecognizers>
                         </Image>
                         <Label x:Name="LabelLicense"
-                            LineBreakMode="TailTruncation"   
+                            Grid.Row="0" Grid.Column="2"
+                            LineBreakMode="WordWrap"   
                             Style="{StaticResource labelStyle}" />
-                    </StackLayout>
+                    </Grid>
+                    
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Tap here to see in Xeno Canto..." 
                             x:Name="LabelUrl"   
@@ -150,21 +193,9 @@
 
 
         <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
-                <BoxView 
-                    Color = "{StaticResource xclightBrown}" 
-                    HeightRequest="5"/>
-                <Image 
-                x:Name="CCImage" 
-                WidthRequest = "50"
-                HorizontalOptions="Start"
-                Margin="5"
-                VerticalOptions="Center"
-                Source="by.png">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer 
-                            Tapped="CCImage_OnTapped"/>
-                    </Image.GestureRecognizers>
-            </Image>
+            <BoxView 
+                Color = "{StaticResource xclightBrown}" 
+                HeightRequest="5"/>
             <Image 
                 x:Name="Spectogram" 
                 HorizontalOptions="CenterAndExpand"
