@@ -104,19 +104,21 @@
                         <Image 
                             HeightRequest="30"
                             WidthRequest="30"
-                            Source="ic_map_black_48dp.png">
+                            BackgroundColor="{StaticResource xclightBrown}"
+                            Source="ic_map_white_48dp.png">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer
                                     Tapped="OnTappedMap"  />
                             </Image.GestureRecognizers>
                         </Image>
-
-                    </StackLayout>
+                   </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Citation:" 
                             LineBreakMode="NoWrap"   
+                            HorizontalOptions="Start"
                             Style="{StaticResource labelStyleCaption}" />
-                        <Label x:Name="LabelCitation"
+                        <Label
+                            HorizontalOptions="FillAndExpand"
                             LineBreakMode="TailTruncation"   
                             Text="{Binding Citation}"
                             Style="{StaticResource labelStyle}" />
@@ -128,7 +130,7 @@
                         <Image 
                             WidthRequest = "16"
                             HorizontalOptions="Start"
-                            Margin="5,0"
+                            Margin="0"
                             VerticalOptions="Center"
                             Source="cc.png">
                         </Image>
@@ -148,9 +150,12 @@
 
 
         <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
-            <Image 
+                <BoxView 
+                    Color = "{StaticResource xclightBrown}" 
+                    HeightRequest="5"/>
+                <Image 
                 x:Name="CCImage" 
-                WidthRequest = "100"
+                WidthRequest = "50"
                 HorizontalOptions="Start"
                 Margin="5"
                 VerticalOptions="Center"
