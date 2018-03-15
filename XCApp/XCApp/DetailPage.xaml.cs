@@ -30,24 +30,19 @@ namespace XCApp
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    if (CrossMediaManager.Current.Duration.TotalSeconds >= 0)
-                    {
-                        ProgressBarSlider.Maximum = CrossMediaManager.Current.Duration.TotalSeconds;
-                    }
-                    else
-                    {
-                        ProgressBarSlider.Maximum = 100;
-                    }
-
+                    ProgressBarSlider.Maximum = 100;
                     ProgressBarSlider.Minimum = 0;
-                    ProgressBarSlider.Value= e.Progress;//+++anda depressa de mais <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-                    Duration.Text = XCAPIClass.SecondsToString(e.Progress,true)+"/"+ XCAPIClass.SecondsToString(ProgressBarSlider.Maximum,true);
+                    ProgressBarSlider.Value= e.Progress;
+                    //e.Progress=percentage 0-100
+                    //e.Position=seconds
+                    //e.Duration=seconds
+                    Duration.Text = e.Progress.ToString() + " " + e.Position + " " + e.Duration;
+                    Duration.Text = XCAPIClass.SecondsToString(e.Position.TotalSeconds, true)+"/"+ XCAPIClass.SecondsToString(e.Duration.TotalSeconds,true);
                 });
             };
-            //+++quando sai da form desligar o som
 
-            //MediaManager.PlaybackController.SeekTo(TimeSpan.FromMilliseconds(5000));
-            //MediaManager.PlaybackController.Play();
+            //+++MediaManager.PlaybackController.SeekTo(TimeSpan.FromMilliseconds(5000));
+            //+++MediaManager.PlaybackController.Play();
 
             //events
             CrossMediaManager.Current.MediaFinished += Current_MediaFinished;
