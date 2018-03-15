@@ -39,7 +39,6 @@ namespace XCApp
             //Move the next window
             await Navigation.PushAsync(new ListViewPage(), true);
         }
-        
 
         void TextNameClear_OnTapped(object sender, EventArgs args)
         {

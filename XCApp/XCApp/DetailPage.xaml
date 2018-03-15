@@ -101,6 +101,16 @@
                         <Label Text="{Binding Lng}" 
                             Margin="5,0"
                             Style="{StaticResource labelStyle}" />
+                        <Image 
+                            HeightRequest="30"
+                            WidthRequest="30"
+                            Source="ic_map_black_48dp.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="OnTappedMap"  />
+                            </Image.GestureRecognizers>
+                        </Image>
+
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Citation:" 
@@ -193,7 +203,7 @@
                         Color = "{StaticResource xclightBrown}" 
                         Margin="5"
                         WidthRequest="50"
-                        HeightRequest="48"
+                        HeightRequest="50"
                         Grid.Row="0" Grid.Column="2"/>
                     <Image 
                         x:Name="ButtonStop" 

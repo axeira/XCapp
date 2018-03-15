@@ -30,24 +30,19 @@ namespace XCApp
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    if (CrossMediaManager.Current.Duration.TotalSeconds >= 0)
-                    {
-                        ProgressBarSlider.Maximum = CrossMediaManager.Current.Duration.TotalSeconds;
-                    }
-                    else
-                    {
-                        ProgressBarSlider.Maximum = 100;
-                    }
-
+                    ProgressBarSlider.Maximum = 100;
                     ProgressBarSlider.Minimum = 0;
-                    ProgressBarSlider.Value= e.Progress;//+++anda depressa de mais <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-                    Duration.Text = XCAPIClass.SecondsToString(e.Progress,true)+"/"+ XCAPIClass.SecondsToString(ProgressBarSlider.Maximum,true);
+                    ProgressBarSlider.Value= e.Progress;
+                    //e.Progress=percentage 0-100
+                    //e.Position=seconds
+                    //e.Duration=seconds
+                    Duration.Text = e.Progress.ToString() + " " + e.Position + " " + e.Duration;
+                    Duration.Text = XCAPIClass.SecondsToString(e.Position.TotalSeconds, true)+"/"+ XCAPIClass.SecondsToString(e.Duration.TotalSeconds,true);
                 });
             };
-            //+++quando sai da form desligar o som
 
-            //MediaManager.PlaybackController.SeekTo(TimeSpan.FromMilliseconds(5000));
-            //MediaManager.PlaybackController.Play();
+            //+++MediaManager.PlaybackController.SeekTo(TimeSpan.FromMilliseconds(5000));
+            //+++MediaManager.PlaybackController.Play();
 
             //events
             CrossMediaManager.Current.MediaFinished += Current_MediaFinished;
@@ -75,10 +70,28 @@ namespace XCApp
         private void CCImage_OnTapped(object sender, EventArgs e) //***
         {
             var XCAPIRecordingTapped = BindingContext as XCAPIClass.XCAPIRecordings;
-            string lic = XCAPIRecordingTapped.Lic;
+            string lic = "https:"+XCAPIRecordingTapped.Lic;
             Device.OpenUri(new Uri(lic));
         }
 
+        async void OnTappedMap(object sender, EventArgs args)
+        {
+            //Show in Map window
+            var XCAPIRecordingTapped = BindingContext as XCAPIClass.XCAPIRecordings;
+            double x, y;
+
+            if (!string.IsNullOrEmpty(XCAPIRecordingTapped.Lat))
+                x = Convert.ToDouble(XCAPIRecordingTapped.Lat);
+            else
+                x = 0;
+
+            if (!string.IsNullOrEmpty(XCAPIRecordingTapped.Lng))
+                y = Convert.ToDouble(XCAPIRecordingTapped.Lng);
+            else
+                y = 0;
+
+            await Navigation.PushAsync(new MapPage(x,y,25), true);
+        }
 
 
         private void Current_MediaFinished(object sender, Plugin.MediaManager.Abstractions.EventArguments.MediaFinishedEventArgs e)
