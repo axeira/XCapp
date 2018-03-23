@@ -4,12 +4,21 @@
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="XCApp.LoadingPopupPage"
              CloseWhenBackgroundIsClicked="False">
-    <ActivityIndicator
-    Color="{DynamicResource xclightBrown}"
-    IsRunning="True"
-    IsEnabled="True"
-    VerticalOptions="Center"
-    HorizontalOptions="Center"
-    HeightRequest="70"
-    WidthRequest="70"/>
+   
+    <StackLayout 
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Orientation="Vertical">
+            <ActivityIndicator
+                Color="{DynamicResource xclightBrown}"
+                IsRunning="True"
+                IsEnabled="True"
+                HeightRequest="80"
+                WidthRequest="80"/>
+            <Label 
+                Text="Loading..." 
+                TextColor="{DynamicResource xclightBrown}"/>
+        
+    </StackLayout>
+
 </pages:PopupPage>

@@ -10,18 +10,22 @@
             <Color x:Key="xcdarkBrown">#461F14</Color>
             <Color x:Key="xclightBrown">#802D17</Color>
             
+            
             <!-- Styles -->
             <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
                 <Setter Property="Margin" Value="5,0,0,0" />
             </Style>
             <Style x:Key="labelStyleCaption" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
                 <Setter Property="Margin" Value="5,0,0,0" />
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
             <Style x:Key="labelStyle_LB" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="TextColor" Value="{DynamicResource xclightBrown}" />
                 <Setter Property="Margin" Value="5,0,0,0" />
             </Style>

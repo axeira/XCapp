@@ -15,6 +15,7 @@ namespace XCApp
         public const string Short_byncnd = "by-nc-nd";
         public const string Long_bysa = "Creative Commons Attribution-ShareAlike";
         public const string Short_bysa = "by-sa";
+        
 
         //foreach (string month in months)
         //{

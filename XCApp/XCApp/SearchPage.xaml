@@ -12,15 +12,17 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
             <RowDefinition Height="70" />
         </Grid.RowDefinitions>
         
         <!--BODY-->
         <ScrollView Grid.Row="0" Grid.Column="0">
-            <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,15,0,0" Spacing="10">
+            <StackLayout Margin="0,15,0,0" Spacing="10">
                 <!--Name-->
                 <StackLayout Orientation="Horizontal">
-                    <Entry 
+                    <Entry
+                        Style="{StaticResource labelStyle}"
                         Placeholder="Search name (English or Scientific)" 
                         Text="{Binding Name, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
@@ -41,6 +43,7 @@
                 <!--XC Number-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
+                        Style="{StaticResource labelStyle}"                        
                         Placeholder="Cat.number (ex: 76967 or 88888-88890)" 
                         Text="{Binding Nr, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
@@ -61,6 +64,7 @@
                 <!--Genus-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
+                        Style="{StaticResource labelStyle}"                        
                         Placeholder="Genus (ex:zonotrichia)" 
                         Text="{Binding Gen, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
@@ -81,6 +85,7 @@
                 <!--Genus-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
+                        Style="{StaticResource labelStyle}"                        
                         Placeholder="Back.Species (ex:formicariidae)" 
                         Text="{Binding Also, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
@@ -120,7 +125,11 @@
                 -->
                 
                 <!--Type-->
-                <Picker Title="Sound type (ex:song)" SelectedIndex="{Binding TypeIndex}" x:Name="PickerSongType">
+                <Picker 
+                    Margin="5,0,0,0"                    
+                    Title="Sound type (ex:song)" 
+                    SelectedIndex="{Binding TypeIndex}" 
+                    x:Name="PickerSongType">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>
@@ -128,6 +137,7 @@
                 <!--Location-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
+                        Style="{StaticResource labelStyle}"                        
                         Placeholder="Location (ex:tambopata)" 
                         Text="{Binding Loc, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
@@ -146,7 +156,11 @@
                 </StackLayout>
 
                 <!--Countries-->
-                <Picker Title="Countries (Select a country)" SelectedIndex="{Binding CntIndex}" x:Name="PickerCountry">
+                <Picker 
+                    Margin="5,0,0,0"
+                    Title="Countries (Select a country)" 
+                    SelectedIndex="{Binding CntIndex}" 
+                    x:Name="PickerCountry">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>
@@ -154,6 +168,7 @@
                 <!--Remarks-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
+                        Style="{StaticResource labelStyle}"                                                
                         Placeholder="Remarks (ex:playback)" 
                         Text="{Binding Rmk, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
@@ -174,6 +189,7 @@
                 <!--Recordist-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
+                        Style="{StaticResource labelStyle}"                                                
                         Placeholder="Recordist (ex:John Doe)" 
                         Text="{Binding Rec, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
@@ -192,28 +208,43 @@
                 </StackLayout>
 
                 <!--Area-->
-                <Picker Title="Area (choose one Area)" SelectedIndex="{Binding AreaIndex}" x:Name="PickerArea">
+                <Picker 
+                    Margin="5,0,0,0"                    
+                    Title="Area (choose one Area)" 
+                    SelectedIndex="{Binding AreaIndex}" 
+                    x:Name="PickerArea">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>
                 
                 <!--Quality-->
-                <Picker Title="Quality (choose one Quality)" SelectedIndex="{Binding QIndex}" x:Name="PickerQuality">
+                <Picker 
+                    Margin="5,0,0,0"                    
+                    Title="Quality (choose one Quality)" 
+                    SelectedIndex="{Binding QIndex}" 
+                    x:Name="PickerQuality">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>
 
                 <!--License-->
-                <Picker Title="License (choose one License)" SelectedIndex="{Binding LicIndex}" x:Name="PickerLicense">
+                <Picker 
+                    Margin="5,0,0,0"                    
+                    Title="License (choose one License)" 
+                    SelectedIndex="{Binding LicIndex}" 
+                    x:Name="PickerLicense">
                     <Picker.ItemsSource>
                     </Picker.ItemsSource>
                 </Picker>
 
             </StackLayout>
         </ScrollView>
-            
+        <BoxView 
+            Grid.Row="1" Grid.Column="0"
+            Color = "{StaticResource xclightBrown}" 
+            HeightRequest="5"/>
         <!--3 BUTTONS-->
-        <Grid Grid.Row="1" Grid.Column="0">
+        <Grid Grid.Row="2" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
