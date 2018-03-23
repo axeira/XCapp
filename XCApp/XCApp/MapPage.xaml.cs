@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.Maps;
+using Plugin.Geolocator;
 
 namespace XCApp
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MapPage : ContentPage
 	{
-		public MapPage (double x, double y,int km)
+		public MapPage (double x, double y,int km,string label, string address)
 		{
             InitializeComponent();
 
@@ -33,10 +34,11 @@ namespace XCApp
             {
                 Type = PinType.Place,
                 Position = position,
-                Label = "",
-                Address = ""
+                Label = label,
+                Address = address
             };
             MyMap.Pins.Add(pin);
+
 
         }
 

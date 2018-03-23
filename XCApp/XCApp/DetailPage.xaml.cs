@@ -90,7 +90,7 @@ namespace XCApp
             else
                 y = 0;
 
-            await Navigation.PushAsync(new MapPage(x,y,25), true);
+            await Navigation.PushAsync(new MapPage(x,y,25, XCAPIRecordingTapped.FullSName + " by " +XCAPIRecordingTapped.Rec, XCAPIRecordingTapped.Loc+", "+XCAPIRecordingTapped.Cnt ), true);
         }
 
 
