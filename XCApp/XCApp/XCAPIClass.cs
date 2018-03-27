@@ -312,6 +312,22 @@ namespace XCApp
                 }
             }
 
+            public string QO;
+            private int _QOIndex;
+            public int QOIndex
+            {
+                get { return _QOIndex; }
+                set
+                {
+                    if (_QOIndex != value)
+                    {
+                        _QOIndex = value;
+                        QO = ConstantsClass.QualityOperators[QOIndex];
+                        OnPropertyChanged("QOIndex");
+                    }
+                }
+            }
+
             public string Area;
             private int _AreaIndex;
             public int AreaIndex
@@ -355,40 +371,49 @@ namespace XCApp
             {
                 queryRequest = XCQuery.Name + " ";
             }
+
             if (!String.IsNullOrEmpty(XCQuery.Gen))
             {
                 queryRequest += "gen:\"" + XCQuery.Gen + "\" ";
             }
+
             if (!String.IsNullOrEmpty(XCQuery.Rec))
             {
                 queryRequest += "rec:\"" + XCQuery.Rec + "\" ";
             }
+
             if (!String.IsNullOrEmpty(XCQuery.Cnt))
             {
                 if (XCQuery.Cnt.ToUpper() != ConstantsClass.NoneStr)
                     queryRequest += "cnt:\"" + XCQuery.Cnt + "\" ";
             }
+
             if (!String.IsNullOrEmpty(XCQuery.Loc))
             {
                 queryRequest += "loc:\"" + XCQuery.Loc + "\" ";
             }
+
             if (!String.IsNullOrEmpty(XCQuery.Rmk))
             {
                 queryRequest += "rmk:\"" + XCQuery.Rmk + "\" ";
             }
+
             if (!String.IsNullOrEmpty(XCQuery.Also))
             {
                 queryRequest += "also:\"" + XCQuery.Also + "\" ";
             }
+
             if (!String.IsNullOrEmpty(XCQuery.Type))
             {
                 if (XCQuery.Type.ToUpper() != ConstantsClass.NoneStr)
                     queryRequest += "type:\"" + XCQuery.Type + "\" ";
             }
+
             if (!String.IsNullOrEmpty(XCQuery.Nr))
             {
                 queryRequest += "nr:\"" + XCQuery.Nr + "\" ";
             }
+
             if (!String.IsNullOrEmpty(XCQuery.Lic))
             {
                 if (XCQuery.Lic==ConstantsClass.Long_byncnd)
@@ -404,11 +429,24 @@ namespace XCApp
                     queryRequest += "lic:\"" + ConstantsClass.Short_bysa + "\" ";
                 }
             }
-            if (!String.IsNullOrEmpty(XCQuery.Q))
-            {
-                if (XCQuery.Q.ToUpper() != ConstantsClass.NoneStr)
-                    queryRequest += "q:\"" + XCQuery.Q + "\" ";
+
+            if (String.IsNullOrEmpty(XCQuery.QO) || XCQuery.QO == "=")
+            { 
+                if (!String.IsNullOrEmpty(XCQuery.Q))
+                {
+                    if (XCQuery.Q.ToUpper() != ConstantsClass.NoneStr)
+                        queryRequest += "q:" + XCQuery.Q + " ";
+                }
             }
+            else
+            {
+                if (XCQuery.QO==">")
+                    queryRequest += "q>:" + XCQuery.Q + " ";
+                else if (XCQuery.QO == "<")
+                    queryRequest += "q<:" + XCQuery.Q + " ";
+            }
+
+
             if (!String.IsNullOrEmpty(XCQuery.Area))
             {
                 if (XCQuery.Area.ToUpper() != ConstantsClass.NoneStr)
@@ -425,7 +463,7 @@ namespace XCApp
             //+++
             //queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp
             //queryRequest = ConstantsClass.XCAPIUrl + "nr:134880";
-            queryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
+            //queryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
             //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
             //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticos";
             //https://www.xeno-canto.org/134880

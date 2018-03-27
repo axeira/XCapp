@@ -14,8 +14,6 @@ namespace XCApp
         public XCAPIClass.XCAPISearch XCQuery = new XCAPIClass.XCAPISearch();
         //private object textName;
 
-        //+++public string QueryRequest;
-
         public SearchPage()
         {
             InitializeComponent();
@@ -24,6 +22,7 @@ namespace XCApp
             PickerCountry.ItemsSource = ConstantsClass.Countries;
             PickerArea.ItemsSource = ConstantsClass.Areas;
             PickerSongType.ItemsSource = ConstantsClass.SongTypes;
+            PickerQualityOperator.ItemsSource = ConstantsClass.QualityOperators;
             PickerQuality.ItemsSource = ConstantsClass.Qualities;
             PickerLicense.ItemsSource = ConstantsClass.Licenses;
         }
@@ -38,6 +37,12 @@ namespace XCApp
 
             //Move the next window
             await Navigation.PushAsync(new ListViewPage(), true);
+        }
+
+
+        public void QGLToggledEvent(object sender, ToggledEventArgs e)
+        {
+
         }
 
         void TextNameClear_OnTapped(object sender, EventArgs args)

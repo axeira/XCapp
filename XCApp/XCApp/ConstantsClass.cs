@@ -30,7 +30,6 @@ namespace XCApp
             Long_bysa
         };
 
-
         public static readonly String[] SongTypes = 
         {
              NoneStr,
@@ -47,6 +46,8 @@ namespace XCApp
 
         //q TAG
         public static readonly String[] Qualities = { NoneStr, "A", "B", "C", "D", "E" , "0"};
+        public static readonly String[] QualityOperators = { "<", ">", "=" };
+
         //area TAG
         public static readonly String[] Areas = { NoneStr, "Africa", "America", "Asia", "Australia", "Europe"};
 

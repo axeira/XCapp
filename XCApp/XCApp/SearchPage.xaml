@@ -18,7 +18,7 @@
         
         <!--BODY-->
         <ScrollView Grid.Row="0" Grid.Column="0">
-            <StackLayout Margin="0,15,0,0" Spacing="10">
+            <StackLayout Margin="0,15,0,0" Spacing="5">
                 <!--Name-->
                 <StackLayout Orientation="Horizontal">
                     <Entry
@@ -61,6 +61,53 @@
                     </Image>
                 </StackLayout>
 
+                <!--Quality-->
+                <StackLayout Orientation="Horizontal">
+                    <Picker 
+                        Margin="5,0,0,0"   
+                        WidthRequest="50"
+                        HorizontalOptions="End"
+                        Title=" " 
+                        SelectedIndex="{Binding QOIndex}" 
+                        x:Name="PickerQualityOperator">
+                        <Picker.ItemsSource>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Picker 
+                        Margin="5,0,0,0"  
+                        HorizontalOptions="FillAndExpand" 
+                        Title="Quality (choose one quality level)" 
+                        SelectedIndex="{Binding QIndex}" 
+                        x:Name="PickerQuality">
+                        <Picker.ItemsSource>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
+                <!--
+                <Label 
+                    Margin="5,0,0,0"  
+                    Text="Quality" />
+                <StackLayout Orientation="Horizontal">
+                    <Switch IsToggled="{Binding QA}" x:Name="QA" Toggled="QToggledEvent"></Switch>
+                    <Label Text="A" Style="{StaticResource labelStyle}"/>
+                    <Switch IsToggled="{Binding QB}" x:Name="QB" Toggled="QToggledEvent"></Switch>
+                    <Label Text="B" Style="{StaticResource labelStyle}"/>
+                    <Switch IsToggled="{Binding QC}" x:Name="QC" Toggled="QToggledEvent"></Switch>
+                    <Label Text="C" Style="{StaticResource labelStyle}"/>
+                    <Switch IsToggled="{Binding QD}" x:Name="QD" Toggled="QToggledEvent"></Switch>
+                    <Label Text="D" Style="{StaticResource labelStyle}"/>
+                    <Switch IsToggled="{Binding QE}" x:Name="QE" Toggled="QToggledEvent"></Switch>
+                    <Label Text="E" Style="{StaticResource labelStyle}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Switch IsToggled="{Binding Q0}" x:Name="Q0" Toggled="QToggledEvent"></Switch>
+                    <Label Text="Not Rated" Style="{StaticResource labelStyle}"/>
+                    <Switch IsToggled="{Binding QLThan}" x:Name="QLThan" Toggled="QGLToggledEvent"></Switch>
+                    <Label Text="&lt;" Style="{StaticResource labelStyle}"/>
+                    <Switch IsToggled="{Binding QGThan}" x:Name="QGThan" Toggled="QGLToggledEvent"></Switch>
+                    <Label Text="&gt;" Style="{StaticResource labelStyle}"/>
+                </StackLayout>
+                -->
                 <!--Genus-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
@@ -82,7 +129,7 @@
                     </Image>
                 </StackLayout>
 
-                <!--Genus-->
+                <!--Back species-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
                         Style="{StaticResource labelStyle}"                        
@@ -217,16 +264,6 @@
                     </Picker.ItemsSource>
                 </Picker>
                 
-                <!--Quality-->
-                <Picker 
-                    Margin="5,0,0,0"                    
-                    Title="Quality (choose one Quality)" 
-                    SelectedIndex="{Binding QIndex}" 
-                    x:Name="PickerQuality">
-                    <Picker.ItemsSource>
-                    </Picker.ItemsSource>
-                </Picker>
-
                 <!--License-->
                 <Picker 
                     Margin="5,0,0,0"                    
