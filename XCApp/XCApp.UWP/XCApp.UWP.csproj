@@ -104,6 +104,35 @@
     <None Include="XCApp.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\cc.png" />
+    <Content Include="Images\by.png" />
+    <Content Include="Images\bync.png" />
+    <Content Include="Images\bynceu.png" />
+    <Content Include="Images\byncnd.png" />
+    <Content Include="Images\byncsa.png" />
+    <Content Include="Images\byncsaeu.png" />
+    <Content Include="Images\bynd.png" />
+    <Content Include="Images\bysa.png" />
+    <Content Include="Images\favicon.png" />
+    <Content Include="Images\favicon120.png" />
+    <Content Include="Images\favicon152.png" />
+    <Content Include="Images\favicon60.png" />
+    <Content Include="Images\favicon76.png" />
+    <Content Include="Images\Happytoadfish.png" />
+    <Content Include="Images\ic_close_black_48dp.png" />
+    <Content Include="Images\ic_help_black_48dp.png" />
+    <Content Include="Images\ic_home_black_48dp.png" />
+    <Content Include="Images\ic_map_black_48dp.png" />
+    <Content Include="Images\ic_map_white_48dp.png" />
+    <Content Include="Images\ic_pause_black_48dp.png" />
+    <Content Include="Images\ic_pause_white_48dp.png" />
+    <Content Include="Images\ic_play_arrow_black_48dp.png" />
+    <Content Include="Images\ic_play_arrow_white_48dp.png" />
+    <Content Include="Images\ic_search_black_48dp.png" />
+    <Content Include="Images\ic_skip_next_black_48dp.png" />
+    <Content Include="Images\ic_skip_previous_black_48dp.png" />
+    <Content Include="Images\ic_stop_white_48dp.png" />
+    <Content Include="Images\SpectrogrameDemo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />

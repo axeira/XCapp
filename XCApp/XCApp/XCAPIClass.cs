@@ -455,10 +455,14 @@ namespace XCApp
 
 
             //Form query
-            queryRequest = (ConstantsClass.XCAPIUrl + queryRequest).TrimEnd().ToLower();
-            //Clean double spaces
-            while (queryRequest.Contains("  "))
-                queryRequest = queryRequest.Replace("  ", " ");
+            if(!string.IsNullOrEmpty(queryRequest))
+            {
+                //Add start string of query, lower case and trim spaces
+                queryRequest = (ConstantsClass.XCAPIUrl + queryRequest).TrimEnd().ToLower();
+                //Clean double spaces
+                while (queryRequest.Contains("  "))
+                    queryRequest = queryRequest.Replace("  ", " ");
+            }
 
             //+++
             //queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp

@@ -47,10 +47,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)XCAPIClass.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\favicon60.png" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\favicon76.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ListViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -61,11 +57,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\favicon120.png" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\favicon152.png" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\favicon.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)DetailPage.xaml">
@@ -90,5 +81,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Resources\" />
   </ItemGroup>
 </Project>

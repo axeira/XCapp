@@ -27,12 +27,19 @@
                         Text="{Binding Name, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextName" />
-                    <Image 
+                    <Image
                         WidthRequest = "32" 
                         HorizontalOptions="Start" 
                         Margin="0" 
-                        Source="ic_close_black_48dp.png" 
                         x:Name="TextNameClear">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_close_black_48dp.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_close_black_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
+
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextNameClear_OnTapped"  />
@@ -52,8 +59,14 @@
                         WidthRequest = "32" 
                         HorizontalOptions="Start" 
                         Margin="0" 
-                        Source="ic_close_black_48dp.png" 
                         x:Name="TextNrClear">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_close_black_48dp.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_close_black_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextNrClear_OnTapped"  />
@@ -120,8 +133,14 @@
                         WidthRequest = "32" 
                         HorizontalOptions="Start" 
                         Margin="0" 
-                        Source="ic_close_black_48dp.png" 
                         x:Name="TextGenClear">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_close_black_48dp.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_close_black_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextGenClear_OnTapped"  />
@@ -141,8 +160,14 @@
                         WidthRequest = "32" 
                         HorizontalOptions="Start" 
                         Margin="0" 
-                        Source="ic_close_black_48dp.png" 
                         x:Name="TextAlsoClear">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_close_black_48dp.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_close_black_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextAlsoClear_OnTapped"  />
@@ -193,8 +218,14 @@
                         WidthRequest = "32" 
                         HorizontalOptions="Start" 
                         Margin="0" 
-                        Source="ic_close_black_48dp.png" 
                         x:Name="TextLocClear">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_close_black_48dp.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_close_black_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextLocClear_OnTapped"  />
@@ -224,8 +255,14 @@
                         WidthRequest = "32" 
                         HorizontalOptions="Start" 
                         Margin="0" 
-                        Source="ic_close_black_48dp.png" 
                         x:Name="TextRmkClear">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_close_black_48dp.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_close_black_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextRmkClear_OnTapped"  />
@@ -245,8 +282,14 @@
                         WidthRequest = "32" 
                         HorizontalOptions="Start" 
                         Margin="0" 
-                        Source="ic_close_black_48dp.png" 
                         x:Name="TextRecClear">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_close_black_48dp.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_close_black_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextRecClear_OnTapped"  />
@@ -295,8 +338,14 @@
             <!--3 column-->
             <StackLayout 
                 Grid.Row="0" Grid.Column="2">
-                <Image 
-                    Source="ic_play_arrow_black_48dp.png">
+                <Image>
+                    <Image.Source>
+                        <OnPlatform  x:TypeArguments="ImageSource">
+                            <OnPlatform.iOS>ic_play_arrow_black_48dp.png</OnPlatform.iOS>
+                            <OnPlatform.Android>ic_play_arrow_black_48dp.png</OnPlatform.Android>
+                            <OnPlatform.WinPhone>Images/ic_play_arrow_black_48dp.png</OnPlatform.WinPhone>
+                        </OnPlatform>
+                    </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnTapGestureRecognizerTappedPlay"  />

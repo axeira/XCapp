@@ -40,12 +40,18 @@
                 <!--3 column-->
                 <StackLayout 
                 Grid.Row="0" Grid.Column="2">
-                    <Image 
-                    Source="ic_search_black_48dp.png">
+                    <Image>
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_search_black_48dp.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_search_black_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_search_black_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Tapped="OnTappedSearch"  />
-                        </Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnTappedSearch"  />
+                    </Image.GestureRecognizers>
                     </Image>
                     <Label Text="Go" 
                         FontSize="Micro"

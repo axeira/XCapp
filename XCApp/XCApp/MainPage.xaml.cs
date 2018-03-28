@@ -26,17 +26,7 @@ namespace XCApp
             await Navigation.PushAsync(new HelpPage());
         }
 
-
-        async void OnTapRecognizerTappedSearch1(object sender, EventArgs args)
-        {
-            var imageSender = (Image)sender;
-            // Do something
-            //+++DisplayAlert("Alert", "Tap gesture recoganised", "OK");
-            //+++Navigation.PushModalAsync(new SearchPage());
-            await Navigation.PushAsync(new SearchPage());
-
-        }
-        async void OnTapRecognizerTappedSearch2(object sender, EventArgs args)
+        async void OnTapRecognizerTappedSearch(object sender, EventArgs args)
         {
             var imageSender = (Image)sender;
             // Do something

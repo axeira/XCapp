@@ -14,22 +14,25 @@
             <RowDefinition Height="70" />
             <RowDefinition Height="70" />
         </Grid.RowDefinitions>
-        <!--<BoxView Color="DarkBlue" Grid.Row="0" Grid.Column="0"/>
-        <BoxView Color="LightBlue" Grid.Row="1" Grid.Column="0"/>
-        <BoxView Color="DarkBlue" Grid.Row="2" Grid.Column="0"/>-->
-
-       
+      
         <!--BODY-->
-        
-        <Image VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"
-            Source="Resources/favicon152.png">
+        <Image VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Grid.Row="0" Grid.Column="0"
+            WidthRequest="152" 
+            HeightRequest="152">
+            <Image.Source>
+                <OnPlatform  x:TypeArguments="ImageSource">
+                    <OnPlatform.iOS>favicon152.png</OnPlatform.iOS>
+                    <OnPlatform.Android>favicon152.png</OnPlatform.Android>
+                    <OnPlatform.WinPhone>Images/favicon152.png</OnPlatform.WinPhone>
+                </OnPlatform>
+            </Image.Source>
             <Image.GestureRecognizers>
                 <TapGestureRecognizer
-                        Tapped="OnTapRecognizerTappedSearch2"  />
+                            Tapped="OnTapRecognizerTappedSearch"  />
             </Image.GestureRecognizers>
-            <!--Must be in Resources/drawable android resource-->
         </Image>
-        <Label Font="Small" x:Name="Duration"/>
 
         <!--3 BUTTONS-->
         <Grid Grid.Row="2" Grid.Column="0">
@@ -43,8 +46,14 @@
             </Grid.RowDefinitions>
             <!--1 column-->
             <StackLayout Grid.Row="0" Grid.Column="0">
-                <Image
-                    Source="ic_help_black_48dp.png">
+                <Image>
+                    <Image.Source>
+                        <OnPlatform  x:TypeArguments="ImageSource">
+                            <OnPlatform.iOS>ic_help_black_48dp.png</OnPlatform.iOS>
+                            <OnPlatform.Android>ic_help_black_48dp.png</OnPlatform.Android>
+                            <OnPlatform.WinPhone>Images/ic_help_black_48dp.png</OnPlatform.WinPhone>
+                        </OnPlatform>
+                    </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnTapRecognizerTappedHelp"  />
@@ -59,12 +68,17 @@
             <!--3 column-->
             <StackLayout 
                 Grid.Row="0" Grid.Column="2">
-                <Image
-                    HorizontalOptions="Center"    
-                    Source="ic_search_black_48dp.png">
+                <Image>
+                    <Image.Source>
+                        <OnPlatform  x:TypeArguments="ImageSource">
+                            <OnPlatform.iOS>ic_search_black_48dp.png</OnPlatform.iOS>
+                            <OnPlatform.Android>ic_search_black_48dp.png</OnPlatform.Android>
+                            <OnPlatform.WinPhone>Images/ic_search_black_48dp.png</OnPlatform.WinPhone>
+                        </OnPlatform>
+                    </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
-                            Tapped="OnTapRecognizerTappedSearch1"  />
+                            Tapped="OnTapRecognizerTappedSearch"  />
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Text="Search" 
