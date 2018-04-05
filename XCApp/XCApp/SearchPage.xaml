@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:XCApp"
              Title="Search Parameters"
              x:Class="XCApp.SearchPage">
-
+    
+    <!-- +++ xmlns:local="clr-namespace:XCApp"-->
     <Grid RowSpacing="-1">
         <!--negative to compensate a Xamarin bug that shows always a spacing evene if we put it zero-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="5" />
-            <RowDefinition Height="70" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
         <!--BODY-->
@@ -39,7 +39,6 @@
                                 <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
                             </OnPlatform>
                         </Image.Source>
-
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextNameClear_OnTapped"  />
@@ -326,18 +325,20 @@
         <!--3 BUTTONS-->
         <Grid Grid.Row="2" Grid.Column="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+            <!--1 column-->
             <!--2 column-->
-
             <!--3 column-->
             <StackLayout 
-                Grid.Row="0" Grid.Column="2">
+                Grid.Row="0" Grid.Column="3">
                 <Image>
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
@@ -348,7 +349,7 @@
                     </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
-                            Tapped="OnTapGestureRecognizerTappedPlay"  />
+                            Tapped="OnTapGestureRecognizerTappedPlaySearch"  />
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Text="Go" 
@@ -356,7 +357,7 @@
                         Style="{StaticResource labelStyle}"
                         HorizontalOptions="Center" />
             </StackLayout>
-                
+         
 
 
         </Grid>

@@ -9,7 +9,7 @@
         <Grid  RowSpacing="-1">
             <!--negative to compensate a Xamarin bug that shows always a spacing evene if we put it zero-->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

@@ -455,7 +455,7 @@ namespace XCApp
 
 
             //Form query
-            if(!string.IsNullOrEmpty(queryRequest))
+            if(!string.IsNullOrEmpty(queryRequest)) 
             {
                 //Add start string of query, lower case and trim spaces
                 queryRequest = (ConstantsClass.XCAPIUrl + queryRequest).TrimEnd().ToLower();

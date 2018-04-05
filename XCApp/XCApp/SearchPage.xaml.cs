@@ -27,7 +27,8 @@ namespace XCApp
             PickerLicense.ItemsSource = ConstantsClass.Licenses;
         }
 
-        async void OnTapGestureRecognizerTappedPlay(object sender, EventArgs args)
+
+        async void OnTapGestureRecognizerTappedPlaySearch(object sender, EventArgs args)
         {
             //Store Query parameters
             XCQuery = ((XCAPIClass.XCAPISearch)this.BindingContext);

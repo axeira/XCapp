@@ -8,19 +8,24 @@
             Margin="15,15,15,0" 
             Spacing="15"
             Orientation="Vertical">
-            <Image Margin="5">
-                <Image.Source>
-                    <OnPlatform  x:TypeArguments="ImageSource">
-                        <OnPlatform.iOS>favicon.png</OnPlatform.iOS>
-                        <OnPlatform.Android>favicon.png</OnPlatform.Android>
-                        <OnPlatform.WinPhone>Images/favicon.png</OnPlatform.WinPhone>
-                    </OnPlatform>
-                </Image.Source>
-            </Image>
-            <Label 
-                Style="{StaticResource labelStyle}"                        
-                Text="The porpose of this app is to be used as a tool to browse and query the xeno-canto database. www.xeno-canto.org (Xeno-canto, XC) is a website for sharing recordings of sounds of wild birds from all across the world. It was started by Bob Planqué and Willem-Pier Vellinga. Xeno-canto is maintained by a team of 4 admins (Bob, WP, Sander Pieterse, and Jonathon Jongsma) with the assistance of the xeno-canto community. Xeno-canto is run by the Xeno-canto foundation (or officially Stichting Xeno-canto voor natuurgeluiden) from the Netherlands.">
-            </Label>
+            <StackLayout Orientation="Horizontal">
+                <Image 
+                    WidthRequest = "48" 
+                    HorizontalOptions="Start" 
+                    Margin="5,0,0,0">
+                    <Image.Source>
+                        <OnPlatform  x:TypeArguments="ImageSource">
+                            <OnPlatform.iOS>favicon152.png</OnPlatform.iOS>
+                            <OnPlatform.Android>favicon152.png</OnPlatform.Android>
+                            <OnPlatform.WinPhone>Images/favicon152.png</OnPlatform.WinPhone>
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>
+                <Label 
+                    Style="{StaticResource labelStyle}"                        
+                    Text="The porpose of this app is to be used as a tool to browse and query the xeno-canto database. www.xeno-canto.org (Xeno-canto, XC) is a website for sharing recordings of sounds of wild birds from all across the world. It was started by Bob Planqué and Willem-Pier Vellinga. Xeno-canto is maintained by a team of 4 admins (Bob, WP, Sander Pieterse, and Jonathon Jongsma) with the assistance of the xeno-canto community. Xeno-canto is run by the Xeno-canto foundation (or officially Stichting Xeno-canto voor natuurgeluiden) from the Netherlands.">
+                </Label>
+            </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Image 
                     WidthRequest = "48" 

@@ -15,7 +15,6 @@ namespace XCApp
         public MainPage()
 		{
 			InitializeComponent();
-            Title = "Main Page";
 
         }
 
@@ -27,6 +26,13 @@ namespace XCApp
         }
 
         async void OnTapRecognizerTappedSearch(object sender, EventArgs args)
+        {
+            var imageSender = (Image)sender;
+            // Do something
+            await Navigation.PushAsync(new SearchPage());
+
+        }
+        async void OnTapRecognizerTappedIcon(object sender, EventArgs args)
         {
             var imageSender = (Image)sender;
             // Do something

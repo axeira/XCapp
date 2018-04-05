@@ -7,12 +7,12 @@
     <Grid  RowSpacing="-1">
         <!--negative to compensate a Xamarin bug that shows always a spacing evene if we put it zero-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="25" />
-            <RowDefinition Height="70" />
+            <RowDefinition Height="Auto" /><!--25-->
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ScrollView Grid.Row="0" Grid.Column="0">       
@@ -115,16 +115,18 @@
         <!--3 BUTTONS-->
         <Grid Grid.Row="2" Grid.Column="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <!--1 column-->
             <StackLayout 
-                Grid.Row="0" Grid.Column="0">
+                Grid.Row="0" Grid.Column="1">
                 <Image>
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
@@ -145,7 +147,7 @@
             </StackLayout>
             <!--2 column-->
             <StackLayout 
-                Grid.Row="0" Grid.Column="1">
+                Grid.Row="0" Grid.Column="2">
                 <Image>
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
@@ -167,10 +169,8 @@
             <!--3 column-->
             <!--<BoxView Color="LightBlue" Grid.Row="0" Grid.Column="2"/>-->
             <StackLayout 
-                Grid.Row="0" Grid.Column="2">
-                <Image 
-                    HeightRequest="50" 
-                    WidthRequest="50">
+                Grid.Row="0" Grid.Column="3">
+                <Image>
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
                             <OnPlatform.iOS>ic_skip_next_black_48dp.png</OnPlatform.iOS>
