@@ -24,7 +24,6 @@ namespace XCApp
     public partial class ListViewPage : ContentPage
     {
         private XCAPIClass.XCAPIRecordingsMain XCAPIRecordings = new XCAPIClass.XCAPIRecordingsMain();
-        //+++ObservableCollection<XCAPIClass.XCAPIRecordingsMain> recordings = new ObservableCollection<XCAPIClass.XCAPIRecordingsMain>();//+++
         private int _currentPage = 0;
         private int _currentPagePrevious = 0;
 
@@ -81,6 +80,7 @@ namespace XCApp
                 {
                     //Deserializing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     //+++catch error
+                    //+++Create Task
                     XCAPIRecordings = XCAPIClass.Deserialize_json_data<XCAPIClass.XCAPIRecordingsMain>(XCAPIClass.JsonData);
                     #region
 #if (TimeDiagnostics)
@@ -169,9 +169,7 @@ namespace XCApp
             if (e.Item == null)
                 return;
             var XCAPIRecordingTapped = e.Item as XCAPIClass.XCAPIRecordings;
-            var DetailPage = new DetailPage();
-            DetailPage.BindingContext = XCAPIRecordingTapped;
-            await Navigation.PushAsync(DetailPage);
+            await Navigation.PushAsync(new DetailPage(XCAPIRecordingTapped));
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }

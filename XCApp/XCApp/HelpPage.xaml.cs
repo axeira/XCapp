@@ -15,6 +15,7 @@ namespace XCApp
 		public HelpPage ()
 		{
 			InitializeComponent ();
-		}
+
+    	}
 	}
 }

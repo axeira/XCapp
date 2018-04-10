@@ -4,7 +4,6 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Net;
 using System.ComponentModel;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 
@@ -131,7 +130,7 @@ namespace XCApp
             public string Citation => string.Format("{0}, XC{1}. Accessible at www.xeno-canto.org/{1}.", Rec, Id);
         
 
-    }
+        }
 
         public class XCAPISearch : INotifyPropertyChanged
         {
@@ -467,7 +466,7 @@ namespace XCApp
             //+++
             //queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp
             //queryRequest = ConstantsClass.XCAPIUrl + "nr:134880";
-            //queryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
+            queryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
             //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
             //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticos";
             //https://www.xeno-canto.org/134880
@@ -487,6 +486,71 @@ namespace XCApp
             if (ShowMilliseconds) r = r + "." + (t.Milliseconds / 100).ToString("0");
 
             return r;
+        }
+
+        public class XCAPIGetUris
+        {
+            //to fill this Class must give Url and Id from API Response
+            //XCAPIRecordings.Url
+            //XCAPIRecordings.Id
+            public string AudioUri { get; set; }
+            public string FFTSSmallImageUri { get; set; }
+            public string FFTSLargeImageUri { get; set; }
+            public string Error { get; set; }
+
+            public string GetUris(string url, string id)
+            {
+                //returns the error code
+                try
+                {
+                    //Create a WebRequest to get the file
+                    HttpWebRequest fileReq = (HttpWebRequest)HttpWebRequest.Create(url);
+                    //Create a response for this request
+                    HttpWebResponse fileResp = (HttpWebResponse)fileReq.GetResponse();
+
+                    if (fileResp != null)
+                    {
+                        AudioUri = ConstantsClass.UrlScheme +"//"+ fileResp.ResponseUri.Host + fileResp.ResponseUri.AbsolutePath;
+                        string aux = ConstantsClass.UrlScheme + "//" + fileResp.ResponseUri.Host +
+                            fileResp.ResponseUri.Segments[0] +
+                            fileResp.ResponseUri.Segments[1] +
+                            fileResp.ResponseUri.Segments[2] +
+                            fileResp.ResponseUri.Segments[3] +
+                            ConstantsClass.UrlFFTS + id;
+                        FFTSSmallImageUri = aux + ConstantsClass.UrlFFTSSmallImage;
+                        FFTSLargeImageUri = aux + ConstantsClass.UrlFFTSLargeImage;
+                        Error = HttpStatusCode.OK.ToString();
+                        return HttpStatusCode.OK.ToString();
+                    }
+                    else
+                    {
+                        throw new System.ArgumentException("No answer from host...!");
+                    }
+
+                }
+                catch (WebException e)
+                {
+                    AudioUri = "Error playing file...!";
+                    FFTSSmallImageUri = "Error getting the Spectrogram...!";
+                    FFTSLargeImageUri = "Error getting the Spectrogram...!";
+                    Error = e.Message.ToString(); 
+                    return e.Message.ToString();
+                }
+
+            }
+        //    //constructor(s)
+
+        //    public Example()
+        //    {
+        //        //code
+        //    }
+
+        //    //method(s)
+
+        //    public string ExampleMethod()
+        //    {
+        //        //code
+        //    }
         }
 
     }

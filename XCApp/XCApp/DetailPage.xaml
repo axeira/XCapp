@@ -174,7 +174,8 @@
                         <Image 
                             x:Name="CCImage" 
                             Grid.Row="0" Grid.Column="1"
-                            WidthRequest = "50">
+                            WidthRequest = "50"
+                            VerticalOptions="Start">
                             <Image.Source>
                                 <OnPlatform  x:TypeArguments="ImageSource">
                                     <OnPlatform.iOS>by.png</OnPlatform.iOS>
@@ -204,32 +205,30 @@
             </ScrollView>
 
 
-        <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
-            <BoxView 
-                Color = "{StaticResource xclightBrown}" 
-                HeightRequest="5"/>
-            <Image 
-                x:Name="Spectogram" 
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="Center">
-                    <Image.Source>
-                        <OnPlatform  x:TypeArguments="ImageSource">
-                            <OnPlatform.iOS>SpectrogrameDemo.png</OnPlatform.iOS>
-                            <OnPlatform.Android>SpectrogrameDemo.png</OnPlatform.Android>
-                            <OnPlatform.WinPhone>Images/SpectrogrameDemo.png</OnPlatform.WinPhone>
-                        </OnPlatform>
-                    </Image.Source>
-                </Image>
-            <!--Player-->
+            <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" Padding="0" Margin="0" Spacing ="0">
+                <BoxView 
+                    Color = "{StaticResource xclightBrown}" 
+                    HeightRequest="5" Margin="0"/>
+                <Frame OutlineColor = "{StaticResource xclightBrown}" Padding="0">
+                    <Image 
+                        x:Name="Spectogram" 
+                        Aspect="AspectFill"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Margin="5">
+                    </Image>
+                </Frame>
+                <!--Player-->
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="55" />
+                        <RowDefinition Height="60" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="55" />
+                        <ColumnDefinition Width="60" />
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="55" />
+                        <ColumnDefinition Width="60" />
                     </Grid.ColumnDefinitions>
+                    <!--Stop button-->
                     <BoxView 
                         Color = "{StaticResource xclightBrown}" 
                         Margin="5"
@@ -237,39 +236,10 @@
                         HeightRequest="50"
                         Grid.Row="0" Grid.Column="0"/>
                     <Image 
-                        x:Name="ButtonPlay" 
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" 
-                        Grid.Row="0" Grid.Column="0">
-                        <Image.Source>
-                            <OnPlatform  x:TypeArguments="ImageSource">
-                                <OnPlatform.iOS>ic_play_arrow_white_48dp.png</OnPlatform.iOS>
-                                <OnPlatform.Android>ic_play_arrow_white_48dp.png</OnPlatform.Android>
-                                <OnPlatform.WinPhone>Images/ic_play_arrow_white_48dp.png</OnPlatform.WinPhone>
-                            </OnPlatform>
-                        </Image.Source>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Tapped="PlayAudio_OnTapped"  />
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-                        <Label Font="Small" x:Name="Duration"/>
-                        <Slider x:Name="ProgressBarSlider" 
-                            HorizontalOptions="FillAndExpand">
-                        </Slider>
-                    </StackLayout>
-                    <BoxView 
-                        Color = "{StaticResource xclightBrown}" 
-                        Margin="5"
-                        WidthRequest="50"
-                        HeightRequest="50"
-                        Grid.Row="0" Grid.Column="2"/>
-                    <Image 
                         x:Name="ButtonStop" 
                         HorizontalOptions="Center"
                         VerticalOptions="Center" 
-                        Grid.Row="0" Grid.Column="2">
+                        Grid.Row="0" Grid.Column="0">
                         <Image.Source>
                             <OnPlatform  x:TypeArguments="ImageSource">
                                 <OnPlatform.iOS>ic_stop_white_48dp.png</OnPlatform.iOS>
@@ -282,7 +252,39 @@
                                 Tapped="StopAudio_OnTapped"  />
                         </Image.GestureRecognizers>
                     </Image>
-               
+                    <!--Slider-->
+                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                        <Label Font="Small" 
+                               x:Name="Duration" 
+                               Margin="20,0,0,0"/>
+                        <Slider x:Name="ProgressBarSlider" 
+                            HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                    <!--Play button-->
+                    <BoxView 
+                        Color = "{StaticResource xclightBrown}" 
+                        Margin="5"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        Grid.Row="0" Grid.Column="2"/>
+                    <Image 
+                        x:Name="ButtonPlay" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" 
+                        Grid.Row="0" Grid.Column="2">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_play_arrow_white_48dp.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_play_arrow_white_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_play_arrow_white_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="PlayAudio_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+
                 </Grid>
             </StackLayout>
         </Grid>
