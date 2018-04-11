@@ -245,9 +245,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_skip_previous_black_48dp.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\SpectrogrameDemo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\byncnd.png" />
   </ItemGroup>
   <ItemGroup>

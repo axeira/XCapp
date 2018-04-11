@@ -17,9 +17,12 @@ namespace XCApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailPage : ContentPage
     {
-        private bool Playing = false;
-        private bool FirstTimePlaying = true;
-        private XCAPIClass.XCAPIGetUris Uris = new XCAPIClass.XCAPIGetUris();
+        private bool sliderProgramChanged = false;
+        private double recDuration; //in seconds
+        private double recPosition; //in seconds
+        private bool playing = false;
+        private bool firstTimePlaying = true;
+        private XCAPIClass.XCAPIGetUris uris = new XCAPIClass.XCAPIGetUris();
         private XCAPIClass.XCAPIRecordings recordingTapped;
 
         public DetailPage(XCAPIClass.XCAPIRecordings RTapped)
@@ -29,7 +32,8 @@ namespace XCApp
             recordingTapped = RTapped;
             BindingContext = recordingTapped;
 
-            Uris.GetUris(ConstantsClass.UrlScheme + recordingTapped.File, recordingTapped.Id);
+            //Decode the Urls for this tapped recording
+            uris.GetUris(ConstantsClass.UrlScheme + recordingTapped.File, recordingTapped.Id);
 
             CrossMediaManager.Current.PlayingChanged += (sender, e) =>
             {
@@ -37,18 +41,22 @@ namespace XCApp
                 {
                     ProgressBarSlider.Maximum = 100;
                     ProgressBarSlider.Minimum = 0;
+                    sliderProgramChanged = true;
                     ProgressBarSlider.Value = e.Progress;
+                    sliderProgramChanged = false;
                     //e.Progress=percentage 0-100
                     //e.Position=seconds
+                    recPosition = e.Position.TotalSeconds;
                     //e.Duration=seconds
-                    Duration.Text = e.Progress.ToString() + " " + e.Position + " " + e.Duration;
-                    Duration.Text = XCAPIClass.SecondsToString(e.Position.TotalSeconds, true) + "/" + XCAPIClass.SecondsToString(e.Duration.TotalSeconds, true);
+                    recDuration = e.Duration.TotalSeconds;
+                    Position.Text = XCAPIClass.SecondsToString(recPosition, false);
+                    Duration.Text = XCAPIClass.SecondsToString(recDuration, false);
 
                 });
             };
 
-            //+++MediaManager.PlaybackController.SeekTo(TimeSpan.FromMilliseconds(5000));
-            //+++MediaManager.PlaybackController.Play();
+            //Event when slider changes
+            ProgressBarSlider.ValueChanged += ProgressBarSlider_ValueChanged;
 
             //events
             CrossMediaManager.Current.MediaFinished += Current_MediaFinished;
@@ -68,7 +76,24 @@ namespace XCApp
             //Choose license text to show
             LabelLicense.SetBinding(Label.TextProperty, new Binding("Lic", converter: new LabelLicenseConverter()));
             //Show Spectrogram
-            Spectogram.Source = Uris.FFTSLargeImageUri;
+            Spectogram.Source = uris.FFTSLargeImageUri;
+
+        }
+
+        //when move slider get error E/MediaPlayer(14143): Attempt to perform seekTo in wrong state: mPlayer=0x90d8b2c0, mCurrentState=2
+        private async void ProgressBarSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+        //    //if user moved the slider
+        //    if (!sliderProgramChanged)
+        //    {
+        //        //jump to new position
+        //        recPosition = recDuration * e.NewValue / 100;
+        //        await CrossMediaManager.Current.Stop();
+        //        await CrossMediaManager.Current.PlaybackController.SeekTo(recPosition);
+        //        await CrossMediaManager.Current.Play();
+        //        Position.Text = XCAPIClass.SecondsToString(recPosition, false);
+        //        Duration.Text = XCAPIClass.SecondsToString(recDuration, false);
+        //    }
 
         }
 
@@ -102,9 +127,9 @@ namespace XCApp
         private void Current_MediaFinished(object sender, Plugin.MediaManager.Abstractions.EventArguments.MediaFinishedEventArgs e)
         {
             //CrossMediaManager.Current.MediaFinished
-            FirstTimePlaying = true;
+            firstTimePlaying = true;
             ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
-            Playing = false;
+            playing = false;
             ProgressBarSlider.Value = 0;
             Duration.Text = "";
         }
@@ -113,24 +138,24 @@ namespace XCApp
         {
             //+++string recordingUrl;
             //+++string recordingId;
-            if (FirstTimePlaying)
+            if (firstTimePlaying)
             {
                 try
                 {
-                    if (Uris.Error=="OK")
+                    if (uris.Error=="OK")
                     {
                         var mediaFile = new MediaFile
                         {
                             Type = MediaFileType.Audio,
                             Availability = ResourceAvailability.Remote,
-                            Url = Uris.AudioUri
+                            Url = uris.AudioUri
                         };
                         try
                         {
                             await CrossMediaManager.Current.Play(mediaFile);
-                            FirstTimePlaying = false;
+                            firstTimePlaying = false;
                             ButtonPlay.Source = "ic_pause_white_48dp.png";
-                            Playing = true;
+                            playing = true;
                         }
                         catch (Exception err)
                         {
@@ -149,17 +174,17 @@ namespace XCApp
             }
             else
             {
-                if (Playing)
+                if (playing)
                 {
                     await CrossMediaManager.Current.Pause();
                     ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
-                    Playing = false;
+                    playing = false;
                 }
                 else
                 {
                     await CrossMediaManager.Current.Play();
                     ButtonPlay.Source = "ic_pause_white_48dp.png";
-                    Playing = true;
+                    playing = true;
                 }
             }
 
@@ -169,8 +194,8 @@ namespace XCApp
         {
             await CrossMediaManager.Current.Stop();
             ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
-            FirstTimePlaying = true;
-            Playing = false;
+            firstTimePlaying = true;
+            playing = false;
             ProgressBarSlider.Value = 0;
             Duration.Text = "";
         }
@@ -180,8 +205,8 @@ namespace XCApp
             //+++ consolidate with StopAudio_OnTapped in only one
             await CrossMediaManager.Current.Stop();
             ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
-            FirstTimePlaying = true;
-            Playing = false;
+            firstTimePlaying = true;
+            playing = false;
             ProgressBarSlider.Value = 0;
             Duration.Text = "";
         }
