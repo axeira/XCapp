@@ -13,32 +13,40 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
       
         <!--BODY-->
-        <Image VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-            Grid.Row="0" Grid.Column="0"
-            WidthRequest="152" 
-            HeightRequest="152">
-            <Image.Source>
-                <OnPlatform  x:TypeArguments="ImageSource">
-                    <OnPlatform.iOS>favicon152.png</OnPlatform.iOS>
-                    <OnPlatform.Android>favicon152.png</OnPlatform.Android>
-                    <OnPlatform.WinPhone>Images/favicon152.png</OnPlatform.WinPhone>
-                </OnPlatform>
-            </Image.Source>
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer
-                    Tapped="OnTapRecognizerTappedIcon"  />
-            </Image.GestureRecognizers>
-        </Image>
-
+        <StackLayout Orientation="Vertical"
+            Grid.Row="1" Grid.Column="0">
+            
+                <Image   
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                <Image.Source>
+                    <OnPlatform  x:TypeArguments="ImageSource">
+                        <OnPlatform.iOS>favicon.png</OnPlatform.iOS>
+                        <OnPlatform.Android>favicon.png</OnPlatform.Android>
+                        <OnPlatform.WinPhone>Images/favicon.png</OnPlatform.WinPhone>
+                    </OnPlatform>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnTapRecognizerTappedIcon" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label 
+                HorizontalOptions="Center"
+                Style="{StaticResource labelStyleCaption}"                        
+                TextColor="{StaticResource xcLightColor}" 
+                Text="XC Bird sounds" />
+        </StackLayout>
         <!--3 BUTTONS-->
         
-        <Grid Grid.Row="2" Grid.Column="0">
+        <Grid Grid.Row="4" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="100" />
@@ -66,8 +74,7 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Text="Help" 
-                        FontSize="Micro"
-                        Style="{StaticResource labelStyle}"
+                        Style="{StaticResource labelStyleSmall}"
                         HorizontalOptions="Center" />
             </StackLayout>
             <!--2 column-->
@@ -88,8 +95,7 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Text="Search" 
-                        FontSize="Micro"
-                        Style="{StaticResource labelStyle}"
+                        Style="{StaticResource labelStyleSmall}"
                         HorizontalOptions="Center" />
             </StackLayout>
         </Grid>

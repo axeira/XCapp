@@ -23,19 +23,16 @@
                     <StackLayout Orientation="Horizontal">
                         <Label Text="{Binding XCId}" 
                             FontAttributes="Bold"
-                            FontSize="Medium"
                             Style="{StaticResource labelStyle}" />
                         <Label Text="{Binding Type}" 
                             HorizontalOptions="FillAndExpand"
                             HorizontalTextAlignment="End"
                             LineBreakMode="TailTruncation"
-                            FontSize="Medium"
                             Margin="5,0"
                             Style="{StaticResource labelStyle}" />
                         <Label Text="{Binding Q}" 
                             HorizontalTextAlignment="End"
                             FontAttributes="Bold"
-                            FontSize="Medium"
                             Margin="5,0"
                             Style="{StaticResource labelStyle}" />
                     </StackLayout>
@@ -44,7 +41,6 @@
                         <Label Text="{Binding En}"
                             LineBreakMode="NoWrap"   
                             FontAttributes="Bold"
-                            FontSize="Medium"
                             Style="{StaticResource labelStyle}" />
                     </StackLayout>
 
@@ -52,12 +48,10 @@
                         <Label Text="{Binding FullSName}" 
                             LineBreakMode="NoWrap"   
                             FontAttributes="Bold, Italic"
-                            FontSize="Medium"
                             Style="{StaticResource labelStyle}" />
                         <Label Text="{Binding Ssp}" 
                             LineBreakMode="TailTruncation"   
                             FontAttributes="Italic"
-                            FontSize="Medium"
                             Style="{StaticResource labelStyle}" />
                     </StackLayout>
                     
@@ -121,7 +115,7 @@
                         <Image 
                             HeightRequest="30"
                             WidthRequest="30"
-                            BackgroundColor="{StaticResource xclightBrown}">
+                            BackgroundColor="{StaticResource xcLightColor}">
                             <Image.Source>
                                 <OnPlatform  x:TypeArguments="ImageSource">
                                     <OnPlatform.iOS>ic_map_white_48dp.png</OnPlatform.iOS>
@@ -207,9 +201,9 @@
 
             <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" Padding="0" Margin="0" Spacing ="0">
                 <BoxView 
-                    Color = "{StaticResource xclightBrown}" 
+                    Color = "{StaticResource xcLightColor}" 
                     HeightRequest="5" Margin="0"/>
-                <Frame OutlineColor = "{StaticResource xclightBrown}" Padding="0">
+                <Frame OutlineColor = "{StaticResource xcLightColor}" Padding="0">
                     <Image 
                         x:Name="Spectogram" 
                         Aspect="AspectFill"
@@ -230,7 +224,7 @@
                     </Grid.ColumnDefinitions>
                     <!--Stop button-->
                     <BoxView 
-                        Color = "{StaticResource xclightBrown}" 
+                        Color = "{StaticResource xcLightColor}" 
                         Margin="5"
                         WidthRequest="50"
                         HeightRequest="50"
@@ -271,7 +265,7 @@
                     </StackLayout>
                     <!--Play button-->
                     <BoxView 
-                        Color = "{StaticResource xclightBrown}" 
+                        Color = "{StaticResource xcLightColor}" 
                         Margin="5"
                         WidthRequest="50"
                         HeightRequest="50"

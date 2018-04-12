@@ -103,7 +103,7 @@
         <!--Footnote-->
         <!-- +++ Add a button (i) inside footnote, when error, to show the request string-->
         <BoxView x:Name="FootnoteBox"
-            Color = "{StaticResource xclightBrown}" 
+            Color = "{StaticResource xcLightColor}" 
             Grid.Row="1" Grid.Column="0"/>
         <Label x:Name="FootnoteLabel"
             TextColor="White"

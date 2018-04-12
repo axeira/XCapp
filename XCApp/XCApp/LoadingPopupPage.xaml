@@ -10,14 +10,14 @@
         HorizontalOptions="Center"
         Orientation="Vertical">
             <ActivityIndicator
-                Color="{DynamicResource xclightBrown}"
+                Color="{DynamicResource xcDarkColor}"
                 IsRunning="True"
                 IsEnabled="True"
                 HeightRequest="80"
                 WidthRequest="80"/>
             <Label 
                 Text="Loading..." 
-                TextColor="{DynamicResource xclightBrown}"/>
+                TextColor="{DynamicResource xcDarkColor}"/>
         
     </StackLayout>
 

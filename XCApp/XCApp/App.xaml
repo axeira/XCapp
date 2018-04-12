@@ -7,31 +7,47 @@
         <ResourceDictionary>
             <Color x:Key="backgroundColor">White</Color>
             <Color x:Key="textColor">Black</Color>
-            <Color x:Key="xcdarkBrown">#461F14</Color>
-            <Color x:Key="xclightBrown">#802D17</Color>
+            <Color x:Key="xcLightColor">#0080CD</Color>
+            <Color x:Key="xcDarkColor">#004773</Color>
+            <!-- +++ 
+            <Color x:Key="xcDarkColor">#461F14</Color>
+            <Color x:Key="xcLightColor">#802D17</Color>
+            
+            Default	The default font size.
+            Large	A Large font size, for titles or other important text elements.
+            Medium	A default font size, to be used in stand alone labels or buttons.
+            Micro	The smallest readable font size for the device. Think about this like legal footnotes.
+            Small	A small but readable font size. Use this for block of text.            
+            -->
+            
             
             
             <!-- Styles -->
-            <Style x:Key="labelStyle" TargetType="Label">
+            <Style x:Key="labelStyleMedium" TargetType="Label">
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
                 <Setter Property="Margin" Value="5,0,0,0" />
             </Style>
-            <Style x:Key="labelStyleSmall" TargetType="Label">
+            <Style x:Key="labelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
                 <Setter Property="Margin" Value="5,0,0,0" />
             </Style>
+            <Style x:Key="labelStyleSmall" TargetType="Label">
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="TextColor" Value="{DynamicResource textColor}" />
+                <Setter Property="Margin" Value="5,0,0,0" />
+            </Style>
             <Style x:Key="labelStyleCaption" TargetType="Label">
-                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontSize" Value="Large" />
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
                 <Setter Property="Margin" Value="5,0,0,0" />
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
             <Style x:Key="labelStyle_LB" TargetType="Label">
-                <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="TextColor" Value="{DynamicResource xclightBrown}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{DynamicResource xcLightColor}" />
                 <Setter Property="Margin" Value="5,0,0,0" />
             </Style>
             
@@ -44,7 +60,7 @@
 
 
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{DynamicResource xclightBrown}"/>
+                <Setter Property="BarBackgroundColor" Value="{DynamicResource xcLightColor}"/>
                 <Setter Property="BarTextColor" Value="White"/>
             </Style>
             <!-- Styles -->

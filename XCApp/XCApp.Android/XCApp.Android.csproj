@@ -95,12 +95,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\favicon60.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\favicon76.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\ic_play_arrow_black_48dp.png" />
   </ItemGroup>
   <ItemGroup>
@@ -129,15 +123,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\ic_home_black_48dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\favicon120.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\favicon152.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\favicon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\ic_pause_black_48dp.png" />
@@ -333,6 +318,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\ic_search_black_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\favicon.png" />
   </ItemGroup>
   <Import Project="..\XCApp\XCApp.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

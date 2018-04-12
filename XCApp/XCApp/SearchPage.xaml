@@ -22,13 +22,13 @@
                 <!--Name-->
                 <StackLayout Orientation="Horizontal">
                     <Entry
-                        Style="{StaticResource labelStyle}"
+                        Style="{StaticResource labelStyleMedium}"
                         Placeholder="Search name (English or Scientific)" 
                         Text="{Binding Name, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextName" />
                     <Image
-                        WidthRequest = "32" 
+                        WidthRequest = "24" 
                         HorizontalOptions="Start" 
                         Margin="0" 
                         x:Name="TextNameClear">
@@ -49,13 +49,13 @@
                 <!--XC Number-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
-                        Style="{StaticResource labelStyle}"                        
+                        Style="{StaticResource labelStyleMedium}"                        
                         Placeholder="Cat.number (ex: 76967 or 88888-88890)" 
                         Text="{Binding Nr, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextNr" />
                     <Image 
-                        WidthRequest = "32" 
+                        WidthRequest = "24" 
                         HorizontalOptions="Start" 
                         Margin="0" 
                         x:Name="TextNrClear">
@@ -95,41 +95,17 @@
                         </Picker.ItemsSource>
                     </Picker>
                 </StackLayout>
-                <!--
-                <Label 
-                    Margin="5,0,0,0"  
-                    Text="Quality" />
-                <StackLayout Orientation="Horizontal">
-                    <Switch IsToggled="{Binding QA}" x:Name="QA" Toggled="QToggledEvent"></Switch>
-                    <Label Text="A" Style="{StaticResource labelStyle}"/>
-                    <Switch IsToggled="{Binding QB}" x:Name="QB" Toggled="QToggledEvent"></Switch>
-                    <Label Text="B" Style="{StaticResource labelStyle}"/>
-                    <Switch IsToggled="{Binding QC}" x:Name="QC" Toggled="QToggledEvent"></Switch>
-                    <Label Text="C" Style="{StaticResource labelStyle}"/>
-                    <Switch IsToggled="{Binding QD}" x:Name="QD" Toggled="QToggledEvent"></Switch>
-                    <Label Text="D" Style="{StaticResource labelStyle}"/>
-                    <Switch IsToggled="{Binding QE}" x:Name="QE" Toggled="QToggledEvent"></Switch>
-                    <Label Text="E" Style="{StaticResource labelStyle}"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Switch IsToggled="{Binding Q0}" x:Name="Q0" Toggled="QToggledEvent"></Switch>
-                    <Label Text="Not Rated" Style="{StaticResource labelStyle}"/>
-                    <Switch IsToggled="{Binding QLThan}" x:Name="QLThan" Toggled="QGLToggledEvent"></Switch>
-                    <Label Text="&lt;" Style="{StaticResource labelStyle}"/>
-                    <Switch IsToggled="{Binding QGThan}" x:Name="QGThan" Toggled="QGLToggledEvent"></Switch>
-                    <Label Text="&gt;" Style="{StaticResource labelStyle}"/>
-                </StackLayout>
-                -->
+
                 <!--Genus-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
-                        Style="{StaticResource labelStyle}"                        
+                        Style="{StaticResource labelStyleMedium}"                        
                         Placeholder="Genus (ex:zonotrichia)" 
                         Text="{Binding Gen, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextGen" />
                     <Image 
-                        WidthRequest = "32" 
+                        WidthRequest = "24" 
                         HorizontalOptions="Start" 
                         Margin="0" 
                         x:Name="TextGenClear">
@@ -150,13 +126,13 @@
                 <!--Back species-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
-                        Style="{StaticResource labelStyle}"                        
+                        Style="{StaticResource labelStyleMedium}"                        
                         Placeholder="Back.Species (ex:formicariidae)" 
                         Text="{Binding Also, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextAlso" />
                     <Image 
-                        WidthRequest = "32" 
+                        WidthRequest = "24" 
                         HorizontalOptions="Start" 
                         Margin="0" 
                         x:Name="TextAlsoClear">
@@ -182,7 +158,7 @@
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextSsp" />
                     <Image 
-                        WidthRequest = "32" 
+                        WidthRequest = "24" 
                         HorizontalOptions="Start" 
                         Margin="0" 
                         Source="ic_close_black_48dp.png" 
@@ -208,13 +184,13 @@
                 <!--Location-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
-                        Style="{StaticResource labelStyle}"                        
+                        Style="{StaticResource labelStyleMedium}"                        
                         Placeholder="Location (ex:tambopata)" 
                         Text="{Binding Loc, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextLoc" />
                     <Image 
-                        WidthRequest = "32" 
+                        WidthRequest = "24" 
                         HorizontalOptions="Start" 
                         Margin="0" 
                         x:Name="TextLocClear">
@@ -245,13 +221,13 @@
                 <!--Remarks-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
-                        Style="{StaticResource labelStyle}"                                                
+                        Style="{StaticResource labelStyleMedium}"                                                
                         Placeholder="Remarks (ex:playback)" 
                         Text="{Binding Rmk, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextRmk" />
                     <Image 
-                        WidthRequest = "32" 
+                        WidthRequest = "24" 
                         HorizontalOptions="Start" 
                         Margin="0" 
                         x:Name="TextRmkClear">
@@ -272,13 +248,13 @@
                 <!--Recordist-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
-                        Style="{StaticResource labelStyle}"                                                
+                        Style="{StaticResource labelStyleMedium}"                                                
                         Placeholder="Recordist (ex:John Doe)" 
                         Text="{Binding Rec, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextRec" />
                     <Image 
-                        WidthRequest = "32" 
+                        WidthRequest = "24" 
                         HorizontalOptions="Start" 
                         Margin="0" 
                         x:Name="TextRecClear">
@@ -320,7 +296,7 @@
         </ScrollView>
         <BoxView 
             Grid.Row="1" Grid.Column="0"
-            Color = "{StaticResource xclightBrown}" 
+            Color = "{StaticResource xcLightColor}" 
             HeightRequest="5"/>
         <!--3 BUTTONS-->
         <Grid Grid.Row="2" Grid.Column="0">
@@ -354,7 +330,7 @@
                 </Image>
                 <Label Text="Go" 
                         FontSize="Micro"
-                        Style="{StaticResource labelStyle}"
+                        Style="{StaticResource labelStyleMedium}"
                         HorizontalOptions="Center" />
             </StackLayout>
          
