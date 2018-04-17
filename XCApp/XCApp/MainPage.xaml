@@ -42,7 +42,7 @@
                 HorizontalOptions="Center"
                 Style="{StaticResource labelStyleCaption}"                        
                 TextColor="{StaticResource xcLightColor}" 
-                Text="XC Bird sounds" />
+                Text="XC Bird Sounds" />
         </StackLayout>
         <!--3 BUTTONS-->
         
