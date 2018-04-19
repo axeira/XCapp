@@ -22,7 +22,8 @@ namespace XCApp.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            //only needed in 1.1 this is 1.04 Rg.Plugins.Popup.Popup.Init();
+            //only needed in 1.1 this is 1.04 
+            //Rg.Plugins.Popup.Popup.Init();
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

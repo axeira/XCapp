@@ -17,7 +17,7 @@ namespace XCApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailPage : ContentPage
     {
-        private bool sliderProgramChanged = false;
+        //sliderchange private bool sliderProgramChanged = false;
         private double recDuration; //in seconds
         private double recPosition; //in seconds
         private bool playing = false;
@@ -41,9 +41,9 @@ namespace XCApp
                 {
                     ProgressBarSlider.Maximum = 100;
                     ProgressBarSlider.Minimum = 0;
-                    sliderProgramChanged = true;
+                    //sliderchange sliderProgramChanged = true;
                     ProgressBarSlider.Value = e.Progress;
-                    sliderProgramChanged = false;
+                    //sliderchange sliderProgramChanged = false;
                     //e.Progress=percentage 0-100
                     //e.Position=seconds
                     recPosition = e.Position.TotalSeconds;
@@ -55,8 +55,8 @@ namespace XCApp
                 });
             };
 
-            //Event when slider changes
-            ProgressBarSlider.ValueChanged += ProgressBarSlider_ValueChanged;
+            //sliderchange Event when slider changes
+            //sliderchange ProgressBarSlider.ValueChanged += ProgressBarSlider_ValueChanged;
 
             //events
             CrossMediaManager.Current.MediaFinished += Current_MediaFinished;
@@ -80,9 +80,9 @@ namespace XCApp
 
         }
 
-        //when move slider get error E/MediaPlayer(14143): Attempt to perform seekTo in wrong state: mPlayer=0x90d8b2c0, mCurrentState=2
-        private async void ProgressBarSlider_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
+        //sliderchange when move slider get error E/MediaPlayer(14143): Attempt to perform seekTo in wrong state: mPlayer=0x90d8b2c0, mCurrentState=2
+        //private async void ProgressBarSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        //{
         //    //if user moved the slider
         //    if (!sliderProgramChanged)
         //    {
@@ -94,8 +94,7 @@ namespace XCApp
         //        Position.Text = XCAPIClass.SecondsToString(recPosition, false);
         //        Duration.Text = XCAPIClass.SecondsToString(recDuration, false);
         //    }
-
-        }
+        //}
 
 
 
@@ -177,13 +176,39 @@ namespace XCApp
                 if (playing)
                 {
                     await CrossMediaManager.Current.Pause();
-                    ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.iOS:
+                            ButtonPlay.Source = "ic_play_arrow_white_48pt.png";
+                            break;
+                        case Device.Android:
+                            ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                            break;
+                        case Device.WinPhone:
+                            ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                            break;
+                        default:
+                            break;
+                    }
                     playing = false;
                 }
                 else
                 {
                     await CrossMediaManager.Current.Play();
-                    ButtonPlay.Source = "ic_pause_white_48dp.png";
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.iOS:
+                            ButtonPlay.Source = "ic_pause_white_48pt.png";
+                            break;
+                        case Device.Android:
+                            ButtonPlay.Source = "ic_pause_white_48dp.png";
+                            break;
+                        case Device.WinPhone:
+                            ButtonPlay.Source = "ic_pause_white_48dp.png";
+                            break;
+                        default:
+                            break;
+                    }
                     playing = true;
                 }
             }
@@ -193,7 +218,20 @@ namespace XCApp
         private async void StopAudio_OnTapped(object sender, EventArgs e)
         {
             await CrossMediaManager.Current.Stop();
-            ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    ButtonPlay.Source = "ic_play_arrow_white_48pt.png";
+                    break;
+                case Device.Android:
+                    ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                    break;
+                case Device.WinPhone:
+                    ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                    break;
+                default:
+                    break;
+            }
             firstTimePlaying = true;
             playing = false;
             ProgressBarSlider.Value = 0;
@@ -204,7 +242,20 @@ namespace XCApp
         {
             //+++ consolidate with StopAudio_OnTapped in only one
             await CrossMediaManager.Current.Stop();
-            ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    ButtonPlay.Source = "ic_play_arrow_white_48pt.png";
+                    break;
+                case Device.Android:
+                    ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                    break;
+                case Device.WinPhone:
+                    ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                    break;
+                default:
+                    break;
+            }
             firstTimePlaying = true;
             playing = false;
             ProgressBarSlider.Value = 0;

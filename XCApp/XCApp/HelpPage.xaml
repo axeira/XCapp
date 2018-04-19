@@ -29,6 +29,17 @@
                 </Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
+                <BoxView 
+                    WidthRequest = "48"
+                    HeightRequest="48" 
+                    HorizontalOptions="Start" 
+                    Color = "White" 
+                    Margin="5,0,0,0"/>
+                <Label 
+                        Style="{StaticResource labelStyle}"                        
+                        Text="Material Design icons by Google http://google.github.io/material-design-icons/" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
                 <Image 
                     WidthRequest = "48" 
                     HorizontalOptions="Start" 

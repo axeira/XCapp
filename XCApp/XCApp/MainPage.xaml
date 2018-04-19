@@ -63,7 +63,7 @@
                 <Image>
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
-                            <OnPlatform.iOS>ic_help_black_48dp.png</OnPlatform.iOS>
+                            <OnPlatform.iOS>ic_help_48pt.png</OnPlatform.iOS>
                             <OnPlatform.Android>ic_help_black_48dp.png</OnPlatform.Android>
                             <OnPlatform.WinPhone>Images/ic_help_black_48dp.png</OnPlatform.WinPhone>
                         </OnPlatform>
@@ -84,7 +84,7 @@
                 <Image>
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
-                            <OnPlatform.iOS>ic_search_black_48dp.png</OnPlatform.iOS>
+                            <OnPlatform.iOS>ic_search_48pt.png</OnPlatform.iOS>
                             <OnPlatform.Android>ic_search_black_48dp.png</OnPlatform.Android>
                             <OnPlatform.WinPhone>Images/ic_search_black_48dp.png</OnPlatform.WinPhone>
                         </OnPlatform>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Recordings List"
+             Title="Recordings"
              x:Class="XCApp.ListViewPage">
 
     <Grid  RowSpacing="-1">
@@ -130,7 +130,7 @@
                 <Image>
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
-                            <OnPlatform.iOS>ic_home_black_48dp.png</OnPlatform.iOS>
+                            <OnPlatform.iOS>ic_home_48pt.png</OnPlatform.iOS>
                             <OnPlatform.Android>ic_home_black_48dp.png</OnPlatform.Android>
                             <OnPlatform.WinPhone>Images/ic_home_black_48dp.png</OnPlatform.WinPhone>
                         </OnPlatform>
@@ -151,7 +151,7 @@
                 <Image>
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
-                            <OnPlatform.iOS>ic_skip_previous_black_48dp.png</OnPlatform.iOS>
+                            <OnPlatform.iOS>ic_skip_previous_48pt.png</OnPlatform.iOS>
                             <OnPlatform.Android>ic_skip_previous_black_48dp.png</OnPlatform.Android>
                             <OnPlatform.WinPhone>Images/ic_skip_previous_black_48dp.png</OnPlatform.WinPhone>
                         </OnPlatform>
@@ -173,7 +173,7 @@
                 <Image>
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
-                            <OnPlatform.iOS>ic_skip_next_black_48dp.png</OnPlatform.iOS>
+                            <OnPlatform.iOS>ic_skip_next_48pt.png</OnPlatform.iOS>
                             <OnPlatform.Android>ic_skip_next_black_48dp.png</OnPlatform.Android>
                             <OnPlatform.WinPhone>Images/ic_skip_next_black_48dp.png</OnPlatform.WinPhone>
                         </OnPlatform>

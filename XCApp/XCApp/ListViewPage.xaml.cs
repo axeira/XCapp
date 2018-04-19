@@ -12,10 +12,10 @@ using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-#if (TimeDiagnostics)
-    using System.Diagnostics;
-    using System.Threading;
-#endif
+//#if (TimeDiagnostics)
+//    using System.Diagnostics;
+//    using System.Threading;
+//#endif
 
 namespace XCApp
 {
@@ -41,15 +41,17 @@ namespace XCApp
             bool listIsEmpty = true;
 
             #region
-#if (TimeDiagnostics)
-            Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(8); // Use only the 8 core 
-            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
-            Thread.CurrentThread.Priority = ThreadPriority.Highest;
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            Debug.WriteLine("========== Start: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
-#endif
+            //+++Doesnt work in IOS
+//#if (TimeDiagnostics)
+//            Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(8); // Use only the 8 core 
+//            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
+//            Thread.CurrentThread.Priority = ThreadPriority.Highest;
+//            Stopwatch stopwatch = new Stopwatch();
+//            stopwatch.Start();
+//            Debug.WriteLine("========== Start: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
+//#endif
             #endregion
+
             //+++The List View might not show the last lines, as long as the answer received it is too long?!?!?!
             if (!string.IsNullOrEmpty(XCAPIClass.QueryRequest))
             {
@@ -72,9 +74,9 @@ namespace XCApp
                 serverRequestResult = await s;
 
                 #region
-#if (TimeDiagnostics)
-                Debug.WriteLine("========== Received: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
-#endif
+//#if (TimeDiagnostics)
+//                Debug.WriteLine("========== Received: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
+//#endif
                 #endregion
                 if (serverRequestResult == HttpStatusCode.OK.ToString())
                 {
@@ -83,17 +85,17 @@ namespace XCApp
                     //+++Create Task
                     XCAPIRecordings = XCAPIClass.Deserialize_json_data<XCAPIClass.XCAPIRecordingsMain>(XCAPIClass.JsonData);
                     #region
-#if (TimeDiagnostics)
-                    Debug.WriteLine("========== Deserialized: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
-#endif
+//#if (TimeDiagnostics)
+//                    Debug.WriteLine("========== Deserialized: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
+//#endif
                     #endregion
                     //Fill Listview
                     MyListView.ItemsSource = XCAPIClass.XCAPIRecordingsMain.Recordings;
                     #region
-#if (TimeDiagnostics)
+//#if (TimeDiagnostics)
 
-                    Debug.WriteLine("========== ListView filled: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
-#endif
+//                    Debug.WriteLine("========== ListView filled: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
+//#endif
                     #endregion
                     //+++await DisplayAlert("Alert", XCAPIClass.XCAPIRecordingsMain.NumRecordings + " "  , "OK");
                     if (string.IsNullOrEmpty(XCAPIClass.XCAPIRecordingsMain.NumRecordings))
@@ -155,12 +157,12 @@ namespace XCApp
             MyListView.IsVisible = !listIsEmpty;
 
             #region 
-#if (TimeDiagnostics)
+//#if (TimeDiagnostics)
 
-            Debug.WriteLine("========== End: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
-            Debug.WriteLine("==================================\r\n");
-            stopwatch.Stop();
-#endif
+//            Debug.WriteLine("========== End: " + stopwatch.ElapsedTicks + " mS: " + stopwatch.ElapsedMilliseconds);
+//            Debug.WriteLine("==================================\r\n");
+//            stopwatch.Stop();
+//#endif
             #endregion
         }
         
