@@ -13,12 +13,12 @@
                     WidthRequest = "48" 
                     HorizontalOptions="Start" 
                     VerticalOptions="Start" 
-                    Margin="5,0,0,0">
+                    Margin="5,0,0,0">XCfavicon60.png
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
-                            <OnPlatform.iOS>favicon.png</OnPlatform.iOS>
-                            <OnPlatform.Android>favicon.png</OnPlatform.Android>
-                            <OnPlatform.WinPhone>Images/favicon.png</OnPlatform.WinPhone>
+                            <OnPlatform.iOS>XCfavicon60.png</OnPlatform.iOS>
+                            <OnPlatform.Android>XCfavicon60.png</OnPlatform.Android>
+                            <OnPlatform.WinPhone>Images/XCfavicon60.png</OnPlatform.WinPhone>
                         </OnPlatform>
                     </Image.Source>
                 </Image>
@@ -65,12 +65,19 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <BoxView 
-                    WidthRequest = "48"
-                    HeightRequest="48" 
+                <Image 
+                    WidthRequest = "48" 
                     HorizontalOptions="Start" 
-                    Color = "White" 
-                    Margin="5,0,0,0"/>
+                    VerticalOptions="Start" 
+                    Margin="5,0,0,0">XCfavicon60.png
+                    <Image.Source>
+                        <OnPlatform  x:TypeArguments="ImageSource">
+                            <OnPlatform.iOS>favicon.png</OnPlatform.iOS>
+                            <OnPlatform.Android>favicon.png</OnPlatform.Android>
+                            <OnPlatform.WinPhone>Images/favicon.png</OnPlatform.WinPhone>
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>
                 <Label 
                         Style="{StaticResource labelStyle}"                        
                         Text="Version 1.0 beta" />

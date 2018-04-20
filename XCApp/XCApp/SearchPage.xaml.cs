@@ -25,14 +25,37 @@ namespace XCApp
             PickerQualityOperator.ItemsSource = ConstantsClass.QualityOperators;
             PickerQuality.ItemsSource = ConstantsClass.Qualities;
             PickerLicense.ItemsSource = ConstantsClass.Licenses;
+
+            LoadSearchSettings();
         }
+
+        private void LoadSearchSettings()
+        {
+            if (Application.Current.Properties.ContainsKey("name"))
+            {
+                TextName.Text = Application.Current.Properties["name"] as string;
+            }
+
+
+        }
+
+        private async void SaveSearchSettings()
+        {
+            Application.Current.Properties["name"] = TextName.Text;
+            await Application.Current.SavePropertiesAsync();
+        }
+
+
 
 
         async void OnTapGestureRecognizerTappedPlaySearch(object sender, EventArgs args)
         {
+            
             //Store Query parameters
             XCQuery = ((XCAPIClass.XCAPISearch)this.BindingContext);
 
+            
+            SaveSearchSettings();
             XCAPIClass.QueryRequest = XCAPIClass.BuildTheQuery(XCQuery);
             System.Diagnostics.Debug.WriteLine("=============== " + XCAPIClass.QueryRequest);
 
