@@ -44,7 +44,7 @@ namespace XCApp
 
         //q TAG
         public static readonly String[] Qualities = { NoneStr, "A", "B", "C", "D", "E" , "0"};
-        public static readonly String[] QualityOperators = { "<", ">", "=" };
+        public static readonly String[] QualityOperators = { NoneStr, "<", ">", "=" };
 
         //area TAG
         public static readonly String[] Areas = { NoneStr, "Africa", "America", "Asia", "Australia", "Europe"};

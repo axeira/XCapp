@@ -19,6 +19,7 @@
         <!--BODY-->
         <ScrollView Grid.Row="0" Grid.Column="0">
             <StackLayout Margin="0,15,0,0" Spacing="5">
+                
                 <!--Name-->
                 <StackLayout Orientation="Horizontal">
                     <Entry
@@ -77,13 +78,11 @@
                 <StackLayout Orientation="Horizontal">
                     <Picker 
                         Margin="5,0,0,0"   
-                        WidthRequest="50"
+                        WidthRequest="75"
                         HorizontalOptions="End"
                         Title=" " 
                         SelectedIndex="{Binding QOIndex}" 
                         x:Name="PickerQualityOperator">
-                        <Picker.ItemsSource>
-                        </Picker.ItemsSource>
                     </Picker>
                     <Picker 
                         Margin="5,0,0,0"  
@@ -91,8 +90,6 @@
                         Title="Quality (choose one quality level)" 
                         SelectedIndex="{Binding QIndex}" 
                         x:Name="PickerQuality">
-                        <Picker.ItemsSource>
-                        </Picker.ItemsSource>
                     </Picker>
                 </StackLayout>
 
@@ -100,7 +97,7 @@
                 <StackLayout Orientation="Horizontal">
                     <Entry 
                         Style="{StaticResource labelStyleMedium}"                        
-                        Placeholder="Genus (ex:zonotrichia)" 
+                        Placeholder="Genus (ex: zonotrichia)" 
                         Text="{Binding Gen, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextGen" />
@@ -119,33 +116,6 @@
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextGenClear_OnTapped"  />
-                        </Image.GestureRecognizers>
-                    </Image>
-                </StackLayout>
-
-                <!--Back species-->
-                <StackLayout Orientation="Horizontal">
-                    <Entry 
-                        Style="{StaticResource labelStyleMedium}"                        
-                        Placeholder="Back.Species (ex:formicariidae)" 
-                        Text="{Binding Also, Mode=TwoWay}" 
-                        HorizontalOptions="FillAndExpand" 
-                        x:Name="TextAlso" />
-                    <Image 
-                        WidthRequest = "24" 
-                        HorizontalOptions="Start" 
-                        Margin="0" 
-                        x:Name="TextAlsoClear">
-                        <Image.Source>
-                            <OnPlatform  x:TypeArguments="ImageSource">
-                                <OnPlatform.iOS>ic_close_48pt.png</OnPlatform.iOS>
-                                <OnPlatform.Android>ic_close_black_48dp.png</OnPlatform.Android>
-                                <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
-                            </OnPlatform>
-                        </Image.Source>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Tapped="TextAlsoClear_OnTapped"  />
                         </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
@@ -174,19 +144,43 @@
                 <!--Type-->
                 <Picker 
                     Margin="5,0,0,0"                    
-                    Title="Sound type (ex:song)" 
+                    Title="Sound type (ex: song)" 
                     SelectedIndex="{Binding TypeIndex}" 
                     x:Name="PickerSongType">
-                    <Picker.ItemsSource>
-                    </Picker.ItemsSource>
                 </Picker>
-                
+
+                <!--Type Mix-->
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        Style="{StaticResource labelStyleMedium}"                        
+                        Text="{Binding TypeMix, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        x:Name="TextTypeMix" />
+                    <Image 
+                        WidthRequest = "24" 
+                        HorizontalOptions="Start" 
+                        Margin="0" 
+                        x:Name="TextTypeMixClear">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_close_48pt.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_close_black_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TextTypeMixClear_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
                 <!--Location-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
                         Style="{StaticResource labelStyleMedium}"                        
-                        Placeholder="Location (ex:tambopata)" 
-                        Text="{Binding Loc, Mode=TwoWay}" 
+                        Placeholder="Location (ex: tambopata)" 
+                        Text="{Binding TypeMix, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextLoc" />
                     <Image 
@@ -214,15 +208,40 @@
                     Title="Countries (Select a country)" 
                     SelectedIndex="{Binding CntIndex}" 
                     x:Name="PickerCountry">
-                    <Picker.ItemsSource>
-                    </Picker.ItemsSource>
                 </Picker>
+
+                <!--Back species -->
+                <StackLayout Orientation="Horizontal">
+                    <Entry 
+                        Style="{StaticResource labelStyleMedium}"                        
+                        Placeholder="Back.Species (ex: formicariidae)" 
+                        Text="{Binding Also, Mode=TwoWay}" 
+                        HorizontalOptions="FillAndExpand" 
+                        x:Name="TextAlso" />
+                    <Image 
+                        WidthRequest = "24" 
+                        HorizontalOptions="Start" 
+                        Margin="0" 
+                        x:Name="TextAlsoClear">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>ic_close_48pt.png</OnPlatform.iOS>
+                                <OnPlatform.Android>ic_close_black_48dp.png</OnPlatform.Android>
+                                <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
+                            </OnPlatform>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TextAlsoClear_OnTapped"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
 
                 <!--Remarks-->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
                         Style="{StaticResource labelStyleMedium}"                                                
-                        Placeholder="Remarks (ex:playback)" 
+                        Placeholder="Remarks (ex: playback)" 
                         Text="{Binding Rmk, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextRmk" />
@@ -249,7 +268,7 @@
                 <StackLayout Orientation="Horizontal">
                     <Entry 
                         Style="{StaticResource labelStyleMedium}"                                                
-                        Placeholder="Recordist (ex:John Doe)" 
+                        Placeholder="Recordist (ex: John Doe)" 
                         Text="{Binding Rec, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextRec" />
@@ -278,8 +297,6 @@
                     Title="Area (choose one Area)" 
                     SelectedIndex="{Binding AreaIndex}" 
                     x:Name="PickerArea">
-                    <Picker.ItemsSource>
-                    </Picker.ItemsSource>
                 </Picker>
                 
                 <!--License-->
@@ -288,8 +305,6 @@
                     Title="License (choose one License)" 
                     SelectedIndex="{Binding LicIndex}" 
                     x:Name="PickerLicense">
-                    <Picker.ItemsSource>
-                    </Picker.ItemsSource>
                 </Picker>
 
             </StackLayout>

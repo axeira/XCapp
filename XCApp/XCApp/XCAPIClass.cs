@@ -235,6 +235,20 @@ namespace XCApp
                 }
             }
 
+            private string _TypeMix;
+            public string TypeMix
+            {
+                get { return _TypeMix; }
+                set
+                {
+                    if (_TypeMix != value)
+                    {
+                        _TypeMix = value;
+                        OnPropertyChanged("TypeMix");
+                    }
+                }
+            }
+
             public string Type;
             private int _TypeIndex;
             public int TypeIndex

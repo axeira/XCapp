@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Plugin.Settings;
+using Plugin.Settings.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,28 +27,45 @@ namespace XCApp
             PickerQualityOperator.ItemsSource = ConstantsClass.QualityOperators;
             PickerQuality.ItemsSource = ConstantsClass.Qualities;
             PickerLicense.ItemsSource = ConstantsClass.Licenses;
-
+           
             LoadSearchSettings();
         }
 
-        private void LoadSearchSettings()
+        public void LoadSearchSettings()
         {
-            if (Application.Current.Properties.ContainsKey("name"))
-            {
-                TextName.Text = Application.Current.Properties["name"] as string;
-            }
-
-
+            TextName.Text = SearchSettings.Name;
+            TextGen.Text = SearchSettings.Gen;
+            TextRec.Text = SearchSettings.Rec;
+            PickerCountry.SelectedIndex = SearchSettings.CntIndex;
+            TextLoc.Text = SearchSettings.Loc;
+            TextRmk.Text = SearchSettings.Rmk;
+            TextTypeMix.Text = SearchSettings.TypeMix;
+            PickerSongType.SelectedIndex = SearchSettings.TypeIndex;
+            TextNr.Text = SearchSettings.Nr;
+            TextAlso.Text = SearchSettings.Also;
+            PickerLicense.SelectedIndex = SearchSettings.LicIndex;
+            PickerQuality.SelectedIndex = SearchSettings.QIndex;
+            PickerQualityOperator.SelectedIndex = SearchSettings.QOIndex;
+            PickerArea.SelectedIndex = SearchSettings.AreaIndex;
         }
 
-        private async void SaveSearchSettings()
+        public void SaveSearchSettings()
         {
-            Application.Current.Properties["name"] = TextName.Text;
-            await Application.Current.SavePropertiesAsync();
+            SearchSettings.Name = TextName.Text;
+            SearchSettings.Gen = TextGen.Text;
+            SearchSettings.Rec = TextRec.Text;
+            SearchSettings.CntIndex = PickerCountry.SelectedIndex;
+            SearchSettings.Loc = TextLoc.Text;
+            SearchSettings.Rmk = TextRmk.Text;
+            SearchSettings.TypeMix = TextTypeMix.Text;
+            SearchSettings.TypeIndex = PickerSongType.SelectedIndex;
+            SearchSettings.Nr = TextNr.Text;
+            SearchSettings.Also = TextAlso.Text;
+            SearchSettings.LicIndex = PickerLicense.SelectedIndex;
+            SearchSettings.QIndex = PickerQuality.SelectedIndex;
+            SearchSettings.QOIndex = PickerQualityOperator.SelectedIndex;
+            SearchSettings.AreaIndex = PickerArea.SelectedIndex;
         }
-
-
-
 
         async void OnTapGestureRecognizerTappedPlaySearch(object sender, EventArgs args)
         {
@@ -63,15 +82,20 @@ namespace XCApp
             await Navigation.PushAsync(new ListViewPage(), true);
         }
 
-
-        public void QGLToggledEvent(object sender, ToggledEventArgs e)
+        
+        void TextTypeMixClear_OnTapped(object sender, EventArgs args)
         {
-
+            TextTypeMix.Text = "";
         }
 
         void TextNameClear_OnTapped(object sender, EventArgs args)
         {
             TextName.Text = "";
+        }
+
+        void PickerTypeClear_OnTapped(object sender, EventArgs args)
+        {
+            PickerSongType.Items.Clear();
         }
 
         void TextGenClear_OnTapped(object sender, EventArgs args)
@@ -108,6 +132,96 @@ namespace XCApp
         void TextRmkClear_OnTapped(object sender, EventArgs args)
         {
             TextRmk.Text = "";
+        }
+
+
+
+        public static class SearchSettings
+        {
+
+            private static ISettings AppSettings =>
+                CrossSettings.Current;
+
+            public static string Name
+            {
+                get => AppSettings.GetValueOrDefault(nameof(Name), null);
+                set => AppSettings.AddOrUpdateValue(nameof(Name), value);
+            }
+            public static string Gen
+            {
+                get => AppSettings.GetValueOrDefault(nameof(Gen), null);
+                set => AppSettings.AddOrUpdateValue(nameof(Gen), value);
+            }
+            public static string Rec
+            {
+                get => AppSettings.GetValueOrDefault(nameof(Rec), null);
+                set => AppSettings.AddOrUpdateValue(nameof(Rec), value);
+            }
+            public static int CntIndex
+            {
+                //{
+                //    string result;
+                //    if (AppSettings.Contains(nameof(Name)))
+                //    { result = AppSettings.GetValueOrDefault(nameof(Name), string.Empty); } 
+                //    else
+                //    { result = null; }
+                //    return result;
+                //}
+
+
+                get => AppSettings.GetValueOrDefault(nameof(CntIndex), -1);
+                set => AppSettings.AddOrUpdateValue(nameof(CntIndex), value);
+            }
+            public static string Loc
+            {
+                get => AppSettings.GetValueOrDefault(nameof(Loc), null);
+                set => AppSettings.AddOrUpdateValue(nameof(Loc), value);
+            }
+            public static string Rmk
+            {
+                get => AppSettings.GetValueOrDefault(nameof(Rmk), null);
+                set => AppSettings.AddOrUpdateValue(nameof(Rmk), value);
+            }
+            public static int TypeIndex
+            {
+                get => AppSettings.GetValueOrDefault(nameof(TypeIndex), 0);
+                set => AppSettings.AddOrUpdateValue(nameof(TypeIndex), value);
+            }
+            public static string TypeMix //string with list of types choosen
+            {
+                get => AppSettings.GetValueOrDefault(nameof(TypeMix), null);
+                set => AppSettings.AddOrUpdateValue(nameof(TypeMix), value);
+            }
+            public static string Nr
+            {
+                get => AppSettings.GetValueOrDefault(nameof(Nr), null);
+                set => AppSettings.AddOrUpdateValue(nameof(Nr), value);
+            }
+            public static string Also
+            {
+                get => AppSettings.GetValueOrDefault(nameof(Also), null);
+                set => AppSettings.AddOrUpdateValue(nameof(Also), value);
+            }
+            public static int LicIndex
+            {
+                get => AppSettings.GetValueOrDefault(nameof(LicIndex), 0);
+                set => AppSettings.AddOrUpdateValue(nameof(LicIndex), value);
+            }
+            public static int QIndex
+            {
+                get => AppSettings.GetValueOrDefault(nameof(QIndex), 0);
+                set => AppSettings.AddOrUpdateValue(nameof(QIndex), value);
+            }
+            public static int QOIndex
+            {
+                get => AppSettings.GetValueOrDefault(nameof(QOIndex), 0);
+                set => AppSettings.AddOrUpdateValue(nameof(QOIndex), value);
+            }
+            public static int AreaIndex
+            {
+                get => AppSettings.GetValueOrDefault(nameof(AreaIndex), 0);
+                set => AppSettings.AddOrUpdateValue(nameof(AreaIndex), value);
+            }
         }
 
 
