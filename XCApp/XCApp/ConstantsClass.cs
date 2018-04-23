@@ -30,7 +30,7 @@ namespace XCApp
 
         public static readonly String[] SongTypes = 
         {
-             NoneStr,
+            NoneStr,
             "song",
             "call",
             "alarm call",

@@ -235,20 +235,6 @@ namespace XCApp
                 }
             }
 
-            private string _TypeMix;
-            public string TypeMix
-            {
-                get { return _TypeMix; }
-                set
-                {
-                    if (_TypeMix != value)
-                    {
-                        _TypeMix = value;
-                        OnPropertyChanged("TypeMix");
-                    }
-                }
-            }
-
             public string Type;
             private int _TypeIndex;
             public int TypeIndex
@@ -353,6 +339,20 @@ namespace XCApp
                         _AreaIndex = value;
                         Area = ConstantsClass.Areas[AreaIndex];
                         OnPropertyChanged("AreaIndex");
+                    }
+                }
+            }
+
+            private DateTime _DatePick;
+            public DateTime DatePick
+            {
+                get { return _DatePick; }
+                set
+                {
+                    if (_DatePick != value)
+                    {
+                        _DatePick = value;
+                        OnPropertyChanged("DatePick");
                     }
                 }
             }

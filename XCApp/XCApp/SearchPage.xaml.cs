@@ -33,20 +33,29 @@ namespace XCApp
 
         public void LoadSearchSettings()
         {
+            int i; 
+
             TextName.Text = SearchSettings.Name;
             TextGen.Text = SearchSettings.Gen;
             TextRec.Text = SearchSettings.Rec;
-            PickerCountry.SelectedIndex = SearchSettings.CntIndex;
             TextLoc.Text = SearchSettings.Loc;
             TextRmk.Text = SearchSettings.Rmk;
-            TextTypeMix.Text = SearchSettings.TypeMix;
-            PickerSongType.SelectedIndex = SearchSettings.TypeIndex;
             TextNr.Text = SearchSettings.Nr;
             TextAlso.Text = SearchSettings.Also;
-            PickerLicense.SelectedIndex = SearchSettings.LicIndex;
-            PickerQuality.SelectedIndex = SearchSettings.QIndex;
-            PickerQualityOperator.SelectedIndex = SearchSettings.QOIndex;
-            PickerArea.SelectedIndex = SearchSettings.AreaIndex;
+
+            //if i<=0 dont load setting to picker
+            i = SearchSettings.CntIndex;
+            if (i > 0) PickerCountry.SelectedIndex = i;
+            i = SearchSettings.TypeIndex;
+            if (i > 0) PickerSongType.SelectedIndex = i;
+            i = SearchSettings.LicIndex;
+            if (i > 0) PickerLicense.SelectedIndex = i;
+            i = SearchSettings.QIndex;
+            if (i > 0) PickerQuality.SelectedIndex = i;
+            i = SearchSettings.QOIndex;
+            if (i > 0) PickerQualityOperator.SelectedIndex = i;
+            i = SearchSettings.AreaIndex;
+            if (i > 0) PickerArea.SelectedIndex = i;
         }
 
         public void SaveSearchSettings()
@@ -57,7 +66,6 @@ namespace XCApp
             SearchSettings.CntIndex = PickerCountry.SelectedIndex;
             SearchSettings.Loc = TextLoc.Text;
             SearchSettings.Rmk = TextRmk.Text;
-            SearchSettings.TypeMix = TextTypeMix.Text;
             SearchSettings.TypeIndex = PickerSongType.SelectedIndex;
             SearchSettings.Nr = TextNr.Text;
             SearchSettings.Also = TextAlso.Text;
@@ -80,12 +88,6 @@ namespace XCApp
 
             //Move the next window
             await Navigation.PushAsync(new ListViewPage(), true);
-        }
-
-        
-        void TextTypeMixClear_OnTapped(object sender, EventArgs args)
-        {
-            TextTypeMix.Text = "";
         }
 
         void TextNameClear_OnTapped(object sender, EventArgs args)
@@ -159,13 +161,13 @@ namespace XCApp
             }
             public static int CntIndex
             {
+                //get
                 //{
-                //    string result;
-                //    if (AppSettings.Contains(nameof(Name)))
-                //    { result = AppSettings.GetValueOrDefault(nameof(Name), string.Empty); } 
+                //    CntIndex = AppSettings.GetValueOrDefault(nameof(CntIndex), -1);
+                //    if (CntIndex <= 0  || !AppSettings.Contains(nameof(CntIndex)))
+                //        return -1; 
                 //    else
-                //    { result = null; }
-                //    return result;
+                //        return CntIndex;
                 //}
 
 
@@ -186,11 +188,6 @@ namespace XCApp
             {
                 get => AppSettings.GetValueOrDefault(nameof(TypeIndex), 0);
                 set => AppSettings.AddOrUpdateValue(nameof(TypeIndex), value);
-            }
-            public static string TypeMix //string with list of types choosen
-            {
-                get => AppSettings.GetValueOrDefault(nameof(TypeMix), null);
-                set => AppSettings.AddOrUpdateValue(nameof(TypeMix), value);
             }
             public static string Nr
             {

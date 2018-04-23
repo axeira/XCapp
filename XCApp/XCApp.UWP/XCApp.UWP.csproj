@@ -144,6 +144,7 @@
     <Content Include="Images\favicon60.png" />
     <Content Include="Images\favicon76.png" />
     <Content Include="Images\Happytoadfish.png" />
+    <Content Include="Images\ic_add_white_48dp.png" />
     <Content Include="Images\ic_close_black_48dp.png" />
     <Content Include="Images\ic_help_black_48dp.png" />
     <Content Include="Images\ic_home_black_48dp.png" />
