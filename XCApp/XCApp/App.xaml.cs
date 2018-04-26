@@ -17,9 +17,11 @@ namespace XCApp
 
         InitializeComponent();
         MainPage = new NavigationPage(new MainPage());
-            
+        Constants.YearsFill();
+        Constants.MonthsFill();
+
         }
-        
+
         protected override void OnStart ()
 		{
 			//+++ Handle when your app starts

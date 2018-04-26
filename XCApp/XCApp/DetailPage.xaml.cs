@@ -33,7 +33,7 @@ namespace XCApp
             BindingContext = recordingTapped;
 
             //Decode the Urls for this tapped recording
-            uris.GetUris(ConstantsClass.UrlScheme + recordingTapped.File, recordingTapped.Id);
+            uris.GetUris(Constants.UrlScheme + recordingTapped.File, recordingTapped.Id);
 
             CrossMediaManager.Current.PlayingChanged += (sender, e) =>
             {
@@ -100,7 +100,7 @@ namespace XCApp
 
         private void CCImage_OnTapped(object sender, EventArgs e)
         {
-            string lic = ConstantsClass.UrlScheme + recordingTapped.Lic;
+            string lic = Constants.UrlScheme + recordingTapped.Lic;
             Device.OpenUri(new Uri(lic));
         }
 
@@ -269,11 +269,11 @@ namespace XCApp
             {
                 var stringValue = (String)value;
 
-                if (stringValue.IndexOf(ConstantsClass.Short_byncsa) >= 0)
+                if (stringValue.IndexOf(Constants.Short_byncsa) >= 0)
                     return "byncsa.png";
-                else if (stringValue.IndexOf(ConstantsClass.Short_byncnd) >= 0)
+                else if (stringValue.IndexOf(Constants.Short_byncnd) >= 0)
                     return "byncnd.png";
-                else if (stringValue.IndexOf(ConstantsClass.Short_bysa) >= 0)
+                else if (stringValue.IndexOf(Constants.Short_bysa) >= 0)
                     return "bysa.png";
                 //else if (stringValue.IndexOf("/by/") >= 0)
                 //    return "by.png";
@@ -301,12 +301,12 @@ namespace XCApp
             {
                 var stringValue = (String)value;
 
-                if (stringValue.IndexOf(ConstantsClass.Short_byncsa) >= 0)
-                    return ConstantsClass.Long_byncsa;
-                else if (stringValue.IndexOf(ConstantsClass.Short_byncnd) >= 0)
-                    return ConstantsClass.Long_byncnd;
-                else if (stringValue.IndexOf(ConstantsClass.Short_bysa) >= 0)
-                    return ConstantsClass.Long_bysa;
+                if (stringValue.IndexOf(Constants.Short_byncsa) >= 0)
+                    return Constants.Long_byncsa;
+                else if (stringValue.IndexOf(Constants.Short_byncnd) >= 0)
+                    return Constants.Long_byncnd;
+                else if (stringValue.IndexOf(Constants.Short_bysa) >= 0)
+                    return Constants.Long_bysa;
                 else
                     return "";
             }

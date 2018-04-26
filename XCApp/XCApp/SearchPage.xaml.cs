@@ -21,19 +21,34 @@ namespace XCApp
             InitializeComponent();
             BindingContext = new XCAPIClass.XCAPISearch();
 
-            PickerCountry.ItemsSource = ConstantsClass.Countries;
-            PickerArea.ItemsSource = ConstantsClass.Areas;
-            PickerSongType.ItemsSource = ConstantsClass.SongTypes;
-            PickerQualityOperator.ItemsSource = ConstantsClass.QualityOperators;
-            PickerQuality.ItemsSource = ConstantsClass.Qualities;
-            PickerLicense.ItemsSource = ConstantsClass.Licenses;
-           
+            DateSearch.Date = DateTime.Now;
+
+            PickerCountry.ItemsSource = Constants.Countries;
+            PickerArea.ItemsSource = Constants.Areas;
+            PickerSongType.ItemsSource = Constants.SongTypes;
+            PickerQualityOperator.ItemsSource = Constants.QualityOperators;
+            PickerQuality.ItemsSource = Constants.Qualities;
+            PickerLicense.ItemsSource = Constants.Licenses;
+            PickerYear.ItemsSource = Constants.Years;
+            PickerMonth.ItemsSource = Constants.Months;
+
             LoadSearchSettings();
+
+            DateSince.Toggled += DateSince_Toggled;
+            
+            var TextAlsoClear_OnTapped = new TapGestureRecognizer();
+            TextAlsoClear_OnTapped.Tapped += (s, e) => {
+                TextAlso.Text = "";
+            };
+            TextAlsoClear.GestureRecognizers.Add(TextAlsoClear_OnTapped);
+            TextAlsoClear_OnTapped.NumberOfTapsRequired = 1;
+            
         }
 
-        public void LoadSearchSettings()
+        private void LoadSearchSettings()
         {
-            int i; 
+            int i;
+            string s;
 
             TextName.Text = SearchSettings.Name;
             TextGen.Text = SearchSettings.Gen;
@@ -42,6 +57,11 @@ namespace XCApp
             TextRmk.Text = SearchSettings.Rmk;
             TextNr.Text = SearchSettings.Nr;
             TextAlso.Text = SearchSettings.Also;
+            DateSearch.Date = SearchSettings.DateSearch;
+            DateSince.IsToggled = SearchSettings.DateSince;
+            DateSearch.IsEnabled = DateSince.IsToggled;
+            PickerYear.IsEnabled = !DateSince.IsToggled;
+            PickerMonth.IsEnabled = !DateSince.IsToggled;
 
             //if i<=0 dont load setting to picker
             i = SearchSettings.CntIndex;
@@ -56,9 +76,18 @@ namespace XCApp
             if (i > 0) PickerQualityOperator.SelectedIndex = i;
             i = SearchSettings.AreaIndex;
             if (i > 0) PickerArea.SelectedIndex = i;
+            //+++i = SearchSettings.YearIndex;
+            //if (i > 0) PickerYear.SelectedIndex = i;
+            i = SearchSettings.MonthIndex;
+            if (i > 0) PickerMonth.SelectedIndex = i;
+
+            s = SearchSettings.Year;
+            if (!(s == Constants.NoneStr || string.IsNullOrEmpty(s)))
+                PickerYear.SelectedItem=s;
+
         }
 
-        public void SaveSearchSettings()
+        private void SaveSearchSettings()
         {
             SearchSettings.Name = TextName.Text;
             SearchSettings.Gen = TextGen.Text;
@@ -73,6 +102,13 @@ namespace XCApp
             SearchSettings.QIndex = PickerQuality.SelectedIndex;
             SearchSettings.QOIndex = PickerQualityOperator.SelectedIndex;
             SearchSettings.AreaIndex = PickerArea.SelectedIndex;
+            SearchSettings.DateSearch = DateSearch.Date;
+            SearchSettings.DateSince = DateSince.IsToggled;
+            if(PickerYear.SelectedIndex>=0)
+                SearchSettings.Year = PickerYear.SelectedItem.ToString();
+            SearchSettings.MonthIndex = PickerMonth.SelectedIndex;
+            SearchSettings.YearIndex = PickerYear.SelectedIndex;
+
         }
 
         async void OnTapGestureRecognizerTappedPlaySearch(object sender, EventArgs args)
@@ -88,6 +124,13 @@ namespace XCApp
 
             //Move the next window
             await Navigation.PushAsync(new ListViewPage(), true);
+        }
+
+        void DateSince_Toggled(object sender, ToggledEventArgs e)
+        {
+            DateSearch.IsEnabled = e.Value;
+            PickerYear.IsEnabled = !e.Value;
+            PickerMonth.IsEnabled = !e.Value;
         }
 
         void TextNameClear_OnTapped(object sender, EventArgs args)
@@ -136,8 +179,6 @@ namespace XCApp
             TextRmk.Text = "";
         }
 
-
-
         public static class SearchSettings
         {
 
@@ -161,17 +202,7 @@ namespace XCApp
             }
             public static int CntIndex
             {
-                //get
-                //{
-                //    CntIndex = AppSettings.GetValueOrDefault(nameof(CntIndex), -1);
-                //    if (CntIndex <= 0  || !AppSettings.Contains(nameof(CntIndex)))
-                //        return -1; 
-                //    else
-                //        return CntIndex;
-                //}
-
-
-                get => AppSettings.GetValueOrDefault(nameof(CntIndex), -1);
+                get => AppSettings.GetValueOrDefault(nameof(CntIndex), 0);
                 set => AppSettings.AddOrUpdateValue(nameof(CntIndex), value);
             }
             public static string Loc
@@ -218,6 +249,31 @@ namespace XCApp
             {
                 get => AppSettings.GetValueOrDefault(nameof(AreaIndex), 0);
                 set => AppSettings.AddOrUpdateValue(nameof(AreaIndex), value);
+            }
+            public static DateTime DateSearch
+            {
+                get => AppSettings.GetValueOrDefault(nameof(DateSearch), DateTime.Now);
+                set => AppSettings.AddOrUpdateValue(nameof(DateSearch), value);
+            }
+            public static bool DateSince
+            {
+                get => AppSettings.GetValueOrDefault(nameof(DateSince), false);
+                set => AppSettings.AddOrUpdateValue(nameof(DateSince), value);
+            }
+            public static string Year
+            {
+                get => AppSettings.GetValueOrDefault(nameof(Year), null);
+                set => AppSettings.AddOrUpdateValue(nameof(Year), value);
+            }
+            public static int YearIndex
+            {
+                get => AppSettings.GetValueOrDefault(nameof(YearIndex), 0);
+                set => AppSettings.AddOrUpdateValue(nameof(YearIndex), value);
+            }
+            public static int MonthIndex
+            {
+                get => AppSettings.GetValueOrDefault(nameof(MonthIndex), 0);
+                set => AppSettings.AddOrUpdateValue(nameof(MonthIndex), value);
             }
         }
 

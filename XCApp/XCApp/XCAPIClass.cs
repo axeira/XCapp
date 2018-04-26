@@ -201,7 +201,7 @@ namespace XCApp
                     if (_CntIndex != value)
                     {
                         _CntIndex = value;
-                        Cnt = ConstantsClass.Countries[CntIndex];
+                        Cnt = Constants.Countries[CntIndex];
                         OnPropertyChanged("CntIndex");
                     }
                 }
@@ -245,7 +245,7 @@ namespace XCApp
                     if (_TypeIndex != value)
                     {
                         _TypeIndex = value;
-                        Type = ConstantsClass.SongTypes[TypeIndex];
+                        Type = Constants.SongTypes[TypeIndex];
                         OnPropertyChanged("TypeIndex");
                     }
                 }
@@ -289,7 +289,7 @@ namespace XCApp
                     if (_LicIndex != value)
                     {
                         _LicIndex = value;
-                        Lic = ConstantsClass.Licenses[LicIndex];
+                        Lic = Constants.Licenses[LicIndex];
                         OnPropertyChanged("LicIndex");
                     }
                 }
@@ -305,7 +305,7 @@ namespace XCApp
                     if (_QIndex != value)
                     {
                         _QIndex = value;
-                        Q = ConstantsClass.Qualities[QIndex];
+                        Q = Constants.Qualities[QIndex];
                         OnPropertyChanged("QIndex");
                     }
                 }
@@ -321,7 +321,7 @@ namespace XCApp
                     if (_QOIndex != value)
                     {
                         _QOIndex = value;
-                        QO = ConstantsClass.QualityOperators[QOIndex];
+                        QO = Constants.QualityOperators[QOIndex];
                         OnPropertyChanged("QOIndex");
                     }
                 }
@@ -337,30 +337,73 @@ namespace XCApp
                     if (_AreaIndex != value)
                     {
                         _AreaIndex = value;
-                        Area = ConstantsClass.Areas[AreaIndex];
+                        Area = Constants.Areas[AreaIndex];
                         OnPropertyChanged("AreaIndex");
                     }
                 }
             }
 
-            private DateTime _DatePick;
-            public DateTime DatePick
+            private DateTime _DateSearch;
+            public DateTime DateSearch
             {
-                get { return _DatePick; }
+                get { return _DateSearch; }
                 set
                 {
-                    if (_DatePick != value)
+                    if (_DateSearch != value)
                     {
-                        _DatePick = value;
-                        OnPropertyChanged("DatePick");
+                        _DateSearch = value;
+                        OnPropertyChanged("DateSearch");
                     }
                 }
             }
 
-            #region INotifyPropertyChanged Members
-            public event PropertyChangedEventHandler PropertyChanged;
-            #endregion
+            private bool _DateSince;
+            public bool DateSince
+            {
+                get { return _DateSince; }
+                set
+                {
+                    if (_DateSince != value)
+                    {
+                        _DateSince = value;
+                        OnPropertyChanged("DateSince");
+                    }
+                }
+            }
 
+            public string Year;
+            private int _YearIndex;
+            public int YearIndex
+            {
+                get { return _YearIndex; }
+                set
+                {
+                    if (_YearIndex != value)
+                    {
+                        _YearIndex = value;
+                        Year = Constants.Years[YearIndex];
+                        OnPropertyChanged("YearIndex");
+                    }
+                }
+            }
+
+            public string Month;
+            private int _MonthIndex;
+            public int MonthIndex
+            {
+                get { return _MonthIndex; }
+                set
+                {
+                    if (_MonthIndex != value)
+                    {
+                        _MonthIndex = value;
+                        Month = Constants.Months[MonthIndex];
+                        OnPropertyChanged("MonthIndex");
+                    }
+                }
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
             protected virtual void OnPropertyChanged(string propertyName)
             {
                 var changed = PropertyChanged;
@@ -375,11 +418,11 @@ namespace XCApp
 
         public static string BuildTheQuery(XCAPISearch XCQuery)
         {
-            string queryRequest;
+            string queryRequest="";
 
             //Build the query
-            //+++Missing Ssp there is no tag in documetation
-            queryRequest = "";
+            //+++ Missing Ssp there is no tag in documetation
+
             if (!String.IsNullOrEmpty(XCQuery.Name))
             {
                 queryRequest = XCQuery.Name + " ";
@@ -395,9 +438,9 @@ namespace XCApp
                 queryRequest += "rec:\"" + XCQuery.Rec + "\" ";
             }
 
-            if (!String.IsNullOrEmpty(XCQuery.Cnt))
+            if (!String.IsNullOrEmpty(XCQuery.Cnt) && XCQuery.Cnt != Constants.NoneStr)
             {
-                if (XCQuery.Cnt.ToUpper() != ConstantsClass.NoneStr)
+                if (XCQuery.Cnt.ToUpper() != Constants.NoneStr)
                     queryRequest += "cnt:\"" + XCQuery.Cnt + "\" ";
             }
 
@@ -416,9 +459,9 @@ namespace XCApp
                 queryRequest += "also:\"" + XCQuery.Also + "\" ";
             }
 
-            if (!String.IsNullOrEmpty(XCQuery.Type))
+            if (!String.IsNullOrEmpty(XCQuery.Type) && XCQuery.Type != Constants.NoneStr)
             {
-                if (XCQuery.Type.ToUpper() != ConstantsClass.NoneStr)
+                if (XCQuery.Type.ToUpper() != Constants.NoneStr)
                     queryRequest += "type:\"" + XCQuery.Type + "\" ";
             }
 
@@ -427,27 +470,27 @@ namespace XCApp
                 queryRequest += "nr:\"" + XCQuery.Nr + "\" ";
             }
 
-            if (!String.IsNullOrEmpty(XCQuery.Lic))
+            if (!String.IsNullOrEmpty(XCQuery.Lic) && XCQuery.Lic != Constants.NoneStr)
             {
-                if (XCQuery.Lic==ConstantsClass.Long_byncnd)
+                if (XCQuery.Lic==Constants.Long_byncnd)
                 {
-                    queryRequest += "lic:\"" + ConstantsClass.Short_byncnd + "\" ";
+                    queryRequest += "lic:\"" + Constants.Short_byncnd + "\" ";
                 }
-                if (XCQuery.Lic == ConstantsClass.Long_byncsa)
+                if (XCQuery.Lic == Constants.Long_byncsa)
                 {
-                    queryRequest += "lic:\"" + ConstantsClass.Short_byncsa + "\" ";
+                    queryRequest += "lic:\"" + Constants.Short_byncsa + "\" ";
                 }
-                if (XCQuery.Lic == ConstantsClass.Long_bysa)
+                if (XCQuery.Lic == Constants.Long_bysa)
                 {
-                    queryRequest += "lic:\"" + ConstantsClass.Short_bysa + "\" ";
+                    queryRequest += "lic:\"" + Constants.Short_bysa + "\" ";
                 }
             }
 
-            if (String.IsNullOrEmpty(XCQuery.QO) || XCQuery.QO == "=")
+            if (String.IsNullOrEmpty(XCQuery.QO) || XCQuery.QO == "=" || XCQuery.QO == Constants.NoneStr)
             { 
                 if (!String.IsNullOrEmpty(XCQuery.Q))
                 {
-                    if (XCQuery.Q.ToUpper() != ConstantsClass.NoneStr)
+                    if (XCQuery.Q.ToUpper() != Constants.NoneStr)
                         queryRequest += "q:" + XCQuery.Q + " ";
                 }
             }
@@ -460,29 +503,50 @@ namespace XCApp
             }
 
 
-            if (!String.IsNullOrEmpty(XCQuery.Area))
+            if (!String.IsNullOrEmpty(XCQuery.Area) && XCQuery.Area != Constants.NoneStr)
             {
-                if (XCQuery.Area.ToUpper() != ConstantsClass.NoneStr)
+                if (XCQuery.Area.ToUpper() != Constants.NoneStr)
                     queryRequest += "area:\"" + XCQuery.Area + "\" ";
             }
 
+            if (XCQuery.DateSince)
+            {
+                queryRequest += "since:\"" +
+                    string.Format("{0:yyyy-MM-dd}", XCQuery.DateSearch)
+                        + "\" ";
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(XCQuery.Year) && XCQuery.Year != Constants.NoneStr)
+                {
+                    queryRequest += "year:" + XCQuery.Year
+                        + " ";
+                }
 
-            //Form query
-            if(!string.IsNullOrEmpty(queryRequest)) 
+                if (XCQuery.MonthIndex > 0)
+                {
+                    queryRequest += "month:" + XCQuery.MonthIndex
+                        + " ";
+                }
+
+            }
+
+            //Complete query and clean it
+            if (!string.IsNullOrEmpty(queryRequest)) 
             {
                 //Add start string of query, lower case and trim spaces
-                queryRequest = (ConstantsClass.XCAPIUrl + queryRequest).TrimEnd().ToLower();
+                queryRequest = (Constants.XCAPIUrl + queryRequest).TrimEnd().ToLower();
                 //Clean double spaces
                 while (queryRequest.Contains("  "))
                     queryRequest = queryRequest.Replace("  ", " ");
             }
 
-            //+++
-            //queryRequest = ConstantsClass.XCAPIUrl + "nr:404086"; // with ssp
-            //queryRequest = ConstantsClass.XCAPIUrl + "nr:134880";
-            queryRequest = ConstantsClass.XCAPIUrl + "passer iagoensis";
-            //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticus";
-            //queryRequest = ConstantsClass.XCAPIUrl + "passer domesticos";
+            //Test queries
+            //queryRequest = Constants.XCAPIUrl + "nr:404086"; // with ssp
+            //queryRequest = Constants.XCAPIUrl + "nr:134880";
+            //queryRequest = Constants.XCAPIUrl + "passer iagoensis";
+            //queryRequest = Constants.XCAPIUrl + "passer domesticus";
+            //queryRequest = Constants.XCAPIUrl + "passer domesticos";
             //https://www.xeno-canto.org/134880
             //https://www.xeno-canto.org/api/2/recordings?query=134880
 
@@ -524,15 +588,15 @@ namespace XCApp
 
                     if (fileResp != null)
                     {
-                        AudioUri = ConstantsClass.UrlScheme +"//"+ fileResp.ResponseUri.Host + fileResp.ResponseUri.AbsolutePath;
-                        string aux = ConstantsClass.UrlScheme + "//" + fileResp.ResponseUri.Host +
+                        AudioUri = Constants.UrlScheme +"//"+ fileResp.ResponseUri.Host + fileResp.ResponseUri.AbsolutePath;
+                        string aux = Constants.UrlScheme + "//" + fileResp.ResponseUri.Host +
                             fileResp.ResponseUri.Segments[0] +
                             fileResp.ResponseUri.Segments[1] +
                             fileResp.ResponseUri.Segments[2] +
                             fileResp.ResponseUri.Segments[3] +
-                            ConstantsClass.UrlFFTS + id;
-                        FFTSSmallImageUri = aux + ConstantsClass.UrlFFTSSmallImage;
-                        FFTSLargeImageUri = aux + ConstantsClass.UrlFFTSLargeImage;
+                            Constants.UrlFFTS + id;
+                        FFTSSmallImageUri = aux + Constants.UrlFFTSSmallImage;
+                        FFTSLargeImageUri = aux + Constants.UrlFFTSLargeImage;
                         Error = HttpStatusCode.OK.ToString();
                         return HttpStatusCode.OK.ToString();
                     }

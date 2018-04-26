@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XCApp" 
              Title="Search"
              x:Class="XCApp.SearchPage">
     
@@ -80,15 +81,15 @@
                         Margin="5,0,5,0"   
                         WidthRequest="75"
                         HorizontalOptions="End"
-                        Title=" " 
-                        SelectedIndex="{Binding QOIndex}" 
+                        Title="=,&lt;,&gt;"
+                        SelectedIndex="{Binding QOIndex, Mode=TwoWay}" 
                         x:Name="PickerQualityOperator">
                     </Picker>
                     <Picker 
                         Margin="5,0,5,0"  
                         HorizontalOptions="FillAndExpand" 
                         Title="Quality (choose one quality level)" 
-                        SelectedIndex="{Binding QIndex}" 
+                        SelectedIndex="{Binding QIndex, Mode=TwoWay}" 
                         x:Name="PickerQuality">
                     </Picker>
                 </StackLayout>
@@ -145,7 +146,7 @@
                     <Picker 
                     Margin="5,0,5,0"                    
                     Title="Sound type (ex: song)" 
-                    SelectedIndex="{Binding TypeIndex}" 
+                    SelectedIndex="{Binding TypeIndex, Mode=TwoWay}" 
                     x:Name="PickerSongType">
                     </Picker>
 
@@ -154,7 +155,7 @@
                     <Entry 
                         Style="{StaticResource labelStyleMedium}"                        
                         Placeholder="Location (ex: tambopata)" 
-                        Text="{Binding TypeMix, Mode=TwoWay}" 
+                        Text="{Binding Loc, Mode=TwoWay}" 
                         HorizontalOptions="FillAndExpand" 
                         x:Name="TextLoc" />
                     <Image 
@@ -180,18 +181,57 @@
                 <Picker 
                     Margin="5,0,5,0"
                     Title="Countries (Select a country)" 
-                    SelectedIndex="{Binding CntIndex}" 
+                    SelectedIndex="{Binding CntIndex, Mode=TwoWay}" 
                     x:Name="PickerCountry">
                 </Picker>
-
-
-                <!-- DatePick 
-                <DatePicker 
-                    Margin="5,0,5,0"
-                    x:Name="DateSearch"
-                    Date="{Binding DateSearch}" />
-                -->
                 
+
+                <!-- DatePick -->
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        Margin="5,0,5,0"
+                        Style="{StaticResource labelStyleMedium}"   
+                        VerticalOptions="Center"
+                        Text="Since" />
+                    <Switch
+                        x:Name="DateSince"
+                        IsToggled="{Binding DateSince}" />
+                    <DatePicker 
+                        Margin="5,0,5,0"
+                        Format="d"
+                        x:Name="DateSearch"
+                        Date="{Binding DateSearch, Mode=TwoWay}" />
+                </StackLayout>
+                <Label
+                    Margin="5,0,5,0"
+                    Text="If since is off then on:" />
+
+                <StackLayout Orientation="Horizontal">
+                    <!--Year-->
+                    <Picker 
+                        Margin="5,0,5,0"     
+                        WidthRequest="75"
+                        Title="Year" 
+                        SelectedIndex="{Binding YearIndex, Mode=TwoWay}" 
+                        x:Name="PickerYear">
+                    </Picker>
+
+                    <Label
+                    Margin="5,0,5,0"
+                    Style="{StaticResource labelStyleMedium}"                        
+                    VerticalOptions="Center"                        
+                    Text="and/or" />
+
+                    <!--Month-->
+                    <Picker 
+                        Margin="5,0,5,0"   
+                        WidthRequest="75"
+                        Title="Month" 
+                        SelectedIndex="{Binding MonthIndex, Mode=TwoWay}" 
+                        x:Name="PickerMonth">
+                    </Picker>
+                </StackLayout>
+
                 <!--Back species -->
                 <StackLayout Orientation="Horizontal">
                     <Entry 
@@ -212,10 +252,10 @@
                                 <OnPlatform.WinPhone>Images/ic_close_black_48dp.png</OnPlatform.WinPhone>
                             </OnPlatform>
                         </Image.Source>
-                        <Image.GestureRecognizers>
+                        <!-- +++ <Image.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="TextAlsoClear_OnTapped"  />
-                        </Image.GestureRecognizers>
+                        </Image.GestureRecognizers>-->
                     </Image>
                 </StackLayout>
 
@@ -277,7 +317,7 @@
                 <Picker 
                     Margin="5,0,5,0"                    
                     Title="Area (choose one Area)" 
-                    SelectedIndex="{Binding AreaIndex}" 
+                    SelectedIndex="{Binding AreaIndex, Mode=TwoWay}" 
                     x:Name="PickerArea">
                 </Picker>
                 
@@ -285,7 +325,7 @@
                 <Picker 
                     Margin="5,0,5,0"                    
                     Title="License (choose one License)" 
-                    SelectedIndex="{Binding LicIndex}" 
+                    SelectedIndex="{Binding LicIndex, Mode=TwoWay}" 
                     x:Name="PickerLicense">
                 </Picker>
 
@@ -312,7 +352,8 @@
             <!--3 column-->
             <StackLayout 
                 Grid.Row="0" Grid.Column="3">
-                <Image>
+                <Image
+                    WidthRequest = "{x:Static local:Constants.IconButtonSize}">
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
                             <OnPlatform.iOS>ic_play_arrow_48pt.png</OnPlatform.iOS>

@@ -9,7 +9,8 @@
             <Color x:Key="textColor">Black</Color>
             <Color x:Key="xcLightColor">#0080CD</Color>
             <Color x:Key="xcDarkColor">#004773</Color>
-            <!-- +++ 
+
+            <!-- Ofitial colors XC App 
             <Color x:Key="xcDarkColor">#461F14</Color>
             <Color x:Key="xcLightColor">#802D17</Color>
             

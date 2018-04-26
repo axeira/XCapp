@@ -4,21 +4,26 @@ using System.Text;
 
 namespace XCApp
 {
-    class ConstantsClass
+    public class Constants
     {
 
-        public const string XCAPIUrl = "https://www.xeno-canto.org/api/2/recordings?query=";
-        public const string NoneStr = "NONE";
-        public const string Long_byncsa = "Creative Commons Attribution-NonCommercial-ShareAlike";
-        public const string Short_byncsa = "by-nc-sa";
-        public const string Long_byncnd = "Creative Commons Attribution-NonCommercial-NoDerivatives";
-        public const string Short_byncnd = "by-nc-nd";
-        public const string Long_bysa = "Creative Commons Attribution-ShareAlike";
-        public const string Short_bysa = "by-sa";
-        public const string UrlScheme = "https:";
-        public const string UrlFFTS = "ffts/XC";
-        public const string UrlFFTSSmallImage = "-small.png";
-        public const string UrlFFTSLargeImage = "-large.png";
+        public static string XCAPIUrl = "https://www.xeno-canto.org/api/2/recordings?query=";
+        public static string NoneStr = "NONE";
+        public static string Long_byncsa = "Creative Commons Attribution-NonCommercial-ShareAlike";
+        public static string Short_byncsa = "by-nc-sa";
+        public static string Long_byncnd = "Creative Commons Attribution-NonCommercial-NoDerivatives";
+        public static string Short_byncnd = "by-nc-nd";
+        public static string Long_bysa = "Creative Commons Attribution-ShareAlike";
+        public static string Short_bysa = "by-sa";
+        public static string UrlScheme = "https:";
+        public static string UrlFFTS = "ffts/XC";
+        public static string UrlFFTSSmallImage = "-small.png";
+        public static string UrlFFTSLargeImage = "-large.png";
+        public static double IconButtonSize = 32;
+
+        public static List<string> Years = new List<string> { };
+
+        public static List<string> Months = new List<string> { };
 
         public static readonly String[] Licenses =
         {
@@ -44,11 +49,10 @@ namespace XCApp
 
         //q TAG
         public static readonly String[] Qualities = { NoneStr, "A", "B", "C", "D", "E" , "0"};
-        public static readonly String[] QualityOperators = { NoneStr, "<", ">", "=" };
+        public static readonly String[] QualityOperators = { NoneStr, "=", "<", ">" };
 
         //area TAG
         public static readonly String[] Areas = { NoneStr, "Africa", "America", "Asia", "Australia", "Europe"};
-
 
         public static readonly String[] Countries = 
         {
@@ -252,6 +256,26 @@ namespace XCApp
             "Zambia",
             "Zimbabwe"
         };
+
+        public static void MonthsFill()
+        {
+            Months.Clear();
+            Months.Add(Constants.NoneStr);
+            for (int i = 0; i < 12; i++)
+            {
+                Months.Add (System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames[i]);
+            }
+        }
+
+        public static void YearsFill()
+        {
+            Years.Clear();
+            Years.Add (Constants.NoneStr);
+            for (int i = 1; i < 150; i++)
+            {
+                Years.Add ((DateTime.Now.Year - i + 1).ToString());
+            }
+        }
 
     }
 }

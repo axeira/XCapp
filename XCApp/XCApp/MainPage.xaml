@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XCApp" 
              NavigationPage.HasNavigationBar="False"
              Title = "Main Page"
              x:Class="XCApp.MainPage">
@@ -24,6 +25,7 @@
             Grid.Row="1" Grid.Column="0">
             
                 <Image   
+                    WidthRequest = "125"
                     VerticalOptions="Center"
                     HorizontalOptions="Center">
                 <Image.Source>
@@ -60,7 +62,8 @@
             <!--1 column-->
             <StackLayout 
                 Grid.Row="0" Grid.Column="1">
-                <Image>
+                <Image
+                    WidthRequest = "{x:Static local:Constants.IconButtonSize}" >
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
                             <OnPlatform.iOS>ic_help_48pt.png</OnPlatform.iOS>
@@ -81,7 +84,8 @@
             <!--3 column-->
             <StackLayout 
                 Grid.Row="0" Grid.Column="3">
-                <Image>
+                <Image
+                    WidthRequest = "{x:Static local:Constants.IconButtonSize}" >
                     <Image.Source>
                         <OnPlatform  x:TypeArguments="ImageSource">
                             <OnPlatform.iOS>ic_search_48pt.png</OnPlatform.iOS>
