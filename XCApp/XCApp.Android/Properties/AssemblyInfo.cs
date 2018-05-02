@@ -35,6 +35,9 @@ using Android.App;
 
 #if DEBUG
 [assembly: Application(Debuggable=true)]
+[assembly: MetaDataAttribute("com.google.android.geo.API_KEY", Value = "AIzaSyDCOj7-mwrKmpnH4kPMOhg7MvPTArS4aSI")]
 #else
+[assembly: MetaDataAttribute("com.google.android.geo.API_KEY", Value="AIzaSyDalXg0INkhQsjT8Jwcf0ta-fWrRRQaMWE")]
 [assembly: Application(Debuggable = false)]
 #endif
+
