@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X5k-f2-b5h">
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A365" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X5k-f2-b5h">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -12,20 +16,25 @@
                         <viewControllerLayoutGuide type="top" id="Y8P-hJ-Z43"/>
                         <viewControllerLayoutGuide type="bottom" id="9ZL-r4-8FZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yd7-JS-zBw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="yd7-JS-zBw" opaque="NO">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="Icon-60.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
-                                <rect key="frame" x="270" y="270" width="60" height="60"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23" image="favicont.png" misplaced="YES">
+                                <rect key="frame" x="449" y="321" width="126" height="126"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                <constraints>
+                                    <constraint id="1370" firstItem="23" firstAttribute="width" constant="125"/>
+                                    <constraint id="1371" firstItem="23" firstAttribute="height" constant="125"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39"/>
                             <constraint firstItem="23" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" priority="1" id="41"/>
                         </constraints>
+                        <color key="tintColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.00392156862745098" green="0.50196078431372548" blue="0.803921568627451" alpha="1"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -34,6 +43,64 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-60.png" width="180" height="180"/>
+        <image name="by.png" width="403" height="141"/>
+        <image name="bync.png" width="403" height="141"/>
+        <image name="bynceu.png" width="403" height="141"/>
+        <image name="byncnd.png" width="403" height="141"/>
+        <image name="byncsa.png" width="403" height="141"/>
+        <image name="byncsaeu.png" width="403" height="141"/>
+        <image name="bynd.png" width="403" height="141"/>
+        <image name="bysa.png" width="403" height="141"/>
+        <image name="cc.png" width="64" height="64"/>
+        <image name="favicon.png" width="512" height="512"/>
+        <image name="Happytoadfish.png" width="64" height="64"/>
+        <image name="ic_add_white_48pt.png" width="48" height="48"/>
+        <image name="ic_add_white_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_add_white_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_close_48pt.png" width="48" height="48"/>
+        <image name="ic_close_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_close_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_error_48pt.png" width="48" height="48"/>
+        <image name="ic_error_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_error_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_help_48pt.png" width="48" height="48"/>
+        <image name="ic_help_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_help_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_home_48pt.png" width="48" height="48"/>
+        <image name="ic_home_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_home_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_info.png" width="24" height="24"/>
+        <image name="ic_info_2x.png" width="48" height="48"/>
+        <image name="ic_info_3x.png" width="72" height="72"/>
+        <image name="ic_map_48pt.png" width="48" height="48"/>
+        <image name="ic_map_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_map_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_my_location_48pt.png" width="48" height="48"/>
+        <image name="ic_my_location_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_my_location_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_pause_white_48pt.png" width="48" height="48"/>
+        <image name="ic_pause_white_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_pause_white_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_play_arrow_48pt.png" width="48" height="48"/>
+        <image name="ic_play_arrow_white_48pt.png" width="48" height="48"/>
+        <image name="ic_play_arrow_white_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_play_arrow_white_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_search_48pt.png" width="48" height="48"/>
+        <image name="ic_search_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_search_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_skip_next_48pt.png" width="48" height="48"/>
+        <image name="ic_skip_next_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_skip_next_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_skip_previous_48pt.png" width="48" height="48"/>
+        <image name="ic_skip_previous_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_skip_previous_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_stop_48pt.png" width="48" height="48"/>
+        <image name="ic_stop_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_stop_48pt_3x.png" width="144" height="144"/>
+        <image name="ic_stop_white_48pt.png" width="48" height="48"/>
+        <image name="ic_stop_white_48pt_2x.png" width="96" height="96"/>
+        <image name="ic_stop_white_48pt_3x.png" width="144" height="144"/>
+        <image name="XCfavicon60.png" width="60" height="60"/>
+        <image name="favicont.png" width="125" height="125"/>
     </resources>
 </document>

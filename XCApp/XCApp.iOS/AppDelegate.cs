@@ -25,6 +25,8 @@ namespace XCApp.iOS
             //only needed in 1.1 this is 1.04 
             //Rg.Plugins.Popup.Popup.Init();
 
+            Xamarin.FormsMaps.Init();
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

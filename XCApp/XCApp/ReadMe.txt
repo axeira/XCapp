@@ -1,6 +1,22 @@
-﻿http://thehappytoadfish.com/appstore/thehappytoadfish.xcapp.apk
+﻿Download last version
+http://thehappytoadfish.com/appstore/thehappytoadfish.xcapp.apk
+========================================================================
 
-======================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================================
 Android
 
 Version
@@ -13,7 +29,7 @@ Change version number and version name in XCApp.Android Properties
 
 
 
-Password keystore Avisavis88
+
 
 Keystores
 C:\Users\Antonio\AppData\Local\Xamarin\Mono for Android\

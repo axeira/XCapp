@@ -87,4 +87,7 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Resources\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)ReadMe.txt" />
+  </ItemGroup>
 </Project>

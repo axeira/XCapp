@@ -127,7 +127,20 @@ namespace XCApp
         {
             //CrossMediaManager.Current.MediaFinished
             firstTimePlaying = true;
-            ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    ButtonPlay.Source = "ic_play_arrow_white_48pt.png";
+                    break;
+                case Device.Android:
+                    ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                    break;
+                case Device.WinPhone:
+                    ButtonPlay.Source = "Images/ic_play_arrow_white_48dp.png";
+                    break;
+                default:
+                    break;
+            }
             playing = false;
             ProgressBarSlider.Value = 0;
             Duration.Text = "";
@@ -153,7 +166,20 @@ namespace XCApp
                         {
                             await CrossMediaManager.Current.Play(mediaFile);
                             firstTimePlaying = false;
-                            ButtonPlay.Source = "ic_pause_white_48dp.png";
+                            switch (Device.RuntimePlatform)
+                            {
+                                case Device.iOS:
+                                    ButtonPlay.Source = "ic_pause_white_48pt.png";
+                                    break;
+                                case Device.Android:
+                                    ButtonPlay.Source = "ic_pause_white_48dp.png";
+                                    break;
+                                case Device.WinPhone:
+                                    ButtonPlay.Source = "Images/ic_pause_white_48dp.png";
+                                    break;
+                                default:
+                                    break;
+                            }
                             playing = true;
                         }
                         catch (Exception err)
@@ -185,7 +211,7 @@ namespace XCApp
                             ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
                             break;
                         case Device.WinPhone:
-                            ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                            ButtonPlay.Source = "Images/ic_play_arrow_white_48dp.png";
                             break;
                         default:
                             break;
@@ -204,7 +230,7 @@ namespace XCApp
                             ButtonPlay.Source = "ic_pause_white_48dp.png";
                             break;
                         case Device.WinPhone:
-                            ButtonPlay.Source = "ic_pause_white_48dp.png";
+                            ButtonPlay.Source = "Images/ic_pause_white_48dp.png";
                             break;
                         default:
                             break;
@@ -227,7 +253,7 @@ namespace XCApp
                     ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
                     break;
                 case Device.WinPhone:
-                    ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                    ButtonPlay.Source = "Images/ic_play_arrow_white_48dp.png";
                     break;
                 default:
                     break;
@@ -251,7 +277,7 @@ namespace XCApp
                     ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
                     break;
                 case Device.WinPhone:
-                    ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
+                    ButtonPlay.Source = "Images/ic_play_arrow_white_48dp.png";
                     break;
                 default:
                     break;
@@ -270,11 +296,41 @@ namespace XCApp
                 var stringValue = (String)value;
 
                 if (stringValue.IndexOf(Constants.Short_byncsa) >= 0)
-                    return "byncsa.png";
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.iOS:
+                            return "byncsa.png";
+                        case Device.Android:
+                            return "byncsa.png";
+                        case Device.WinPhone:
+                            return "Images/byncsa.png";
+                        default:
+                            return "";
+                    }
                 else if (stringValue.IndexOf(Constants.Short_byncnd) >= 0)
-                    return "byncnd.png";
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.iOS:
+                            return "byncnd.png";
+                        case Device.Android:
+                            return "byncnd.png";
+                        case Device.WinPhone:
+                            return "Images/byncnd.png";
+                        default:
+                            return "";
+                    }
                 else if (stringValue.IndexOf(Constants.Short_bysa) >= 0)
-                    return "bysa.png";
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.iOS:
+                            return "bysa.png";
+                        case Device.Android:
+                            return "bysa.png";
+                        case Device.WinPhone:
+                            return "Images/bysa.png";
+                        default:
+                            return "";
+                    }
                 //else if (stringValue.IndexOf("/by/") >= 0)
                 //    return "by.png";
                 //else if (stringValue.IndexOf("/by-nc.eu/") >= 0)

@@ -254,6 +254,7 @@
                                x:Name="Position" 
                                HorizontalOptions="Start"
                                HorizontalTextAlignment="Start"
+                               Text="00:00"
                                Margin="20,0,0,0"/>
                             <Label Font="Small" 
                                x:Name="Duration" 
