@@ -349,9 +349,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\ic_add_white_48dp.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ReadMe.txt" />
-  </ItemGroup>
   <Import Project="..\XCApp\XCApp.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

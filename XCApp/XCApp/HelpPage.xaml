@@ -88,7 +88,7 @@
                     </Image>
                     <Label 
                             Style="{StaticResource labelStyle}"                        
-                            Text="Version 1.0.001 beta" />
+                            Text="Version 1.0.004 beta" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>

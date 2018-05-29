@@ -38,8 +38,6 @@ using Android.App;
 [assembly: MetaDataAttribute("com.google.android.geo.API_KEY", Value = "AIzaSyDCOj7-mwrKmpnH4kPMOhg7MvPTArS4aSI")]
 #else
 [assembly: Application(Debuggable = false)]
-[assembly: MetaDataAttribute("com.google.android.geo.API_KEY", Value = "AIzaSyDCOj7-mwrKmpnH4kPMOhg7MvPTArS4aSI")]
+[assembly: MetaDataAttribute("com.google.android.geo.API_KEY", Value = "AIzaSyDalXg0INkhQsjT8Jwcf0ta-fWrRRQaMWE")]
 #endif
-//+++[assembly: MetaDataAttribute("com.google.android.geo.API_KEY", Value = "AIzaSyDalXg0INkhQsjT8Jwcf0ta-fWrRRQaMWE")]
-
 
