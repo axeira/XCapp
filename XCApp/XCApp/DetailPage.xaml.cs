@@ -96,8 +96,6 @@ namespace XCApp
         //    }
         //}
 
-
-
         private void CCImage_OnTapped(object sender, EventArgs e)
         {
             string lic = Constants.UrlScheme + recordingTapped.Lic;
@@ -135,7 +133,7 @@ namespace XCApp
                 case Device.Android:
                     ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
                     break;
-                case Device.WinPhone:
+                case Device.UWP:
                     ButtonPlay.Source = "Images/ic_play_arrow_white_48dp.png";
                     break;
                 default:
@@ -174,7 +172,7 @@ namespace XCApp
                                 case Device.Android:
                                     ButtonPlay.Source = "ic_pause_white_48dp.png";
                                     break;
-                                case Device.WinPhone:
+                                case Device.WPF:
                                     ButtonPlay.Source = "Images/ic_pause_white_48dp.png";
                                     break;
                                 default:
@@ -210,7 +208,7 @@ namespace XCApp
                         case Device.Android:
                             ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
                             break;
-                        case Device.WinPhone:
+                        case Device.WPF:
                             ButtonPlay.Source = "Images/ic_play_arrow_white_48dp.png";
                             break;
                         default:
@@ -229,7 +227,7 @@ namespace XCApp
                         case Device.Android:
                             ButtonPlay.Source = "ic_pause_white_48dp.png";
                             break;
-                        case Device.WinPhone:
+                        case Device.WPF:
                             ButtonPlay.Source = "Images/ic_pause_white_48dp.png";
                             break;
                         default:
@@ -252,7 +250,7 @@ namespace XCApp
                 case Device.Android:
                     ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
                     break;
-                case Device.WinPhone:
+                case Device.WPF:
                     ButtonPlay.Source = "Images/ic_play_arrow_white_48dp.png";
                     break;
                 default:
@@ -276,7 +274,7 @@ namespace XCApp
                 case Device.Android:
                     ButtonPlay.Source = "ic_play_arrow_white_48dp.png";
                     break;
-                case Device.WinPhone:
+                case Device.WPF:
                     ButtonPlay.Source = "Images/ic_play_arrow_white_48dp.png";
                     break;
                 default:
@@ -302,7 +300,7 @@ namespace XCApp
                             return "byncsa.png";
                         case Device.Android:
                             return "byncsa.png";
-                        case Device.WinPhone:
+                        case Device.WPF:
                             return "Images/byncsa.png";
                         default:
                             return "";
@@ -314,7 +312,7 @@ namespace XCApp
                             return "byncnd.png";
                         case Device.Android:
                             return "byncnd.png";
-                        case Device.WinPhone:
+                        case Device.WPF:
                             return "Images/byncnd.png";
                         default:
                             return "";
@@ -326,7 +324,7 @@ namespace XCApp
                             return "bysa.png";
                         case Device.Android:
                             return "bysa.png";
-                        case Device.WinPhone:
+                        case Device.WPF:
                             return "Images/bysa.png";
                         default:
                             return "";

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Windows.System;
 
 namespace XCApp
 {
-    public class Constants
+    public class Constants 
     {
 
         public static string XCAPIUrl = "https://www.xeno-canto.org/api/2/recordings?query=";
@@ -19,7 +17,8 @@ namespace XCApp
         public static string UrlFFTS = "ffts/XC";
         public static string UrlFFTSSmallImage = "-small.png";
         public static string UrlFFTSLargeImage = "-large.png";
-        public static double IconButtonSize = 32;
+        public static string UrlFFTSFullImage = "-full.png";
+        public static double IconButtonSize = 64;
 
         public static List<string> Years = new List<string> { };
 

@@ -28,7 +28,7 @@ Change version number and version name in XCApp.Android Properties
   (001 equals version number)
 
 - Save Changes Commit GIT
-- Archive / destribute/adhoc/choose certificate/ save as
+- Build/Archive/destribute/adhoc/choose certificate/save as
 - Password keystore Avisavis88
 
 ========

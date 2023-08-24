@@ -597,6 +597,7 @@ namespace XCApp
                             Constants.UrlFFTS + id;
                         FFTSSmallImageUri = aux + Constants.UrlFFTSSmallImage;
                         FFTSLargeImageUri = aux + Constants.UrlFFTSLargeImage;
+                        FFTSFullImageUri = aux + Constants.UrlFFTSFullImage;
                         Error = HttpStatusCode.OK.ToString();
                         return HttpStatusCode.OK.ToString();
                     }
@@ -609,8 +610,9 @@ namespace XCApp
                 catch (WebException e)
                 {
                     AudioUri = "Error playing file...!";
-                    FFTSSmallImageUri = "Error getting the Spectrogram...!";
-                    FFTSLargeImageUri = "Error getting the Spectrogram...!";
+                    FFTSSmallImageUri = "Error getting the Small Spectrogram...!";
+                    FFTSLargeImageUri = "Error getting the Large Spectrogram...!";
+                    FFTSFullImageUri = "Error getting the Full Spectrogram...!";
                     Error = e.Message.ToString(); 
                     return e.Message.ToString();
                 }

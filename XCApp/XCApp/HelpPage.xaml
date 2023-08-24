@@ -20,9 +20,9 @@
                         Margin="5,0,0,0">
                         <Image.Source>
                             <OnPlatform  x:TypeArguments="ImageSource">
-                                <OnPlatform.iOS>XCfavicon60.png</OnPlatform.iOS>
-                                <OnPlatform.Android>XCfavicon60.png</OnPlatform.Android>
-                                <OnPlatform.WinPhone>Images/XCfavicon60.png</OnPlatform.WinPhone>
+                                <On Platform="iOS">XCfavicon60.png</On>
+                                <On Platform="Android">XCfavicon60.png</On>
+                                <On Platform="WMP">Images/XCfavicon60.png</On>
                             </OnPlatform>
                         </Image.Source>
                     </Image>
@@ -55,9 +55,9 @@
                         Margin="5,0,0,0">
                         <Image.Source>
                             <OnPlatform  x:TypeArguments="ImageSource">
-                                <OnPlatform.iOS>Happytoadfish.png</OnPlatform.iOS>
-                                <OnPlatform.Android>Happytoadfish.png</OnPlatform.Android>
-                                <OnPlatform.WinPhone>Images/Happytoadfish.png</OnPlatform.WinPhone>
+                                <On Platform="iOS">Happytoadfish.png</On>
+                                <On Platform="Android">Happytoadfish.png</On>
+                                <On Platform="WinPhone">Images/Happytoadfish.png</On>
                             </OnPlatform>
                         </Image.Source>
                     </Image>
@@ -77,12 +77,12 @@
                         WidthRequest = "48" 
                         HorizontalOptions="Start" 
                         VerticalOptions="Start" 
-                        Margin="5,0,0,0">XCfavicon60.png
+                        Margin="5,0,0,0">
                         <Image.Source>
                             <OnPlatform  x:TypeArguments="ImageSource">
-                                <OnPlatform.iOS>favicon.png</OnPlatform.iOS>
-                                <OnPlatform.Android>favicon.png</OnPlatform.Android>
-                                <OnPlatform.WinPhone>Images/favicon.png</OnPlatform.WinPhone>
+                                <On Platform="iOS">favicon.png</On>
+                                <On Platform="Android">favicon.png</On>
+                                <On Platform="WinPhone">Images/favicon.png</On>
                             </OnPlatform>
                         </Image.Source>
                     </Image>
